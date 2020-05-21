@@ -412,9 +412,7 @@ public class MemberController {
 //			model.addAttribute("totalCnt", totalCnt);
 //			int maxPageNo = ((totalCnt - 1) / 10) + 1;
 //			model.addAttribute("maxPageNo",maxPageNo);
-			
-//	        
-	        
+  
 	        
 	        
 			return "portfolio/index";
