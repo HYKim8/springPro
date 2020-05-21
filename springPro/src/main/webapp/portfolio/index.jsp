@@ -114,11 +114,14 @@
     <section class="ftco-about img ftco-section ftco-no-pt ftco-no-pb" id="about-section">
     	<div class="container">
     		<div class="row d-flex no-gutters">
-    			<div class="col-md-6 col-lg-6 d-flex">
+    			<div class="col-md-2 col-lg-2">
+    			</div>
+    			<div class="col-md-4 col-lg-4 d-flex">
     				<div class="img-about img d-flex align-items-stretch">
     					<div class="overlay"></div>
-	    				<div class="img d-flex align-self-stretch align-items-center" style="background-image:url(${hContext}/resources/images/${fileVO.saveNm}.${fileVO.ext });">
-	    				</div>
+		    				<div class="img d-flex align-self-stretch align-items-center" style="width: 100%; height: 500px; line-height: 600px; float: right ">
+							    <img src="${hContext}/resources/images/${fileVO.saveNm}.${fileVO.ext }" style="width: 100%; max-width: 320px; float: right; " />
+							</div>
     				</div>
     			</div>
     			<div class="col-md-6 col-lg-6 pl-md-5 py-5">
