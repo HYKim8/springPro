@@ -213,7 +213,7 @@
 			   var parseData = $.parseJSON(data);
 		   	   if(parseData.msgId =="1"){
 					alert(parseData.msgMsg);
-					location.href="${hContext}/covid/index.jsp";
+					location.href="${hContext}/covid/covid_index.jsp";
 			   } else{
 				    alert(parseData.msgMsg);
 			   }

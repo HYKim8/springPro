@@ -103,7 +103,7 @@ public class CovidController {
 		return json;
 	}
 	
-	@RequestMapping(value = "covid/do_sign_up.spring", method = RequestMethod.GET,produces = "application/json; charset=UTF-8")
+	@RequestMapping(value = "covid/do_sign_up.spring", method = RequestMethod.POST,produces = "application/json; charset=UTF-8")
 	@ResponseBody
 	public String doSignUp(HttpServletRequest req, CovidUserVO vo, Model model) {
 		//String url = "covid/covid_login";
@@ -298,7 +298,7 @@ public class CovidController {
 		HttpSession session=req.getSession();
 		String id = (String) session.getAttribute("login");
 		
-		String url = "covid/index";
+		String url = "covid/covid_index";
 		
 		String currentLng = req.getParameter("lng");
 		String currentLat = req.getParameter("lat");

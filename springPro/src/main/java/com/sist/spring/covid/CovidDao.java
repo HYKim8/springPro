@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,67 +24,29 @@ public class CovidDao implements Dao {
 	
 	public CovidDao() {}
 	
+	private final String NAMESPACE = "com.sist.spring.covid";
+	
 	@Autowired
-	private JdbcTemplate jdbcTemplate;
-	
-	RowMapper<RxJoinVO> rowMapper = new RowMapper<RxJoinVO>() {
-		
-		@Override
-		public RxJoinVO mapRow(ResultSet rs, int rowNum) throws SQLException {
-			RxJoinVO outData = new RxJoinVO();
-			outData.setMemberId(rs.getString("member_id"));
-			outData.setpCode(rs.getString("p_code"));
-			outData.setpName(rs.getString("p_name"));
-			outData.setpAddr(rs.getString("p_addr"));
-			outData.setpLng(rs.getInt("p_lng"));
-			outData.setpLat(rs.getInt("p_lat"));
-			outData.setEmail(rs.getString("email"));
-			
-			
-			return outData;
-		}
-	};
-	
-	
+	SqlSessionTemplate sqlSessionTemplate;
 	
 	public DTO doSelectOneUser(DTO dto) {
-		CovidUserVO outVO = null;
+		
 		CovidUserVO inVO = (CovidUserVO) dto;
 		
-		StringBuilder sb = new StringBuilder();
-		sb.append("SELECT				\n");
-		sb.append("    member_id,       \n");
-		sb.append("    password,        \n");
-		sb.append("    email,           \n");
-		sb.append("    phone            \n");
-		sb.append("FROM  covid_user     \n");
-		sb.append("WHERE member_id = ?  \n");
+		LOG.debug("1======================");
+		LOG.debug("1=inVO=" + inVO);
+		LOG.debug("1======================");
 		
-		LOG.debug("=====================");
-		LOG.debug("Query:" + sb.toString());
-		LOG.debug("Param:" + inVO.toString());
-		LOG.debug("=====================");
 		
-		Object[] args = {inVO.getMemberId()};
-		try {
-		outVO = this.jdbcTemplate.queryForObject(sb.toString(), args, new RowMapper<CovidUserVO>() {
-			@Override
-			public CovidUserVO mapRow(ResultSet rs, int rowNum) throws SQLException {
-				CovidUserVO outData = new CovidUserVO();
-				outData.setMemberId(rs.getString("member_id"));
-				outData.setPassWord(rs.getString("password"));
-				outData.setEmail(rs.getString("email"));
-				outData.setPhone(rs.getString("phone"));
+		String statement = NAMESPACE + ".doSelectOneUser";
+		LOG.debug("2======================");
+		LOG.debug("2=statement=" + statement);
+		LOG.debug("2======================");
 				
-				return outData;
-			}
-		});
-		} catch (EmptyResultDataAccessException e) {
-			return outVO;
-		}
-		
-		LOG.debug("outVO:" + outVO);
-		LOG.debug("=====================");
+		CovidUserVO outVO = this.sqlSessionTemplate.selectOne(statement,inVO);
+		LOG.debug("3======================");
+		LOG.debug("3=outVO=" + outVO);
+		LOG.debug("3======================");
 		
 		return outVO;
 	}
@@ -93,34 +56,23 @@ public class CovidDao implements Dao {
 	 */
 	@Override
 	public int doInsert(DTO dto) {
-		int flag = 0;
 		CovidUserVO inVO =(CovidUserVO) dto;
 		
-		StringBuilder sb = new StringBuilder();
-		sb.append("INSERT INTO covid_user (	\n");
-		sb.append("    member_id,           \n");
-		sb.append("    password,            \n");
-		sb.append("    email,               \n");
-		sb.append("    phone		        \n");
-		sb.append(") VALUES (               \n");
-		sb.append("    ?,                   \n");
-		sb.append("    ?,                   \n");
-		sb.append("    ?,                   \n");
-		sb.append("    ?                    \n");
-		sb.append(")                        \n");
+		LOG.debug("1======================");
+		LOG.debug("1=inVO=" + inVO);
+		LOG.debug("1======================");
 		
-		LOG.debug("=====================");
-		LOG.debug("Query:" + sb.toString());
-		LOG.debug("Param:" + inVO.toString());
-		LOG.debug("=====================");
 		
-		Object[] args = {inVO.getMemberId(),
-				inVO.getPassWord(),
-				inVO.getEmail(),
-				inVO.getPhone()
-		};
+		String statement = NAMESPACE + ".doInsert";
+		LOG.debug("2======================");
+		LOG.debug("2=statement=" + statement);
+		LOG.debug("2======================");
+				
+		int flag = this.sqlSessionTemplate.insert(statement,inVO);
+		LOG.debug("3======================");
+		LOG.debug("3=flag=" + flag);
+		LOG.debug("3======================");
 		
-		flag = this.jdbcTemplate.update(sb.toString(), args);
 		return flag;
 	}
 	
@@ -130,38 +82,22 @@ public class CovidDao implements Dao {
 	 * @return
 	 */
 	public int doRxInsert(DTO dto) {
-		int flag = 0;
 		RxJoinVO inVO = (RxJoinVO) dto;
-		StringBuilder sb = new StringBuilder();
-		sb.append("INSERT INTO pharmacy (	\n");
-		sb.append("    member_id,           \n");
-		sb.append("    p_code,              \n");
-		sb.append("    p_name,              \n");
-		sb.append("    p_addr,              \n");
-		sb.append("    p_lng,               \n");
-		sb.append("    p_lat                \n");
-		sb.append(") VALUES (               \n");
-		sb.append("    ?,                   \n");
-		sb.append("    ?,                   \n");
-		sb.append("    ?,                   \n");
-		sb.append("    ?,                   \n");
-		sb.append("    ?,                   \n");
-		sb.append("	   ?                    \n");
-		sb.append(")                        \n");
+		LOG.debug("1======================");
+		LOG.debug("1=inVO=" + inVO);
+		LOG.debug("1======================");
 		
-		LOG.debug("=====================");
-		LOG.debug("Query:" + sb.toString());
-		LOG.debug("Param:" + inVO.toString());
-		LOG.debug("=====================");
 		
-		Object[] args = {inVO.getMemberId(),
-						inVO.getpCode(),
-						inVO.getpName(),
-						inVO.getpAddr(),
-						inVO.getpLng(),
-						inVO.getpLat()
-		};
-		flag = jdbcTemplate.update(sb.toString(), args);
+		String statement = NAMESPACE + ".doRxInsert";
+		LOG.debug("2======================");
+		LOG.debug("2=statement=" + statement);
+		LOG.debug("2======================");
+				
+		int flag = this.sqlSessionTemplate.insert(statement,inVO);
+		
+		LOG.debug("3======================");
+		LOG.debug("3=flag=" + flag);
+		LOG.debug("3======================");
 		
 		return flag;
 	}
@@ -173,32 +109,32 @@ public class CovidDao implements Dao {
 	@Override
 	public int doUpdate(DTO dto) {
 		int flag = 0;
-		CovidParmVO inVO = (CovidParmVO) dto;
-		StringBuilder sb = new StringBuilder();
-		sb.append("UPDATE pharmacy		  \n");
-		sb.append("SET 		        	  \n");
-		sb.append("    p_name = ?,  	  \n");
-		sb.append("    p_addr = ?,  	  \n");
-		sb.append("    p_lng = ?,   	  \n");
-		sb.append("    p_lat = ?    	  \n");
-		sb.append("WHERE            	  \n");
-		sb.append("    member_id = ?	  \n");
-		sb.append("AND p_code = ?    	  \n");
-		
-		LOG.debug("=====================");
-		LOG.debug("Query:" + sb.toString());
-		LOG.debug("Param:" + inVO.toString());
-		LOG.debug("=====================");
-		
-		Object[] args = { inVO.getpName(),
-						inVO.getpAddr(),
-						inVO.getpLng(),
-						inVO.getpLat(),
-						inVO.getMemberId(),
-						inVO.getpCode()
-		};
-		flag = jdbcTemplate.update(sb.toString(), args);
-		
+//		CovidParmVO inVO = (CovidParmVO) dto;
+//		StringBuilder sb = new StringBuilder();
+//		sb.append("UPDATE pharmacy		  \n");
+//		sb.append("SET 		        	  \n");
+//		sb.append("    p_name = ?,  	  \n");
+//		sb.append("    p_addr = ?,  	  \n");
+//		sb.append("    p_lng = ?,   	  \n");
+//		sb.append("    p_lat = ?    	  \n");
+//		sb.append("WHERE            	  \n");
+//		sb.append("    member_id = ?	  \n");
+//		sb.append("AND p_code = ?    	  \n");
+//		
+//		LOG.debug("=====================");
+//		LOG.debug("Query:" + sb.toString());
+//		LOG.debug("Param:" + inVO.toString());
+//		LOG.debug("=====================");
+//		
+//		Object[] args = { inVO.getpName(),
+//						inVO.getpAddr(),
+//						inVO.getpLng(),
+//						inVO.getpLat(),
+//						inVO.getMemberId(),
+//						inVO.getpCode()
+//		};
+//		flag = jdbcTemplate.update(sb.toString(), args);
+//		
 		return flag;
 	}
 	
@@ -207,33 +143,22 @@ public class CovidDao implements Dao {
 	 */
 	@Override
 	public DTO doSelectOne(DTO dto) {
-		RxJoinVO outVO = null;
 		RxJoinVO inVO = (RxJoinVO) dto;
 		
-		StringBuilder sb = new StringBuilder();
-		sb.append("SELECT t1.member_id,					\n");
-		sb.append("       t1.p_code,                    \n");
-		sb.append("       t1.p_name,                    \n");
-		sb.append("       t1.p_addr,                    \n");
-		sb.append("       t1.p_lng,                     \n");
-		sb.append("       t1.p_lat,                     \n");
-		sb.append("       t2.email                      \n");
-		sb.append("FROM pharmacy t1, COVID_USER t2      \n");
-		sb.append("WHERE t1.member_id = t2.member_id    \n");
-		sb.append("AND t1.member_id = ?                 \n");
-		sb.append("AND t1.p_code = ?                    \n");
+		LOG.debug("1======================");
+		LOG.debug("1=inVO=" + inVO);
+		LOG.debug("1======================");
 		
-		LOG.debug("=====================");
-		LOG.debug("Query:" + sb.toString());
-		LOG.debug("Param:" + inVO.toString());
-		LOG.debug("=====================");
 		
-		Object[] args = {inVO.getMemberId(),inVO.getpCode()};
-		
-		outVO = this.jdbcTemplate.queryForObject(sb.toString(), args, rowMapper);
-		
-		LOG.debug("outVO:" + outVO);
-		LOG.debug("=====================");
+		String statement = NAMESPACE + ".doSelectOne";
+		LOG.debug("2======================");
+		LOG.debug("2=statement=" + statement);
+		LOG.debug("2======================");
+				
+		RxJoinVO outVO = this.sqlSessionTemplate.selectOne(statement,inVO);
+		LOG.debug("3======================");
+		LOG.debug("3=outVO=" + outVO);
+		LOG.debug("3======================");
 		
 		return outVO;
 	}
@@ -245,51 +170,42 @@ public class CovidDao implements Dao {
 	public List<?> doRetrieve(DTO dto) {
 		RxJoinVO inVO = (RxJoinVO) dto;
 		
-		StringBuilder sb = new StringBuilder();
-		sb.append("SELECT t1.member_id,					  \n");
-		sb.append("       t1.p_code,                      \n");
-		sb.append("       t1.p_name,                      \n");
-		sb.append("       t1.p_addr,                      \n");
-		sb.append("       t1.p_lng,                       \n");
-		sb.append("       t1.p_lat,                       \n");
-		sb.append("       t2.email                        \n");
-		sb.append("FROM pharmacy t1, COVID_USER t2        \n");
-		sb.append("WHERE t1.member_id = t2.member_id      \n");
-		sb.append("AND t1.member_id = ?                   \n");
+		LOG.debug("1======================");
+		LOG.debug("1=inVO=" + inVO);
+		LOG.debug("1======================");
 		
-		LOG.debug("=====================");
-		LOG.debug("Query:" + sb.toString());
-		LOG.debug("Param:" + inVO.toString());
-		LOG.debug("=====================");
 		
-		Object[] args = {inVO.getMemberId()};
+		String statement = NAMESPACE + ".doRetrieve";
+		LOG.debug("2======================");
+		LOG.debug("2=statement=" + statement);
+		LOG.debug("2======================");
+				
+		List<RxJoinVO> list = this.sqlSessionTemplate.selectList(statement,inVO);
 		
-		List<RxJoinVO> list =this.jdbcTemplate.query(sb.toString(), args, rowMapper);
-		
-		LOG.debug("list:" + list);
-		LOG.debug("=====================");
+		LOG.debug("3======================");
+		LOG.debug("3=list=" + list);
+		LOG.debug("3======================");
 		
 		return list;
 	}
 	
 	@Override
 	public int doDelete(DTO dto) {
-		int flag = 0;
 		CovidParmVO inVO = (CovidParmVO) dto;
-		StringBuilder sb = new StringBuilder();
-		sb.append("DELETE FROM pharmacy					\n");
-		sb.append("WHERE member_id = ?                  \n");
-		sb.append("AND p_code = ?                       \n");
+		LOG.debug("1======================");
+		LOG.debug("1=inVO=" + inVO);
+		LOG.debug("1======================");
 		
-		LOG.debug("=====================");
-		LOG.debug("Query:" + sb.toString());
-		LOG.debug("Param:" + inVO.toString());
-		LOG.debug("=====================");
 		
-		Object[] args = {inVO.getMemberId(),
-						inVO.getpCode()
-		};
-		flag = jdbcTemplate.update(sb.toString(), args);
+		String statement = NAMESPACE + ".doDelete";
+		LOG.debug("2======================");
+		LOG.debug("2=statement=" + statement);
+		LOG.debug("2======================");
+				
+		int flag = this.sqlSessionTemplate.delete(statement,inVO);
+		LOG.debug("3======================");
+		LOG.debug("3=flag=" + flag);
+		LOG.debug("3======================");
 		
 		return flag;
 	}

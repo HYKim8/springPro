@@ -80,7 +80,7 @@ em.error {
                     <div class="col-md-12 heading-section text-center ftco-animate">
                          <h2 class="mb-4">COVID-19: User Sign Up</h2>
                          <div align="center">
-                            <form action="${hContext}/covid/do_sign_up.spring" id="registerForm" name="registerForm" method="get">
+                            <form action="${hContext}/covid/do_sign_up.spring" id="registerForm" name="registerForm" method="POST">
 	                           	<table>
 		                            <tbody>
 		                                <tr>
@@ -119,7 +119,7 @@ em.error {
 		                                </tr>
 		                                <tr>
                           				  <td>
-                            				<input  type="submit" onclick="javascipt:doInsert()" name="to_list_btn" class="form-control btn btn-danger btn-sm"  value="회원가입" id="to_list_btn" />
+                            				<input  type="submit" class="form-control btn btn-danger btn-sm"  value="회원가입" />
                             			 </td>
                             			</tr>
 		                              </tbody>
@@ -323,8 +323,41 @@ em.error {
                  },
                  unhighlight: function (element, errorClass, validClass) {
                      $( element ).parents(".col-lg-5").addClass( "has-success" ).removeClass( "has-error" );
-                 }
+                 },
+               	 //서밋 헨들러
+	             submitHandler:function(form){
+	            	//ajax
+	     			$.ajax({
+	     			   type:"POST",
+	     			   url:"${hContext}/covid/do_sign_up.spring",
+	     			   dataType:"html", 
+	     			   data:{"memberId": $("#memberId").val(),
+	     				     "password": $("#password").val(),
+	     				     "passwordConfirm": $("#passwordConfirm").val(),
+	     				     "email": $("#email").val(),
+	     				     "phone1": $("#phone1").val(),
+	     				     "phone2": $("#phone2").val(),
+	     				     "phone3": $("#phone3").val()
+	     			   },
+	     			   success:function(data){ //성공
+	     			   	   console.log("data:" + data);
+	     				   var parseData = $.parseJSON(data);
+	     				   if(parseData.msgId =="1"){
+	     						alert(parseData.msgMsg);
+	     						goLogin();
+	     			   	   }
+	     				   
+	     			   },
+	     			   error:function(xhr,status,error){
+	     			      
+	     			   },
+	     			   complete:function(data){
+	     			   
+	     			   }   
+	     			   
+	     			  });//--ajax
 
+		         }
 
           });
 
@@ -335,63 +368,6 @@ em.error {
              bindEventHandler();
                 
          });
-
-		
-		function doInsert(){
-			if($("#memberId").val() == "" || $("#memberId").val() == false){
-                $("#memberId").focus();
-                return;
-            }
-			if($("#password").val() == "" || $("#password").val() == false){
-                $("#password").focus();
-                return;
-            }
-			if($("#email").val() == "" || $("#email").val() == false){
-                $("#email").focus();
-                return;
-            }
-			console.log("#phone2");
-			if($("#phone2").val() === "" || $("#phone2").val() == false){
-                $("#phone2").focus();
-			console.log("#phone2");
-                return;
-            }
-			console.log("#phone3");
-			if($("#phone3").val() === "" || $("#phone3").val() == false){
-                $("#phone3").focus();
-			console.log("#phone3");
-                return;
-            }
-			//ajax
-			$.ajax({
-			   type:"GET",
-			   url:"${hContext}/covid/do_sign_up.spring",
-			   dataType:"html", 
-			   data:{"memberId": $("#memberId").val(),
-				     "password": $("#password").val(),
-				     "email": $("#email").val(),
-				     "phone1": $("#phone1").val(),
-				     "phone2": $("#phone2").val(),
-				     "phone3": $("#phone3").val()
-			   },
-			   success:function(data){ //성공
-			   	   //console.log("data:" + data);
-				   var parseData = $.parseJSON(data);
-				   if(parseData.msgId =="1"){
-						alert(parseData.msgMsg);
-						goLogin();
-			   	   }
-				   
-			   },
-			   error:function(xhr,status,error){
-			      
-			   },
-			   complete:function(data){
-			   
-			   }   
-			   
-			  });//--ajax
-		}
 
 
 		function goLogin(){
