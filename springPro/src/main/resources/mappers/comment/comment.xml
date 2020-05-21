@@ -20,30 +20,7 @@
     </select>
 
    
-    
-    <!-- 수정 -->
-    <update id="doUpdate" parameterType="LicenseVO">
-         UPDATE License       
-         SET l_group = #{lGroup},      
-             l_grade = #{lGrade},      
-             l_num = #{lNum},        
-             l_date = #{lDate},       
-             l_organ = #{lOrgan}      
-         WHERE  member_id = #{memberId} 
-         AND l_name=#{lName}       
-    </update>
-    
-   
-    <sql id="licenseCol">
-      l_name  as lName,
-      l_group as lGroup,
-      l_grade as lGrade,
-      l_num   as lNum,
-      l_organ as lOrgan,
-      TO_CHAR(l_date,'YYYY/MM/DD')  as lDate,
-      member_id as memberId 
-    </sql>
-    
+ 
     
    <!-- 등록  -->
    <insert id="doInsert" parameterType="CommentVO">
