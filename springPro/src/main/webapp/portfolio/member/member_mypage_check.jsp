@@ -101,10 +101,10 @@
 
    <!-- Skills -->
     <section class="ftco-section ftco-no-pt ftco-no-pb ftco-counter img" id="skills-section">
-       <div class="container-fluid px-md-5">
+       <div class="container-fluid px-md-5" id="skillDiv">
           <div class="row d-md-flex align-items-center">
            								
-           	<div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+           	<div class="col-md-8 d-flex justify-content-center counter-wrap ftco-animate">
 			    <div class="block-18 shadow">
 			       <div class="page-header">
 			  	    	<h2>Skill List</h2>
@@ -160,102 +160,17 @@
 											    			</c:choose>
 										  	    	
 									    		</table>
-									    		<input type="button" id="skillAdd" name="skillAdd" class="buttons" value="Add">
 									    	</div>
 									    	<!--// Grid영역 -->    
-										  	    	
-										  	    </form>	
-								              </div>
-								            </div>
-								          </div>
+								  	    </form>	
+										  	    	<input type="button"  name="skillAdd" class="buttons" value="Add" onclick="javascript:skillAdd();">
+						              </div>
+						            </div>
+						          </div>
+								<!-- <input type="button"  name="skillAdd" class="buttons" value="Add" onclick="javascript:skillAdd();"> -->
 								          
-          	<div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
-                <div class="block-18 shadow">
-                     <h2 class="mb-4">Add Skills</h2>
-                     <div align="center">
-                        <form action="${hContext}/skill/do_insert.spring" name="skillInsertForm" id="skillInsertForm" method="post">
-                        <table id="skillForm" >
-                        	<tr>
-                        		<td>
-                        			<table>
-                        				<tr>
-								          <td>
-								             <img alt="추가입력폼" width="20" height="20" src="${hContext}/resources/images/plus.png" id="skillPlusInsert">
-								          </td>
-								        </tr>
-				                              <tr>
-				                           <td>
-				                              <p>Programming Language</p>
-				                           </td>
-				                           <td>
-				                              <select id="sName" name="skillList[0].sName">
-				                                 <option value="Java">Java</option>
-				                                 <option value="C">C</option>
-				                                 <option value="Python">Python</option>
-				                                 <option value="C++">C++</option>
-				                                 <option value="C#">C#</option>
-				                                 <option value="Visual Basic.NET">Visual Basic.NET</option>
-				                                 <option value="JavaScript">JavaScript</option>
-				                                 <option value="PHP">PHP</option>
-				                                 <option value="SQL">SQL</option>
-				                                 <option value="R">R</option>
-				                                 <option value="Swift">Swift</option>
-				                                 <option value="Go">Go</option>
-				                                 <option value="Ruby">Ruby</option>
-				                                 <option value="Assmbler">Assmbler</option>
-				                                 <option value="PL/SQL">PL/SQL</option>
-				                                 <option value="Perl">Perl</option>
-				                                 <option value="Objective-C">Objective-C</option>
-				                                 <option value="MATLAB">MATLAB</option>
-				                                 <option value="Visual Basic">Visual Basic</option>
-				                                 <option value="Scratch">Scratch</option>
-				                              </select>
-				                           </td>
-				                        </tr>
-				                        <tr>   
-				                           <td>
-				                              <p>Mastership Level</p>
-				                           </td>
-				                           <td>
-				                           	 <input type="range" id="sMarstery" name="skillList[0].sMarstery" name="points" step="1" value="0" oninput="document.getElementById('checkMastery0').innerHTML=this.value;">
-        								   	 &nbsp&nbsp<b><span id="checkMastery0"></span>%</b>
-        								   </td>
-				                        </tr>
-				                        <tr>   
-				                           <td>
-				                              <p>Activity content</p>
-				                           </td>
-				                           <td>
-				                              <p><textarea rows="10" cols="50" name="skillList[0].sContent" id="sContent"></textarea></p>
-				                           </td>
-				                        </tr>
-                        				<tr>                                                                                                             
-										   <td>                                                                                                                        
-												<img alt="삭제입력폼" align="left" width="20" height="20" src="${hContext}/resources/images/minus.png" onClick="skillbtnMinus(\'tr_1'+skillCnt+'\');">			
-										   </td>                                                                                                                      
-										</tr>  
-                        			
-                        			
-                        			
-                        			</table>
-                        		</td>
-                        	</tr>
-                        
-                        
-	                        <tbody id="skillbody">
-	                        </tbody>
-                        	</table>
-                        <table>
-                     		<tr>
-                        		<td colspan=2>
-                           			<button type="button" onclick="javascript:skillInsert();" class="btn btn-primary btn-sm">Submit</button>
-                        		</td>
-                     		</tr>
-                  		</table>
-                        </form>
-                     </div>
-                 </div>
-              </div>
+           	<div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate" id="skilAddlDiv">
+            </div> 
             </div>  
         </div>
     </section>
@@ -265,7 +180,7 @@
       <section class="ftco-section ftco-no-pt ftco-no-pb ftco-counter img" id="license-section">
          <div class="container-fluid px-md-5">
           <div class="row d-md-flex align-items-center">
-             <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+             <div class="col-md-8 d-flex justify-content-center counter-wrap ftco-animate">
              <div class="block-18 shadow">
                 <div class="page-header">
                       <h2>License List</h2>
@@ -321,113 +236,30 @@
                                               </c:choose>
                                           </tbody>
                                      </table>
+                                     <input type="button"  name="licAdd" class="buttons" value="Add" onclick="javascript:licAdd();">
                                   </div>
                                   <!--// Grid영역 -->    
                                       </div>
                                     </div>
                                   </div>
              
-               <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
-                <div class="block-18 shadow">
-                        <h2 class="mb-4">Add License</h2>
-                        <div align="center">
-                     <form action="${hContext}/portfolio/do_insert_license.spring" name="licenseInsertForm" id="licenseInsertForm" method="post">
-                     <table id="licenseForm">
-                     	<tr>
-                        	<td>
-                        		<table>
-				                     <tr>
-				                     	<td>
-				                        <img alt="추가입력폼" width="20" height="20" src="${hContext}/resources/images/plus.png" id="licensePlusInsert">
-				                        </td>
-				                     </tr>
-				                           <tr>
-				                              <td>
-				                               <input  type="text" class="form-control lName" name="licenseList[0].lName" id="lName" placeholder="Qualification Name" >
-				                              </td>
-				                           </tr>
-				                           <tr>
-				                              <td>
-				                                 <label for="Qualification classification">Qualification classification</label>
-				                                  <select id="lGroup" name="licenseList[0].lGroup">
-				                                    <option value="국가기술자격">National Technical qualification</option>
-				                                    <option value="국가전문자격">National Professional qualification</option>
-				                                    <option value="민간자격">Private qualification</option>
-				                                    <option value="해외자격">Overseas qualification</option>
-				                                  </select>
-				                             </td>
-				                              </tr>
-				                              <tr>
-				                                 <td>
-				                                    <label for="TypeOfLicense">Type of license</label>
-				                                  <select id="lGrade" name="licenseList[0].lGrade">
-				                                    <option value="기사">기사</option>
-				                                    <option value="기능사">기능사</option>
-				                                    <option value="1급">1급</option>
-				                                    <option value="2급">2급</option>
-				                                    <option value="기타">기타</option>
-				                                  </select>
-				                             </td>
-				                              </tr>
-				                              <tr>
-				                                 <td>
-				                                  <input type="text" class="form-control lNum" name="licenseList[0].lNum" id="lNum" placeholder="License Number" >
-				                                 </td>
-				                              </tr>
-				                              <tr>
-				                                 <td>
-				                                    <input type="text" class="form-control lDate" name="licenseList[0].lDate" id="lDate" placeholder="Date of Acquisition(yyyymmdd)" >
-				                                 </td>
-				                              </tr>
-				                              <tr>
-				                                 <td>
-				                                    <input type="text" class="form-control lOrgan" name="licenseList[0].lOrgan" id="lOrgan" placeholder="Issuing Agency"  >
-				                                 </td>
-				                              </tr>
-				                              <tr>                                                                                                             
-												 <td>                                                                                                                        
-														<img alt="삭제입력폼" align="left" width="20" height="20" src="${hContext}/resources/images/minus.png" onClick="skillbtnMinus(\'tr_1'+skillCnt+'\');">			
-												 </td>                                                                                                                      
-											  </tr>  
-				                              
-				                              
-				                              		</table>
-				                  				</td>
-                        					</tr>
-                        					
-                        					
-				                  			<tbody id="licensebody">
-					                       </tbody>
-					                       </table>
-								         <table>
-							             	<tr>
-							             		<td colspan=2>
-							             			<button type="button" onclick="javascript:licenseInsert();" class="btn btn-primary btn-sm">Submit</button>
-							             		</td>
-							             	</tr>
-							             </table>
-                      	</form>
-                     </div>
-                  </div>
+               <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate" id="licAddlDiv">
                </div>
             </div>
          </div>
       </section>
    <!--// license --> 
    
-    <!-- Project -->
+ <!-- Project -->
     <section class="ftco-section ftco-no-pt ftco-no-pb ftco-counter img" id="Projects-section">
        <div class="container-fluid px-md-5">
           <div class="row d-md-flex align-items-center">
-          	
           	<div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
 			    <div class="block-18 shadow">
 			       <div class="page-header">
 					    	<h2>Project List</h2>
-					    	
 					    		<form action="${hContext}/portfolio" id="projectUp_frm" name="projectUp_frm" method="POST">
 						    		<input type="hidden" name="hiddenId" id="hiddenId">
-						    	
 						    		<!-- Grid영역 -->
 								    	<div class="table-responsive">
 								    		<table class="table table-hover" id="projectTable">
@@ -435,45 +267,44 @@
 								    			<thead class="bg-primary">
 								    			</thead>
 								    			<tbody>
-										  	    		<!-- Data있는 경우 -->
-										    				<c:choose>
-										    					<c:when test="${list3.size()>0 }">
-										    						<c:forEach var="i" begin="0" end="${list3.size()-1}">
-										    							<table class="col-lg-12 table table-hover">
-																			<tbody>
-																				<tr>
-																		            <td style="display:none;">${list3.get(i).memberId}</td>
-																		        </tr>
-																				<tr>
-																					<td><p class="mb-4 col-lg-3"><b>Project Name</b></p></td>
-																					<td><p class="mb-4 col-lg-3"><b>Project Description</b></p></td>
-																					<td><p class="mb-4 col-lg-4"><b>Project startDate</b></p></td>
-																					<td><p class="mb-4 col-lg-4"><b>Project endDate</b></p></td>
-																					<td><p class="mb-4 col-lg-2"><b>Github Address</b></p></td>
-																				</tr>
-																				<tr>
-																					<td>${list3.get(i).pjtName }</td>
-																					<td>${list3.get(i).pjtInfo }</td>
-																					<td>${list3.get(i).pjtStart }</td>
-																					<td>${list3.get(i).pjtEnd }</td>
-																					<td>${list3.get(i).gitAddress }</td>
-																					<td rowspan="2">
-																					<input type="button" id="projectUpdate" name="projectUpdate" class="buttons projectUpdate" value="Modify">
-																					<input type="button" id="projectDelete" name="projectDelete" class="buttons projectDelete" value="Delete">
-																					</td>
-																				</tr>			
-																			</tbody>
-																		</table>
-											    					</c:forEach>
-										    					</c:when>
-										    					<c:otherwise>
-										    						<tr><td colspan="99">등록된 프로젝트가 없습니다.</td></tr>
-										    					</c:otherwise>
-										    				</c:choose>
-										  	    	
-										  	    	</tbody>
+								  	    			<!-- Data있는 경우 -->
+								    				<c:choose>
+								    					<c:when test="${list3.size()>0 }">
+								    						<c:forEach var="i" begin="0" end="${list3.size()-1}">
+								    							<table class="col-lg-12 table table-hover">
+																	<tbody>
+																		<tr>
+																            <td style="display:none;">${list3.get(i).memberId}</td>
+																        </tr>
+																		<tr>
+																			<td><p class="mb-4 col-lg-3"><b>Project Name</b></p></td>
+																			<td><p class="mb-4 col-lg-3"><b>Project Description</b></p></td>
+																			<td><p class="mb-4 col-lg-4"><b>Project startDate</b></p></td>
+																			<td><p class="mb-4 col-lg-4"><b>Project endDate</b></p></td>
+																			<td><p class="mb-4 col-lg-2"><b>Github Address</b></p></td>
+																		</tr>
+																		<tr>
+																			<td>${list3.get(i).pjtName }</td>
+																			<td>${list3.get(i).pjtInfo }</td>
+																			<td>${list3.get(i).pjtStart }</td>
+																			<td>${list3.get(i).pjtEnd }</td>
+																			<td>${list3.get(i).gitAddress }</td>
+																			<td rowspan="2">
+																			<input type="button" id="projectUpdate" name="projectUpdate" class="buttons projectUpdate" value="Modify">
+																			<input type="button" id="projectDelete" name="projectDelete" class="buttons projectDelete" value="Delete">
+																			</td>
+																		</tr>			
+																	</tbody>
+																</table>
+									    					</c:forEach>
+								    					</c:when>
+								    					<c:otherwise>
+								    						<tr><td colspan="99">등록된 프로젝트가 없습니다.</td></tr>
+								    					</c:otherwise>
+								    				</c:choose>
+										  	    </tbody>
 									    		</table>
-									    		<input type="button" id="projectAdd" name="projectAdd" class="buttons" value="Add">
+									    		<input type="button"  name="projectAdd" class="buttons" value="Add" onclick="javascript:projectAdd();">
 									    	</div>
 									    	<!--// Grid영역 -->    
 										  	    
@@ -482,8 +313,8 @@
 								            </div>
 								          </div>
           
-                <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
-                	<div class="block-18 shadow">
+                <div class="col-md d-flex justify-content-center counter-wrap ftco-animate" id="projectAddlDiv">
+<%--                 	<div class="block-18 shadow">
                   		<h2 class="mb-4">Add Project</h2>
                     	<div align="center">
                       		<form action="${hContext}/portfoilo/upload.spring" method="post" enctype="multipart/form-data" name="projectInsetForm" id="projectInsetForm">
@@ -559,7 +390,7 @@
 		                  </table>
                     </form>
                    </div>
-                 </div>
+                 </div> --%>
               </div>
             </div>
         </div>
@@ -672,279 +503,7 @@
 	
 		});
 
-    
 
-        var skillCnt = 0;
-		var html='';
-       
-       $("#skillPlusInsert").on("click" , function(){
-		console.log('this is plus button');
-		var frm = document.uploadFrm;
-		html = '';
-		skillCnt+=1;
-		console.log(skillCnt);
-
-		html+='<tr id="tr_1'+skillCnt+'">';
-		html+='<td>';
-		html+='<table>';
-
-		
-		html+='<tr ><td colspan="2"><hr/><br/></td></tr>                                                                                             ';
-		html+='          <tr>                                                                                                         ';
-		html+='       <td>                                                                                                                          ';
-		html+='          <p>Programming Language</p>                                                                                                ';
-		html+='       </td>                                                                                                                         ';
-		html+='       <td>                                                                                                                          ';
-		html+='          <select id="sName'+skillCnt+'" name="skillList['+skillCnt+'].sName">                                                       ';
-		html+='             <option value="Java">Java</option>                                                                                      ';
-		html+='             <option value="C">C</option>                                                                                            ';
-		html+='             <option value="Python">Python</option>                                                                                  ';
-		html+='             <option value="C++">C++</option>                                                                                        ';
-		html+='             <option value="C#">C#</option>                                                                                          ';
-		html+='             <option value="Visual Basic.NET">Visual Basic.NET</option>                                                              ';
-		html+='             <option value="JavaScript">JavaScript</option>                                                                          ';
-		html+='             <option value="PHP">PHP</option>                                                                                        ';
-		html+='             <option value="SQL">SQL</option>                                                                                        ';
-		html+='             <option value="R">R</option>                                                                                            ';
-		html+='             <option value="Swift">Swift</option>                                                                                    ';
-		html+='             <option value="Go">Go</option>                                                                                          ';
-		html+='             <option value="Ruby">Ruby</option>                                                                                      ';
-		html+='             <option value="Assmbler">Assmbler</option>                                                                              ';
-		html+='             <option value="PL/SQL">PL/SQL</option>                                                                                  ';
-		html+='             <option value="Perl">Perl</option>                                                                                      ';
-		html+='             <option value="Objective-C">Objective-C</option>                                                                        ';
-		html+='             <option value="MATLAB">MATLAB</option>                                                                                  ';
-		html+='             <option value="Visual Basic">Visual Basic</option>                                                                      ';
-		html+='             <option value="Scratch">Scratch</option>                                                                                ';
-		html+='          </select>                                                                                                                  ';
-		html+='       </td>                                                                                                                         ';
-		html+='    </tr>                                                                                                                            ';
-		html+='    <tr>                                                                                                               ';
-		html+='       <td>                                                                                                                          ';
-		html+='          <p>Mastership Level</p>                                                                                                    ';
-		html+='       </td>                                                                                                                         ';
-		html+='       <td>                                                                                                                          ';
-		html+='          <select id="sMarstery'+skillCnt+'" name="skillList['+skillCnt+'].sMarstery">                                               ';
-		html+='             <option value="1">1</option>                                                                                            ';
-		html+='             <option value="2">2</option>                                                                                            ';
-		html+='             <option value="3">3</option>                                                                                            ';
-		html+='             <option value="4">4</option>                                                                                            ';
-		html+='             <option value="5">5</option>                                                                                            ';
-		html+='             <option value="6">6</option>                                                                                            ';
-		html+='             <option value="7">7</option>                                                                                            ';
-		html+='             <option value="8">8</option>                                                                                            ';
-		html+='             <option value="9">9</option>                                                                                            ';
-		html+='             <option value="10">10</option>                                                                                          ';
-		html+='          </select>                                                                                                                  ';
-		html+='       </td>                                                                                                                         ';
-		html+='    </tr>                                                                                                                            ';
-		html+='    <tr>                                                                                                               ';
-		html+='       <td>                                                                                                                          ';
-		html+='          <p>Activity content</p>                                                                                                    ';
-		html+='       </td>                                                                                                                         ';
-		html+='       <td>                                                                                                                          ';
-		html+='          <p><textarea rows="10" cols="50" name="skillList['+skillCnt+'].sContent" id="sContent'+skillCnt+'"></textarea></p>         ';
-		html+='       </td>                                                                                                                         ';
-		html+='    </tr>                                                                                                                            ';
-		html+='      <tr >                                                                                                             ';
-		html+='         <td>                                                                                                                        ';
-		html+='				<img alt="삭제입력폼" align="left" width="20" height="20" src="${hContext}/resources/images/minus.png" onClick="skillbtnMinus(\'tr_1'+skillCnt+'\');">		';		
-		html+='         </td>                                                                                                                       ';
-		html+='      </tr>                                                                                                                          ';
-
-		html+='</tr>';
-		html+='</td>';
-		html+='</table>';
-		
-		$("#skillbody").append(html);
-
-           });
-
-       function skillbtnMinus(btnId){
-    	   console.log('this is minus button');
-           $("#"+btnId).empty();
-       }
-           
-
-       var licenseCnt = 0;
-       $("#licensePlusInsert").on("click" , function(){
-		console.log('this is plus button');
-		var frm = document.uploadFrm;
-		var html = '';
-		licenseCnt+=1;
-		console.log(licenseCnt);
-
-		html+='<tr id="tr_2'+licenseCnt+'">';
-		html+='<td>';
-		html+='<table>';
-                                                                                                                                                                                                                       
-		html+='  <tr><td colspan="2"><hr/><br/></td></tr>                                                                                                                                                              ';
-		html+='  <tr>                                                                                                                                                                                                  ';
-		html+='      <td>                                                                                                                                                                                              ';
-		html+='       <input  type="text" class="form-control lName" name="licenseList['+licenseCnt+'].lName" id="lName'+licenseCnt+'" placeholder="Qualification Name"   autofocus>                                   ';
-		html+='      </td>                                                                                                                                                                                             ';
-		html+='   </tr>                                                                                                                                                                                                ';
-		html+='   <tr>                                                                                                                                                                                                 ';
-		html+='      <td>                                                                                                                                                                                              ';
-		html+='         <label for="Qualification classification">Qualification classification</label>                                                                                                                 ';
-		html+='          <select id="lGroup'+licenseCnt+'" name="licenseList['+licenseCnt+'].lGroup">                                                                                                                  ';
-		html+='            <option value="국가기술자격">National Technical qualification</option>                                                                                                                         ';
-		html+='            <option value="국가전문자격">National Professional qualification</option>                                                                                                                      ';
-		html+='            <option value="민간자격">Private qualification</option>                                                                                                                                       ';
-		html+='            <option value="해외자격">Overseas qualification</option>                                                                                                                                      ';
-		html+='          </select>                                                                                                                                                                                     ';
-		html+='     </td>                                                                                                                                                                                              ';
-		html+='      </tr>                                                                                                                                                                                             ';
-		html+='      <tr>                                                                                                                                                                                              ';
-		html+='         <td>                                                                                                                                                                                           ';
-		html+='            <label for="TypeOfLicense">Type of license</label>                                                                                                                                          ';
-		html+='          <select id="lGrade'+licenseCnt+'" name="licenseList['+licenseCnt+'].lGrade">                                                                                                                  ';
-		html+='            <option value="기사">기사</option>                                                                                                                                                            ';
-		html+='            <option value="기능사">기능사</option>                                                                                                                                                         ';
-		html+='            <option value="1급">1급</option>                                                                                                                                                             ';
-		html+='            <option value="2급">2급</option>                                                                                                                                                             ';
-		html+='            <option value="기타">기타</option>                                                                                                                                                            ';
-		html+='          </select>                                                                                                                                                                                     ';
-		html+='     </td>                                                                                                                                                                                              ';
-		html+='      </tr>                                                                                                                                                                                             ';
-		html+='      <tr>                                                                                                                                                                                              ';
-		html+='         <td>                                                                                                                                                                                           ';
-		html+='          <input type="text" class="form-control lNum" name="licenseList['+licenseCnt+'].lNum" id="lNum'+licenseCnt+'" placeholder="License Number"  autofocus>                                         ';
-		html+='         </td>                                                                                                                                                                                          ';
-		html+='      </tr>                                                                                                                                                                                             ';
-		html+='      <tr>                                                                                                                                                                                              ';
-		html+='         <td>                                                                                                                                                                                           ';
-		html+='            <input type="text" class="form-control lDate" name="licenseList['+licenseCnt+'].lDate" id="lDate'+licenseCnt+'" placeholder="Date of Acquisition(yyyymmdd)"  autofocus>                     ';
-		html+='         </td>                                                                                                                                                                                          ';
-		html+='      </tr>                                                                                                                                                                                             ';
-		html+='      <tr>                                                                                                                                                                                              ';
-		html+='         <td>                                                                                                                                                                                           ';
-		html+='            <input type="text" class="form-control lOrgan" name="licenseList['+licenseCnt+'].lOrgan" id="lOrgan'+licenseCnt+'" placeholder="Issuing Agency"  autofocus>                                 ';
-		html+='         </td>                                                                                                                                                                                          ';
-		html+='      </tr>                                                                                                                                                                                       	   ';
-		html+='    </tr>                                                                                                                                                                                               ';
-		html+='      <tr >                                                                                                                                                                                             ';
-		html+='         <td>                                                                                                                                                                                           ';
-		html+='				<img alt="삭제입력폼" align="left" width="20" height="20" src="${hContext}/resources/images/minus.png" onClick="licensebtnMinus(\'tr_2'+licenseCnt+'\');">		                               ';		
-		html+='         </td>                                                                                                                                                                                          ';
-		html+='      </tr>                                                                                                                                                                                             ';
-		
-		
-		html+='</tr>';
-		html+='</td>';
-		html+='</table>';
-		
-		$("#licensebody").append(html);
-
-       });
-
-       function licensebtnMinus(btnId){
-    	   console.log('this is minus button');
-           $("#"+btnId).empty();
-       }
-
-      var projectCnt = 0;
-       $("#pjtPlusInsert").on("click", function(){
-       console.log('This is plus button');
-       var frm=document.uploadFrm;
-       var html = '';
-       projectCnt+=1;
-       console.log(projectCnt);
-
-       html+='<tr id="tr_3'+projectCnt+'">';
- 	   html+='<td>';
- 	   html+='<table>';
-
-        html+='<tr><td colspan="2"><hr/><br/></td></tr>                                                                                                                                                                  ';
-        html+='<tr>                                                                                                                                                                                                      ';
-        html+='   <td>                                                                                                                                                                                                   ';
-        html+='      Project Name                                                                                                                                                                                        ';
-        html+='   </td>                                                                                                                                                                                                  ';
-        html+='   <td>                                                                                                                                                                                                   ';
-        html+='      <input type="text" id="pjtName'+projectCnt+'" name="projectList['+projectCnt+'].pjtName">                                                                                                           ';
-        html+='   </td>                                                                                                                                                                                                  ';
-        html+='</tr>                                                                                                                                                                                                     ';
-        html+='<tr>                                                                                                                                                                                                      ';
-        html+='   <td>                                                                                                                                                                                                   ';
-        html+='      <p>Project Description<p>                                                                                                                                                                           ';
-        html+='   </td>                                                                                                                                                                                                  ';
-        html+='   <td>                                                                                                                                                                                                   ';
-        html+='      <textarea cols="50" rows="3" id="pjtInfo'+projectCnt+'" name="projectList['+projectCnt+'].pjtInfo"></textarea>                                                                                      ';
-        html+='   </td>                                                                                                                                                                                                  ';
-        html+='</tr>                                                                                                                                                                                                     ';
-        html+='<tr>                                                                                                                                                                                                      ';
-        html+='   <td>                                                                                                                                                                                                   ';
-        html+='      <p>Project Period<p>                                                                                                                                                                                ';
-        html+='   </td>                                                                                                                                                                                                  ';
-        html+='   <td>                                                                                                                                                                                                   ';
-        html+='      <input type="date" id="pjtStart'+projectCnt+'" name="projectList['+projectCnt+'].pjtStart"> - <input type="date" id="pjtEnd'+projectCnt+'" name="projectList['+projectCnt+'].pjtEnd">               ';
-        html+='   </td>                                                                                                                                                                                                  ';
-        html+='</tr>                                                                                                                                                                                                     ';
-        html+='<tr>                                                                                                                                                                                                      ';
-        html+='   <td>                                                                                                                                                                                                   ';
-        html+='      <p>Github Address<p>                                                                                                                                                                                ';
-        html+='   </td>                                                                                                                                                                                                  ';
-        html+='   <td>                                                                                                                                                                                                   ';
-        html+='      <input type="text" id="gitAddress'+projectCnt+'" name="projectList['+projectCnt+'].gitAddress">                                                                                                     ';
-        html+='   </td>                                                                                                                                                                                                  ';
-        html+='</tr>                                                                                                                                                                                                     ';
-        html+='<tr>                                                                                                                                                                                                      ';
-        html+='   <td>                                                                                                                                                                                                   ';
-        html+='      <p>Project DemonstrationVideo<p>                                                                                                                                                                    ';
-        html+='   </td>                                                                                                                                                                                                  ';
-        html+='   <td>                                                                                                                                                                                                   ';
-        html+='      <input type="file" id="videoFile'+projectCnt+'" name="projectList['+projectCnt+'].videoFile">                                                                                                       ';
-        html+='   </td>                                                                                                                                                                                                  ';
-        html+='</tr>                                                                                                                                                                                                     ';
-        html+='      <tr >                                                                                                                                                                                               ';
- 		html+='         <td>                                                                                                                                                                                             ';
- 		html+='				<img alt="삭제입력폼" align="left" width="20" height="20" src="${hContext}/resources/images/minus.png" onClick="licensebtnMinus(\'tr_3'+projectCnt+'\');">	                      	             ';		
- 		html+='         </td>                                                                                                                                                                                            ';
- 		html+='      </tr>                                                                                                                                                                                               ';
- 		
-		
-        html+='</tr>';
- 		html+='</td>';
- 		html+='</table>';  
- 		                                                                                                                                                         
-        $("#projectbody").append(html);
-
-      	});
-       function projectbtnMinus(btnId){
-    	   console.log('this is minus button');
-           $("#"+btnId).empty();
-       }
-
-
-
-
-       
-      function skillInsert() {
-           console.log("skillInsert");
-           var frm = document.skillInsertForm;
-           frm.action = "${hContext}/skill/do_insert.spring";
-           frm.method="POST";
-           frm.submit(); 
-           
-      }
-
-      function licenseInsert() {
-         console.log("licenseInsert");
-         var frm = document.licenseInsertForm;
-         frm.action = "${hContext}/portfolio/license_insert.spring";
-         frm.method="POST";
-         frm.submit(); 
-         
-     }
-       
-      function pjtInsert() {
-         console.log("pjtInsert");
-         var pjtFrm = document.projectInsetForm;
-         pjtFrm.action = "${hContext}/portfolio/do_insert.spring";
-         pjtFrm.method="POST";
-         pjtFrm.submit(); 
-         
-      }
 
 //skill------------------------------
     //조회버튼 클릭 시
@@ -1167,7 +726,203 @@
 		    
 
 		 });	
+
+
+     //스킬 전역변수
+     var skillCnt = 0;
+	  var html='';
+
+	  //스킬 추가 버튼 클릭 시
+     function skillAdd(){
+	    	  console.log("skillAdd");
+			  html="";
+	    	  html+='	<div class="block-18 shadow">                                                                                                                                                                                               ';
+	    	  html+='		 <h2 class="mb-4">Add Skills</h2>                                                                                                                                                                                       ';
+	    	  html+='		 <div align="center">                                                                                                                                                                                                   ';
+	    	  html+='			<form action="${hContext}/skill/do_insert.spring" name="skillInsertForm" id="skillInsertForm" method="post">                                                                                                        ';
+	    	  html+='			<table id="skillForm" >                                                                                                                                                                                             ';
+	    	  html+='				<tr>                                                                                                                                                                                                            ';
+	    	  html+='					<td>                                                                                                                                                                                                        ';
+	    	  html+='						<table>                                                                                                                                                                                                 ';
+	    	  html+='							<tr>                                                                                                                                                                                                ';
+	    	  html+='							  <td>                                                                                                                                                                                              ';
+	    	  html+='								 <img alt="추가입력폼" width="20" height="20" src="${hContext}/resources/images/plus.png" id="skillPlusInsert">                                                                                    ';
+	    	  html+='							  </td>                                                                                                                                                                                             ';
+	    	  html+='							</tr>                                                                                                                                                                                               ';
+	    	  html+='								  <tr>                                                                                                                                                                                          ';
+	    	  html+='							   <td>                                                                                                                                                                                             ';
+	    	  html+='								  <p>Programming Language</p>                                                                                                                                                                   ';
+	    	  html+='							   </td>                                                                                                                                                                                            ';
+	    	  html+='							   <td>                                                                                                                                                                                             ';
+	    	  html+='								  <select id="sName" name="skillList[0].sName">                                                                                                                                                 ';
+	    	  html+='									 <option value="Java">Java</option>                                                                                                                                                         ';
+	    	  html+='									 <option value="C">C</option>                                                                                                                                                               ';
+	    	  html+='									 <option value="Python">Python</option>                                                                                                                                                     ';
+	    	  html+='									 <option value="C++">C++</option>                                                                                                                                                           ';
+	    	  html+='									 <option value="C#">C#</option>                                                                                                                                                             ';
+	    	  html+='									 <option value="Visual Basic.NET">Visual Basic.NET</option>                                                                                                                                 ';
+	    	  html+='									 <option value="JavaScript">JavaScript</option>                                                                                                                                             ';
+	    	  html+='									 <option value="PHP">PHP</option>                                                                                                                                                           ';
+	    	  html+='									 <option value="SQL">SQL</option>                                                                                                                                                           ';
+	    	  html+='									 <option value="R">R</option>                                                                                                                                                               ';
+	    	  html+='									 <option value="Swift">Swift</option>                                                                                                                                                       ';
+	    	  html+='									 <option value="Go">Go</option>                                                                                                                                                             ';
+	    	  html+='									 <option value="Ruby">Ruby</option>                                                                                                                                                         ';
+	    	  html+='									 <option value="Assmbler">Assmbler</option>                                                                                                                                                 ';
+	    	  html+='									 <option value="PL/SQL">PL/SQL</option>                                                                                                                                                     ';
+	    	  html+='									 <option value="Perl">Perl</option>                                                                                                                                                         ';
+	    	  html+='									 <option value="Objective-C">Objective-C</option>                                                                                                                                           ';
+	    	  html+='									 <option value="MATLAB">MATLAB</option>                                                                                                                                                     ';
+	    	  html+='									 <option value="Visual Basic">Visual Basic</option>                                                                                                                                         ';
+	    	  html+='									 <option value="Scratch">Scratch</option>                                                                                                                                                   ';
+	    	  html+='								  </select>                                                                                                                                                                                     ';
+	    	  html+='							   </td>                                                                                                                                                                                            ';
+	    	  html+='							</tr>                                                                                                                                                                                               ';
+	    	  html+='							<tr>                                                                                                                                                                                                ';
+	    	  html+='							   <td>                                                                                                                                                                                             ';
+	    	  html+='								  <p>Mastership Level</p>                                                                                                                                                                       ';
+	    	  html+='							   </td>                                                                                                                                                                                            ';
+	    	  html+='							   <td>                                                                                                                                                                                             ';
+	    	  html+='								 <input type="range" id="sMarstery" name="skillList[0].sMarstery" name="points" step="1" value="0" oninput="document.getElementById('+"checkMastery0"+').innerHTML=this.value;">                    ';
+	    	  html+='								 &nbsp&nbsp<b><span id="checkMastery0"></span>%</b>                                                                                                                                             ';
+	    	  html+='							   </td>                                                                                                                                                                                            ';
+	    	  html+='							</tr>                                                                                                                                                                                               ';
+	    	  html+='							<tr>                                                                                                                                                                                                ';
+	    	  html+='							   <td>                                                                                                                                                                                             ';
+	    	  html+='								  <p>Activity content</p>                                                                                                                                                                       ';
+	    	  html+='							   </td>                                                                                                                                                                                            ';
+	    	  html+='							   <td>                                                                                                                                                                                             ';
+	    	  html+='								  <p><textarea rows="10" cols="40" name="skillList[0].sContent" id="sContent"></textarea></p>                                                                                                   ';
+	    	  html+='							   </td>                                                                                                                                                                                            ';
+	    	  html+='							</tr>                                                                                                                                                                                               ';
+	    	  html+='							<tr>                                                                                                                                                                                                ';
+	    	  html+='							   <td>                                                                                                                                                                                             ';
 	
+	      	  html+='									<img alt="삭제입력폼" align="left" width="20" height="20" src="${hContext}/resources/images/minus.png" onClick="skillbtnMinus(\"'+'+"tr_1"+'+skillCnt+'+"\");">									';
+	    	  html+='							   </td>                                                                                                                                                                                            ';
+	    	  html+='							</tr>                                                                                                                                                                                               ';
+	    	  html+='						                                                                                                                                                                                                        ';
+	    	  html+='						                                                                                                                                                                                                        ';
+	    	  html+='						                                                                                                                                                                                                        ';
+	    	  html+='						</table>                                                                                                                                                                                                ';
+	    	  html+='					</td>                                                                                                                                                                                                       ';
+	    	  html+='				</tr>                                                                                                                                                                                                           ';
+	    	  html+='			                                                                                                                                                                                                                    ';
+	    	  html+='			                                                                                                                                                                                                                    ';
+	    	  html+='				<tbody id="skillbody">                                                                                                                                                                                          ';
+	    	  html+='				</tbody>                                                                                                                                                                                                        ';
+	    	  html+='				</table>                                                                                                                                                                                                        ';
+	    	  html+='			<table>                                                                                                                                                                                                             ';
+	    	  html+='				<tr>                                                                                                                                                                                                            ';
+	    	  html+='					<td colspan=2>                                                                                                                                                                                              ';
+	    	  html+='						<button type="button" onclick="javascript:skillInsert();" class="btn btn-primary btn-sm">Submit</button>                                                                                                ';
+	    	  html+='					</td>                                                                                                                                                                                                       ';
+	    	  html+='				</tr>                                                                                                                                                                                                           ';
+	    	  html+='			</table>                                                                                                                                                                                                            ';
+	    	  html+='			</form>                                                                                                                                                                                                             ';
+	    	  html+='		</div>                                                                                                                                                                                                                  ';
+	    	  html+='	</div>                                                                                                                                                                                                                      ';
+	
+	
+	
+	    	  $("#skilAddlDiv").append(html);
+
+         }
+
+
+
+	  //스킬 (+) 클릭 이벤트
+     $(document).on("click","#skillPlusInsert",function(){
+	  		console.log('this is plus button');
+	  		var frm = document.uploadFrm;
+	  		html = '';
+	  		skillCnt+=1;
+	  		console.log(skillCnt);
+	
+	  		html+='<tr id="tr_1'+skillCnt+'">';
+	  		html+='<td>';
+	  		html+='<table>';
+	
+	  		
+	  		html+='<tr ><td colspan="2"><hr/><br/></td></tr>                                                                                             ';
+	  		html+='          <tr>                                                                                                         ';
+	  		html+='       <td>                                                                                                                          ';
+	  		html+='          <p>Programming Language</p>                                                                                                ';
+	  		html+='       </td>                                                                                                                         ';
+	  		html+='       <td>                                                                                                                          ';
+	  		html+='          <select id="sName'+skillCnt+'" name="skillList['+skillCnt+'].sName">                                                       ';
+	  		html+='             <option value="Java">Java</option>                                                                                      ';
+	  		html+='             <option value="C">C</option>                                                                                            ';
+	  		html+='             <option value="Python">Python</option>                                                                                  ';
+	  		html+='             <option value="C++">C++</option>                                                                                        ';
+	  		html+='             <option value="C#">C#</option>                                                                                          ';
+	  		html+='             <option value="Visual Basic.NET">Visual Basic.NET</option>                                                              ';
+	  		html+='             <option value="JavaScript">JavaScript</option>                                                                          ';
+	  		html+='             <option value="PHP">PHP</option>                                                                                        ';
+	  		html+='             <option value="SQL">SQL</option>                                                                                        ';
+	  		html+='             <option value="R">R</option>                                                                                            ';
+	  		html+='             <option value="Swift">Swift</option>                                                                                    ';
+	  		html+='             <option value="Go">Go</option>                                                                                          ';
+	  		html+='             <option value="Ruby">Ruby</option>                                                                                      ';
+	  		html+='             <option value="Assmbler">Assmbler</option>                                                                              ';
+	  		html+='             <option value="PL/SQL">PL/SQL</option>                                                                                  ';
+	  		html+='             <option value="Perl">Perl</option>                                                                                      ';
+	  		html+='             <option value="Objective-C">Objective-C</option>                                                                        ';
+	  		html+='             <option value="MATLAB">MATLAB</option>                                                                                  ';
+	  		html+='             <option value="Visual Basic">Visual Basic</option>                                                                      ';
+	  		html+='             <option value="Scratch">Scratch</option>                                                                                ';
+	  		html+='          </select>                                                                                                                  ';
+	  		html+='       </td>                                                                                                                         ';
+	  		html+='    </tr>                                                                                                                            ';
+	  		html+='    <tr>                                                                                                               ';
+	  		html+='       <td>                                                                                                                          ';
+	  		html+='          <p>Mastership Level</p>                                                                                                    ';
+	  		html+='       </td>                                                                                                                         ';
+	  		html+='       <td>                                                                                                                          ';
+	  		html+='          <select id="sMarstery'+skillCnt+'" name="skillList['+skillCnt+'].sMarstery">                                               ';
+	  		html+='             <option value="1">1</option>                                                                                            ';
+	  		html+='             <option value="2">2</option>                                                                                            ';
+	  		html+='             <option value="3">3</option>                                                                                            ';
+	  		html+='             <option value="4">4</option>                                                                                            ';
+	  		html+='             <option value="5">5</option>                                                                                            ';
+	  		html+='             <option value="6">6</option>                                                                                            ';
+	  		html+='             <option value="7">7</option>                                                                                            ';
+	  		html+='             <option value="8">8</option>                                                                                            ';
+	  		html+='             <option value="9">9</option>                                                                                            ';
+	  		html+='             <option value="10">10</option>                                                                                          ';
+	  		html+='          </select>                                                                                                                  ';
+	  		html+='       </td>                                                                                                                         ';
+	  		html+='    </tr>                                                                                                                            ';
+	  		html+='    <tr>                                                                                                               ';
+	  		html+='       <td>                                                                                                                          ';
+	  		html+='          <p>Activity content</p>                                                                                                    ';
+	  		html+='       </td>                                                                                                                         ';
+	  		html+='       <td>                                                                                                                          ';
+	  		html+='          <p><textarea rows="10" cols="40" name="skillList['+skillCnt+'].sContent" id="sContent'+skillCnt+'"></textarea></p>         ';
+	  		html+='       </td>                                                                                                                         ';
+	  		html+='    </tr>                                                                                                                            ';
+	  		html+='      <tr >                                                                                                             ';
+	  		html+='         <td>                                                                                                                        ';
+	  		html+='				<img alt="삭제입력폼" align="left" width="20" height="20" src="${hContext}/resources/images/minus.png" onClick="skillbtnMinus(\'tr_1'+skillCnt+'\');">		';		
+	  		html+='         </td>                                                                                                                       ';
+	  		html+='      </tr>                                                                                                                          ';
+	
+	  		html+='</tr>';
+	  		html+='</td>';
+	  		html+='</table>';
+	  		
+	  		$("#skillbody").append(html);
+
+            });//--skillPlusBtn
+
+
+
+    // 스킬 (-) 버튼 클릭 이벤트
+    function skillbtnMinus(btnId){
+ 	   console.log('this is minus button');
+        $("#"+btnId).empty();
+    }
+		
 //--skill----------------------------
 
 //license----------------------------
@@ -1328,7 +1083,7 @@
 
            if(confirm("수정 하시겠습니까?")==false) return;
 
-          //ajax
+         //ajax
            $.ajax({
             type:"POST",
             url:"${hContext}/portfolio/do_update.spring",
@@ -1351,7 +1106,7 @@
                console.log("lDate: "+lDate.trim());
                console.log("lOrgan: "+lOrgan.trim());
                alert("수정되었습니다.");
-               skillRetrieve();
+               history.go(0);
             },
             error:function(xhr,status,error){
               alert("error:"+error);
@@ -1370,8 +1125,8 @@
       $(".licDelete").on("click",function(){
 
          //console.log("licUpdate click");
-         var licDelete = $(this);
-         var tr = licDelete.parent().parent().parent();
+         var licUpdate = $(this);
+         var tr = licUpdate.parent().parent().parent();
          var td = tr.children().children();
          
          var memberId = td.eq(0).text();
@@ -1412,8 +1167,180 @@
              });//--ajax
 
          });
-//--license----------------------------     
-      
+
+         
+     //자격증 추가 버튼 클릭 시 div 추가
+     function licAdd(){
+			html="";
+			html+='<div class="block-18 shadow">                                                                                                                                                                           ';
+			html+='	<h2 class="mb-4">Add License</h2>                                                                                                                                                                      ';
+			html+='	<div align="center">                                                                                                                                                                                   ';
+			html+=' <form action="${hContext}/portfolio/do_insert_license.spring" name="licenseInsertForm" id="licenseInsertForm" method="post">                                                                           ';
+			html+=' <table id="licenseForm">                                                                                                                                                                               ';
+			html+='	<tr>                                                                                                                                                                                                   ';
+			html+='		<td>                                                                                                                                                                                               ';
+			html+='			<table>                                                                                                                                                                                        ';
+			html+='				 <tr>                                                                                                                                                                                      ';
+			html+='					<td>                                                                                                                                                                                   ';
+			html+='					<img alt="추가입력폼" width="20" height="20" src="${hContext}/resources/images/plus.png" id="licensePlusInsert">                                                                           ';
+			html+='					</td>                                                                                                                                                                                  ';
+			html+='				 </tr>                                                                                                                                                                                     ';
+			html+='					   <tr>                                                                                                                                                                                ';
+			html+='						  <td>                                                                                                                                                                             ';
+			html+='						   <input  type="text" class="form-control lName" name="licenseList[0].lName" id="lName" placeholder="Qualification Name" >                                                        ';
+			html+='						  </td>                                                                                                                                                                            ';
+			html+='					   </tr>                                                                                                                                                                               ';
+			html+='					   <tr>                                                                                                                                                                                ';
+			html+='						  <td>                                                                                                                                                                             ';
+			html+='							 <label for="Qualification classification">Qualification classification</label>                                                                                                ';
+			html+='							  <select id="lGroup" name="licenseList[0].lGroup">                                                                                                                            ';
+			html+='								<option value="국가기술자격">National Technical qualification</option>                                                                                                          ';
+			html+='								<option value="국가전문자격">National Professional qualification</option>                                                                                                       ';
+			html+='								<option value="민간자격">Private qualification</option>                                                                                                                       ';
+			html+='								<option value="해외자격">Overseas qualification</option>                                                                                                                      ';
+			html+='							  </select>                                                                                                                                                                    ';
+			html+='						 </td>                                                                                                                                                                             ';
+			html+='						  </tr>                                                                                                                                                                            ';
+			html+='						  <tr>                                                                                                                                                                             ';
+			html+='							 <td>                                                                                                                                                                          ';
+			html+='								<label for="TypeOfLicense">Type of license</label>                                                                                                                         ';
+			html+='							  <select id="lGrade" name="licenseList[0].lGrade">                                                                                                                            ';
+			html+='								<option value="기사">기사</option>                                                                                                                                            ';
+			html+='								<option value="기능사">기능사</option>                                                                                                                                          ';
+			html+='								<option value="1급">1급</option>                                                                                                                                             ';
+			html+='								<option value="2급">2급</option>                                                                                                                                             ';
+			html+='								<option value="기타">기타</option>                                                                                                                                            ';
+			html+='							  </select>                                                                                                                                                                    ';
+			html+='						 </td>                                                                                                                                                                             ';
+			html+='						  </tr>                                                                                                                                                                            ';
+			html+='						  <tr>                                                                                                                                                                             ';
+			html+='							 <td>                                                                                                                                                                          ';
+			html+='							  <input type="text" class="form-control lNum" name="licenseList[0].lNum" id="lNum" placeholder="License Number" >                                                             ';
+			html+='							 </td>                                                                                                                                                                         ';
+			html+='						  </tr>                                                                                                                                                                            ';
+			html+='						  <tr>                                                                                                                                                                             ';
+			html+='							 <td>                                                                                                                                                                          ';
+			html+='								<input type="text" class="form-control lDate" name="licenseList[0].lDate" id="lDate" placeholder="Date of Acquisition(yyyymmdd)" >                                         ';
+			html+='							 </td>                                                                                                                                                                         ';
+			html+='						  </tr>                                                                                                                                                                            ';
+			html+='						  <tr>                                                                                                                                                                             ';
+			html+='							 <td>                                                                                                                                                                          ';
+			html+='								<input type="text" class="form-control lOrgan" name="licenseList[0].lOrgan" id="lOrgan" placeholder="Issuing Agency"  >                                                    ';
+			html+='							 </td>                                                                                                                                                                         ';
+			html+='						  </tr>                                                                                                                                                                            ';
+			html+='						  <tr>                                                                                                                                                                             ';
+			html+='							 <td>                                                                                                                                                                          ';
+			html+='									<img alt="삭제입력폼" align="left" width="20" height="20" src="${hContext}/resources/images/minus.png" onClick="skillbtnMinus(\'tr_1'+skillCnt+'\');">			           ';
+			html+='							 </td>                                                                                                                                                                         ';
+			html+='						  </tr>                                                                                                                                                                            ';
+			html+='						                                                                                                                                                                                   ';
+			html+='						                                                                                                                                                                                   ';
+			html+='								</table>                                                                                                                                                                   ';
+			html+='							</td>                                                                                                                                                                          ';
+			html+='						</tr>                                                                                                                                                                              ';
+			html+='						                                                                                                                                                                                   ';
+			html+='						                                                                                                                                                                                   ';
+			html+='						<tbody id="licensebody">                                                                                                                                                           ';
+			html+='					   </tbody>                                                                                                                                                                            ';
+			html+='					   </table>                                                                                                                                                                            ';
+			html+='					 <table>                                                                                                                                                                               ';
+			html+='						<tr>                                                                                                                                                                               ';
+			html+='							<td colspan=2>                                                                                                                                                                 ';
+			html+='								<button type="button" onclick="javascript:licenseInsert();" class="btn btn-primary btn-sm">Submit</button>                                                                 ';
+			html+='							</td>                                                                                                                                                                          ';
+			html+='						</tr>                                                                                                                                                                              ';
+			html+='					 </table>                                                                                                                                                                              ';
+			html+='	</form>                                                                                                                                                                                                ';
+			html+=' </div>                                                                                                                                                                                                 ';
+			html+='</div>                                                                                                                                                                                                  ';
+	
+	
+			$("#licAddlDiv").append(html);
+         }
+		//--자격증 추가 버튼 클릭 이벤트
+		
+	   var licenseCnt = 0;
+	   
+   	   //자격증 (+)버튼
+       $(document).on("click","#licensePlusInsert",function(){
+			console.log('this is plus button');
+			var frm = document.uploadFrm;
+			var html = '';
+			licenseCnt+=1;
+			console.log(licenseCnt);
+	
+			html+='<tr id="tr_2'+licenseCnt+'">';
+			html+='<td>';
+			html+='<table>';
+	                                                                                                                                                                                                                       
+			html+='  <tr><td colspan="2"><hr/><br/></td></tr>                                                                                                                                                              ';
+			html+='  <tr>                                                                                                                                                                                                  ';
+			html+='      <td>                                                                                                                                                                                              ';
+			html+='       <input  type="text" class="form-control lName" name="licenseList['+licenseCnt+'].lName" id="lName'+licenseCnt+'" placeholder="Qualification Name"   autofocus>                                   ';
+			html+='      </td>                                                                                                                                                                                             ';
+			html+='   </tr>                                                                                                                                                                                                ';
+			html+='   <tr>                                                                                                                                                                                                 ';
+			html+='      <td>                                                                                                                                                                                              ';
+			html+='         <label for="Qualification classification">Qualification classification</label>                                                                                                                 ';
+			html+='          <select id="lGroup'+licenseCnt+'" name="licenseList['+licenseCnt+'].lGroup">                                                                                                                  ';
+			html+='            <option value="국가기술자격">National Technical qualification</option>                                                                                                                         ';
+			html+='            <option value="국가전문자격">National Professional qualification</option>                                                                                                                      ';
+			html+='            <option value="민간자격">Private qualification</option>                                                                                                                                       ';
+			html+='            <option value="해외자격">Overseas qualification</option>                                                                                                                                      ';
+			html+='          </select>                                                                                                                                                                                     ';
+			html+='     </td>                                                                                                                                                                                              ';
+			html+='      </tr>                                                                                                                                                                                             ';
+			html+='      <tr>                                                                                                                                                                                              ';
+			html+='         <td>                                                                                                                                                                                           ';
+			html+='            <label for="TypeOfLicense">Type of license</label>                                                                                                                                          ';
+			html+='          <select id="lGrade'+licenseCnt+'" name="licenseList['+licenseCnt+'].lGrade">                                                                                                                  ';
+			html+='            <option value="기사">기사</option>                                                                                                                                                            ';
+			html+='            <option value="기능사">기능사</option>                                                                                                                                                         ';
+			html+='            <option value="1급">1급</option>                                                                                                                                                             ';
+			html+='            <option value="2급">2급</option>                                                                                                                                                             ';
+			html+='            <option value="기타">기타</option>                                                                                                                                                            ';
+			html+='          </select>                                                                                                                                                                                     ';
+			html+='     </td>                                                                                                                                                                                              ';
+			html+='      </tr>                                                                                                                                                                                             ';
+			html+='      <tr>                                                                                                                                                                                              ';
+			html+='         <td>                                                                                                                                                                                           ';
+			html+='          <input type="text" class="form-control lNum" name="licenseList['+licenseCnt+'].lNum" id="lNum'+licenseCnt+'" placeholder="License Number"  autofocus>                                         ';
+			html+='         </td>                                                                                                                                                                                          ';
+			html+='      </tr>                                                                                                                                                                                             ';
+			html+='      <tr>                                                                                                                                                                                              ';
+			html+='         <td>                                                                                                                                                                                           ';
+			html+='            <input type="text" class="form-control lDate" name="licenseList['+licenseCnt+'].lDate" id="lDate'+licenseCnt+'" placeholder="Date of Acquisition(yyyymmdd)"  autofocus>                     ';
+			html+='         </td>                                                                                                                                                                                          ';
+			html+='      </tr>                                                                                                                                                                                             ';
+			html+='      <tr>                                                                                                                                                                                              ';
+			html+='         <td>                                                                                                                                                                                           ';
+			html+='            <input type="text" class="form-control lOrgan" name="licenseList['+licenseCnt+'].lOrgan" id="lOrgan'+licenseCnt+'" placeholder="Issuing Agency"  autofocus>                                 ';
+			html+='         </td>                                                                                                                                                                                          ';
+			html+='      </tr>                                                                                                                                                                                       	   ';
+			html+='    </tr>                                                                                                                                                                                               ';
+			html+='      <tr >                                                                                                                                                                                             ';
+			html+='         <td>                                                                                                                                                                                           ';
+			html+='				<img alt="삭제입력폼" align="left" width="20" height="20" src="${hContext}/resources/images/minus.png" onClick="licensebtnMinus(\'tr_2'+licenseCnt+'\');">		                               ';		
+			html+='         </td>                                                                                                                                                                                          ';
+			html+='      </tr>                                                                                                                                                                                             ';
+			
+			
+			html+='</tr>';
+			html+='</td>';
+			html+='</table>';
+			
+			$("#licensebody").append(html);
+
+       });
+
+       function licensebtnMinus(btnId){
+    	   console.log('this is minus button');
+           $("#"+btnId).empty();
+       }
+
+//--licesnse------------------------------
+
+
 //project------------------------------
 
 	    //수정
@@ -1637,21 +1564,145 @@
 						});//--ajax
 				
 					});
-//--project----------------------------   
+
+
+			//프로젝트 추가 버튼 클릭 시
+			function projectAdd(){
+				console.log("projectAdd");
+				}
+
+
+
+
+			var projectCnt = 0;
+		      
+		       $("#pjtPlusInsert").on("click", function(){
+		       console.log('This is plus button');
+		       var frm=document.uploadFrm;
+		       var html = '';
+		       projectCnt+=1;
+		       console.log(projectCnt);
+
+		       html+='<tr id="tr_3'+projectCnt+'">';
+		 	   html+='<td>';
+		 	   html+='<table>';
+
+		        html+='<tr><td colspan="2"><hr/><br/></td></tr>                                                                                                                                                                  ';
+		        html+='<tr>                                                                                                                                                                                                      ';
+		        html+='   <td>                                                                                                                                                                                                   ';
+		        html+='      Project Name                                                                                                                                                                                        ';
+		        html+='   </td>                                                                                                                                                                                                  ';
+		        html+='   <td>                                                                                                                                                                                                   ';
+		        html+='      <input type="text" id="pjtName'+projectCnt+'" name="projectList['+projectCnt+'].pjtName">                                                                                                           ';
+		        html+='   </td>                                                                                                                                                                                                  ';
+		        html+='</tr>                                                                                                                                                                                                     ';
+		        html+='<tr>                                                                                                                                                                                                      ';
+		        html+='   <td>                                                                                                                                                                                                   ';
+		        html+='      <p>Project Description<p>                                                                                                                                                                           ';
+		        html+='   </td>                                                                                                                                                                                                  ';
+		        html+='   <td>                                                                                                                                                                                                   ';
+		        html+='      <textarea cols="50" rows="3" id="pjtInfo'+projectCnt+'" name="projectList['+projectCnt+'].pjtInfo"></textarea>                                                                                      ';
+		        html+='   </td>                                                                                                                                                                                                  ';
+		        html+='</tr>                                                                                                                                                                                                     ';
+		        html+='<tr>                                                                                                                                                                                                      ';
+		        html+='   <td>                                                                                                                                                                                                   ';
+		        html+='      <p>Project Period<p>                                                                                                                                                                                ';
+		        html+='   </td>                                                                                                                                                                                                  ';
+		        html+='   <td>                                                                                                                                                                                                   ';
+		        html+='      <input type="date" id="pjtStart'+projectCnt+'" name="projectList['+projectCnt+'].pjtStart"> - <input type="date" id="pjtEnd'+projectCnt+'" name="projectList['+projectCnt+'].pjtEnd">               ';
+		        html+='   </td>                                                                                                                                                                                                  ';
+		        html+='</tr>                                                                                                                                                                                                     ';
+		        html+='<tr>                                                                                                                                                                                                      ';
+		        html+='   <td>                                                                                                                                                                                                   ';
+		        html+='      <p>Github Address<p>                                                                                                                                                                                ';
+		        html+='   </td>                                                                                                                                                                                                  ';
+		        html+='   <td>                                                                                                                                                                                                   ';
+		        html+='      <input type="text" id="gitAddress'+projectCnt+'" name="projectList['+projectCnt+'].gitAddress">                                                                                                     ';
+		        html+='   </td>                                                                                                                                                                                                  ';
+		        html+='</tr>                                                                                                                                                                                                     ';
+		        html+='<tr>                                                                                                                                                                                                      ';
+		        html+='   <td>                                                                                                                                                                                                   ';
+		        html+='      <p>Project DemonstrationVideo<p>                                                                                                                                                                    ';
+		        html+='   </td>                                                                                                                                                                                                  ';
+		        html+='   <td>                                                                                                                                                                                                   ';
+		        html+='      <input type="file" id="videoFile'+projectCnt+'" name="projectList['+projectCnt+'].videoFile">                                                                                                       ';
+		        html+='   </td>                                                                                                                                                                                                  ';
+		        html+='</tr>                                                                                                                                                                                                     ';
+		        html+='      <tr >                                                                                                                                                                                               ';
+		 		html+='         <td>                                                                                                                                                                                             ';
+		 		html+='				<img alt="삭제입력폼" align="left" width="20" height="20" src="${hContext}/resources/images/minus.png" onClick="licensebtnMinus(\'tr_3'+projectCnt+'\');">	                      	             ';		
+		 		html+='         </td>                                                                                                                                                                                            ';
+		 		html+='      </tr>                                                                                                                                                                                               ';
+		 		
+				
+		        html+='</tr>';
+		 		html+='</td>';
+		 		html+='</table>';  
+		 		                                                                                                                                                         
+		        $("#projectbody").append(html);
+
+		      	});
+		       function projectbtnMinus(btnId){
+		    	   console.log('this is minus button');
+		           $("#"+btnId).empty();
+		       }
+//--project----------------------------  
+
+      
+      
+         function projectUpdate() {
+    	 console.log("projectUpdate");
+    	 var frm = document.projectUp_frm;
+    	 frm.action = "${hContext}/";
+    	 frm.method = "POST";
+    	 frm.submit();
+        }
+
 
       $("#uploadBtn").on("click", function(){
-         console.log("uploadTest");
-         var frm=document.uploadFrm;
-         frm.hiddenCnt.value=cnt;
-         frm.file01.value=$("#videoFile").value;
-         frm.action = "${hContext}/portfoilo/upload.spring";
-         frm.method="POST"
-         frm.submit();
+	         console.log("uploadTest");
+	         var frm=document.uploadFrm;
+	         frm.hiddenCnt.value=cnt;
+	         frm.file01.value=$("#videoFile").value;
+	         frm.action = "${hContext}/portfoilo/upload.spring";
+	         frm.method="POST"
+	         frm.submit();
          
          });
 
+      
+      function skillInsert() {
+    	  console.log("skillInsert");
+           var frm = document.skillInsertForm;
+           frm.action = "${hContext}/skill/do_insert.spring";
+           frm.method="POST";
+           frm.submit(); 
+           
+      }
 
 
+
+
+      function licenseInsert() {
+         console.log("licenseInsert");
+         var frm = document.licenseInsertForm;
+         frm.action = "${hContext}/portfolio/license_insert.spring";
+         frm.method="POST";
+         frm.submit(); 
+         
+     }
+
+
+     
+       
+      function pjtInsert() {
+         console.log("pjtInsert");
+         var pjtFrm = document.projectInsetForm;
+         pjtFrm.action = "${hContext}/portfolio/do_insert.spring";
+         pjtFrm.method="POST";
+         pjtFrm.submit(); 
+         
+      }
            
      </script>
     
