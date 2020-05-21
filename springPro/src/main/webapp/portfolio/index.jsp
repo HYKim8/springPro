@@ -327,8 +327,8 @@
 		                                    </div>
 		                                </div>
 		                                       <!-- Demo info -->
-			                                <div class="row text-center mt-3">
-			                                  <h4 class="h5 font-weight-bold text-center mb-3">${skillList.get(i).sContent}</h4>
+			                               <div class="col text-center mt-3">
+                                              <p class="font-weight-bold text-center mb-3 ">${skillList.get(i).sContent}</p>
 			                                </div>
 			                                <!-- END -->
 			                              </div>
