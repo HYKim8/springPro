@@ -100,6 +100,7 @@
 		    <div class="col-sm-offset-2 col-sm-10">
 		      <button type="submit" class="btn btn-primary btn-lg">로그인</button>&nbsp;&nbsp;
 		      <input type="button" onclick="javascript:goSignUp();" class="btn btn-primary btn-lg" value="회원가입">
+		      <input type="button" onclick="javascript:goCovid();" class="btn btn-primary btn-lg" value="CovidLogin">
 		    </div>
 		  </div>
 		</form>
@@ -197,6 +198,12 @@
   <script src="${hContext}/resources/js/scrollax.min.js"></script>
   <script src="${hContext}/resources/js/main.js"></script>
 	<script type="text/javascript">
+	function goCovid(){
+		alert('공적 마스크 확인 페이지로 이동합니다.');
+		location.href="${hContext}/covid/covid_login.jsp";
+
+		}
+	
 	function noGoIndex(){
 		alert('로그인먼저 해주세욥!');
 		}

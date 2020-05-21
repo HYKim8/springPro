@@ -55,13 +55,8 @@
 	      </button>
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav nav ml-auto">
-	          <li class="nav-item"><a href="#about-section" class="nav-link"><span>About</span></a></li>
-	          <li class="nav-item"><a href="#Projects-section" class="nav-link"><span>Projects</span></a></li>
-	          <li class="nav-item"><a href="#Skills-section" class="nav-link"><span>Skills</span></a></li>
-	          <li class="nav-item"><a href="#License-section" class="nav-link"><span>License</span></a></li>
-	          <li class="nav-item"><a href="#Recommends-section" class="nav-link"><span>Recommends</span></a></li>
 	          <li class="nav-item"><a href="${hContext}/portfolio/do_retrieve.spring" class="nav-link"><span>Portfolio List</span></a></li>
-	       	  <li class="nav-item"><a href="${hContext }/portfolio/logout.spring" class="nav-link"><span>LogOut</span></a></li>
+	       	  <li class="nav-item"><a href="javascript:logOut();" class="nav-link"><span>LogOut</span></a></li>
     		  <li class="nav-item"><a href="javascript:mypage();" class="nav-link"><span>myPage</span></a></li>
 	        </ul>
 	      </div>
@@ -253,6 +248,17 @@
 
 		});
 
+		function logOut(){
+			alert('로그아웃합니다.');
+			location.href="${hContext }/portfolio/logout.spring";
+
+			}
+		function mypage() {
+
+	         location.href="${hContext}/portfolio/mypage_retrieve.spring";
+	         
+	      }
+		   
 		function doRetrieve(){
 			//console.log('doRetrieve');
 			var frm = document.member_frm;

@@ -77,7 +77,7 @@
 	          <li class="nav-item"><a href="#License-section" class="nav-link"><span>License</span></a></li>
 	          <li class="nav-item"><a href="#Recommends-section" class="nav-link"><span>Recommends</span></a></li>
 	          <li class="nav-item"><a href="${hContext}/portfolio/do_retrieve.spring" class="nav-link"><span>Portfolio List</span></a></li>
-	       	  <li class="nav-item"><a href="${hContext }/portfolio/logout.spring" class="nav-link"><span>LogOut</span></a></li>
+	       	  <li class="nav-item"><a href="javascript:logOut();" class="nav-link"><span>LogOut</span></a></li>
     		  <li class="nav-item"><a href="javascript:mypage();" class="nav-link"><span>myPage</span></a></li>
 	        </ul>
 	      </div>
@@ -741,7 +741,11 @@
   
   <script src="${hContext}/resources/js/main.js"></script>
   <script type="text/javascript">
+	function logOut(){
+		alert('로그아웃합니다.');
+		location.href="${hContext }/portfolio/logout.spring";
 
+		}
   //조회버튼 클릭 시
   function licRetrieve() {
       var frm = document.license_frm;
