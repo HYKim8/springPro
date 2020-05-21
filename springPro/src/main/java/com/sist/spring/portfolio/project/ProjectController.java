@@ -381,6 +381,7 @@ public class ProjectController {
 	     
 	   String datePath = this.UPLOAD_FILE;
        PjtFileVO dbInVO=new PjtFileVO();
+       LOG.debug("정진우"+String.valueOf(mReg.getFileNames()));
 	   Iterator<String> files =mReg.getFileNames();
 	   LOG.debug("files.hasNext()"+files.hasNext());
 	   int j=0;
