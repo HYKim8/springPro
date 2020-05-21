@@ -617,7 +617,7 @@
         <div class="table-responsive">
         
     	<table class="" id="memberTable" style="width: 1100px;" >
-    		<input type="hidden" id="sessionID" value="${sessionVO.memberId}">
+    		<input type="hidden" id="sessionID" value="${sessionVO.memberId}" />
  				<!-- Data있는 경우 -->
  				<c:choose>
  					<c:when test="${list.size()>0 }">
@@ -648,6 +648,7 @@
  					</c:otherwise>
  				</c:choose>
  			</table>
+    	</div>
     	</div>
     	</form>
     	<!-- comment frm -->
