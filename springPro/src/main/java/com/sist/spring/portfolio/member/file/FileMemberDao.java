@@ -82,8 +82,37 @@ public class FileMemberDao implements Dao {
 
 	@Override
 	public int doInsert(DTO dto) {
-		// TODO Auto-generated method stub
-		return 0;
+		StringBuilder sb=new StringBuilder();
+		int flag=0;
+		FileMemberVO inVO=(FileMemberVO)dto;
+		sb.append("INSERT INTO file_member (        \n");
+		sb.append("    save_nm,                     \n");
+		sb.append("    org_nm,                      \n");
+		sb.append("    file_size,                   \n");
+		sb.append("    ext,                         \n");
+		sb.append("    member_id                    \n");
+		sb.append(") VALUES (                       \n");
+		sb.append("    ?,                           \n");
+		sb.append("    ?,                           \n");
+		sb.append("    ?,                           \n");
+		sb.append("    ?,                           \n");
+		sb.append("    ?                            \n");
+		sb.append(")								\n");
+		LOG.debug("=Query=\n"+sb.toString());
+		LOG.debug("=Param=\n"+inVO.toString());
+		Object[] args= {inVO.getSaveNm()
+						,inVO.getOrgNm()
+						,inVO.getFileSize()
+						,inVO.getExt()
+						,inVO.getMemberId()
+						};
+		
+		flag=this.jdbcTemplate.update(sb.toString(),args);
+		LOG.debug("==============================");
+		LOG.debug("=flag: "+flag);
+		LOG.debug("==============================");
+		
+		return flag;
 	}
 
 

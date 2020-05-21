@@ -1,5 +1,6 @@
 package com.sist.spring.portfolio.member;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -22,8 +23,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.google.gson.Gson;
+import com.sist.spring.cmn.FileVO;
 import com.sist.spring.cmn.MessageVO;
 import com.sist.spring.cmn.SearchVO;
 import com.sist.spring.cmn.StringUtil;
@@ -43,7 +47,8 @@ import com.sist.spring.portfolio.skill.SkillVO;
 @Controller
 public class MemberController {
 	private final Logger LOG = LoggerFactory.getLogger(MemberController.class);
-	
+	private final String UPLOAD_FILE="C:\\Users\\sist\\git\\springPro\\springPro\\src\\main\\webapp\\resources\\images";   
+	   
 	//@Qualifier("dummyMailSender") : root-context.xml bean id
 	@Autowired
 	MemberService memberService;
@@ -501,7 +506,7 @@ public class MemberController {
 		model.addAttribute("maxPageNo",maxPageNo);
 		model.addAttribute("sessionVO",sessionVO);
 		
-		return "portfolio/member/index_test";
+		return "portfolio/index";
 	}
 	
 	@RequestMapping(value = "/portfolio/do_select_one.spring",method = RequestMethod.GET)
@@ -672,10 +677,69 @@ public class MemberController {
 		
 	}
 	
-		@RequestMapping(value = "portfolio/SignUp/doInsertMember.spring", method = RequestMethod.GET
+		@RequestMapping(value = "portfolio/SignUp/doInsertMember.spring", method = RequestMethod.POST
 					,produces = "application/json; charset=UTF-8")
 		@ResponseBody
-		public String doInsert(HttpServletRequest req, MemberVO user) {
+		public String doInsert(MultipartHttpServletRequest mReg,HttpServletRequest req, MemberVO user) {
+		FileMemberVO fmVO=new FileMemberVO();
+		String datePath = this.UPLOAD_FILE;
+		String phone=req.getParameter("phone1")+"-"+req.getParameter("phone2")+"-"+req.getParameter("phone3");
+		String birth=req.getParameter("birth3")+"/"+req.getParameter("birth2")+"/"+req.getParameter("birth1");
+		user.setPhone(phone);
+		user.setBirth(birth);
+		
+		Iterator<String> files=mReg.getFileNames();
+		while(files.hasNext()) {
+			FileVO  fileVO=new FileVO();
+            String upFileNm = files.next();
+            LOG.debug("=upFileNm="+upFileNm);
+            
+            MultipartFile mFile = mReg.getFile(upFileNm);
+            String orgFileName = mFile.getOriginalFilename();
+            //File 입력이 안된 경우 
+            if(null == orgFileName || "".equals(orgFileName) )continue;
+            
+            LOG.debug("=^^^^^^=");
+            fileVO.setOrgFileNm(orgFileName);//원본파일명
+            fileVO.setFileSize(mFile.getSize());//파일사이즈
+            
+            //저장파일명: yyyyMMddHHmmss
+            String saveFileName = StringUtil.getDate("yyyyMMddHHmmss")+"_"+StringUtil.getUUID();
+            LOG.debug("saveFileName="+saveFileName);
+            
+            String ext = "";
+            //확장자:.
+            if(orgFileName.indexOf(".")>-1) {
+               ext = orgFileName.substring(orgFileName.indexOf(".")+1);
+            }
+            
+            
+            fmVO.setExt(ext);
+            fmVO.setFileSize(mFile.getSize());
+            fmVO.setOrgNm(orgFileName);
+            fmVO.setSaveNm(saveFileName);
+            fmVO.setMemberId(user.getMemberId());
+            fmService.doInsert(fmVO);
+            saveFileName+="."+ext;
+            //Rename
+            File renameFile=new File(datePath,saveFileName);
+            fileVO.setSaveFileNm(renameFile.getAbsolutePath());
+            fileVO.setExt(ext);
+           
+            
+//            list.add(fileVO);
+            try {
+            	
+				mFile.transferTo(new File(renameFile.getAbsolutePath()));
+			} catch (IllegalStateException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
 		LOG.debug("1===================");
 		LOG.debug("1=user="+user);
 		LOG.debug("1===================");

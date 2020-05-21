@@ -94,7 +94,9 @@ em.error {
 	          		<div class="col-md-12 heading-section text-center ftco-animate">
 	           			 <h2 class="mb-4">User Sign Up</h2>
 	           			 <div align="center">
-							<form id="signUp_form" method="get">
+							<form id="signUp_form" method="get" enctype="multipart/form-data">
+							<input type="hidden" id="authority" name="authority" value="1">
+							<input type="hidden" id="open" name="open" value="1">
 							<table>
 	                        <tbody>
 	                        	<tr>
@@ -213,7 +215,7 @@ em.error {
 		                        <tr>
 	                        		<td>
 				                        <label for="interestPosition">InterestPosition</label>
-								          <select id="interestPosition">
+								          <select id="interestPosition" name="interestOption">
 									         <option value="AI개발">AI개발</option>
 									         <option value="마케팅">마케팅</option>
 								       		 <option value="웹개발">영업</option>
@@ -226,13 +228,20 @@ em.error {
 						        	</td>
 		                        </tr>
 		                        <tr>
+		                        	<td>
+		                        		<input type="file" name="mfile" id="mfile">
+		                        	</td>
+		                        </tr>
+		                        <tr>
 	                        		<td>
-		                            <button type="submit" class="form-control btn btn-danger btn-sm" id="doInsertBtn">Sign Up</button>
+		                            <button onClick="javascript:test();" class="form-control btn btn-danger btn-sm" id="doInsertBtn">Sign Up</button>
 		                        </td>
 		                        </tr>
 		                        </tbody>
 	                     		</table>
                     		</form>
+                    		      <button onClick="javascript:test();" class="form-control btn btn-danger btn-sm" id="doInsertBtn">Sign Up</button>
+		                    
 						</div>
 					</div>
 				</div>
@@ -335,7 +344,43 @@ em.error {
 			frm.action = "${hContext}/member/signUp.spring";
 			frm.submit();
 		}
-	
+
+		function test(){
+			 var form = $('#signUp_form')[0];
+
+      	    // Create an FormData object 
+              var data = new FormData(form);
+         	//ajax
+             $.ajax({
+                 type : "POST",
+                 url : "${hContext}/portfolio/SignUp/doInsertMember.spring",
+                 dataType : "html",
+                 data : data, 
+                 enctype: 'multipart/form-data',
+                 contentType: false,
+                 processData: false,   
+                 success : function(data) { //성공
+                 	goLoginPage();
+                     console.log("data:" + data);
+                     var parseData = $.parseJSON(data);
+                     if (parseData.msgId == "1") {
+                         alert(parseData.msgMsg);
+                     } else {
+                         alert(parseData.msgMsg);
+                     }
+                     
+
+                 },
+                 error : function(xhr, status, error) {
+                     alert("error:" + error);
+                 },
+                 complete : function(data) {
+
+                 }
+
+             });//--ajax 
+
+			}
 		 function bindEventHandler(){
 	            $("#signUp_form").validate({
 	                onfocus: true,
@@ -441,23 +486,18 @@ em.error {
 	                },
 					//서밋 헨들러
 	                submitHandler:function(form){
+	                	 var form = $('#signUp_form')[0];
 
+	             	    // Create an FormData object 
+	                     var data = new FormData(form);
 	                	//ajax
 	                    $.ajax({
-	                        type : "GET",
+	                        type : "POST",
 	                        url : "${hContext}/portfolio/SignUp/doInsertMember.spring",
+	                        enctype: 'multipart/form-data',
 	                        dataType : "html",
-	                        data : {
-	                            "memberId" : $("#memberId").val(),
-	                            "password" : $("#password").val(),
-	                            "name" : $("#name").val(),
-	                            "email" : $("#email").val(),
-	                            "birth": $("#birth1").val()+"-"+$("#birth2").val()+"-"+$("#birth3").val(),
-	                            "phone": $("#phone1").val()+$("#phone2").val()+$("#phone3").val(),
-	                            "authority" : "1",
-	                            "interestOption" : $("#interestPosition").val(),
-	                            "open" : "1"
-	                        },
+	                        data :data, 
+		                       
 	                        success : function(data) { //성공
 	                        	goLoginPage();
 	                            console.log("data:" + data);
