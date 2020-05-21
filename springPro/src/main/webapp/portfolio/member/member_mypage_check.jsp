@@ -121,40 +121,31 @@
                                              <!-- Data있는 경우 -->
                                               <c:choose>
                                                  <c:when test="${list1.size()>0 }">
-                                                    <c:forEach var="i" begin="0" end="${list1.size()-1}">
-                                                          <table>
+                                                          <table class="col-lg-12 table table-hover">
                                                           <tbody>
                                                              <tr>
-                                                                <td hidden="hidden" class="text-left" style="display:none;">${list1.get(i).memberId}</td>
-                                                                <td>
-                                                                   <h7 class="mb-4"><b>Skill Name</b></h7>
-                                                                </td>   
-                                                                <td>
-                                                                   ${list1.get(i).sName }
-                                                                </td>
-                                                                <td>
-                                                                   <h7><b>Marstery</b></h7>
-                                                                </td>
-                                                                <td>
-                                                                   ${list1.get(i).sMarstery }
-                                                                </td>
-                                                                <td>
-                                                                   <h7><b>Activity History</b></h7>
-                                                                </td>
-                                                                <td>
-                                                                   ${list1.get(i).sContent }
-                                                                </td>
-                                                                <td>
-                                                                   <input type="button" id="skillUpdate" name="skillUpdate" class="buttons skillUpdate" value="Modify">
-                                                                   <br>
-                                                                   <input type="button" id="skillDelete" name="skillDelete" class="buttons skillDelete" value="Delete">
-                                                                </td>
+                                                                <td style="display:none;">${list1.get(i).memberId}</td>
                                                              </tr>
+                                                             <tr>
+                                                             	   <td><p class="mb-4 col-lg-3"><b>Skill Name</b></p></td>
+                                                                   <td><p class="mb-4 col-lg-3"><b>Marstery</b></p></td>
+                                                                   <td><p class="mb-4 col-lg-6"><b>Activity History</b></p></td>
+                                                             </tr>
+                                                             <c:forEach var="i" begin="0" end="${list1.size()-1}">
+                                                             <tr>
+                                                                   <td>${list1.get(i).sName }</td>
+                                                                   <td>${list1.get(i).sMarstery }</td>
+                                                                   <td>${list1.get(i).sContent }</td>
+                                                                   <td >
+                                                                      <input type="button" id="skillUpdate" name="skillUpdate" class="buttons skillUpdate" value="Modify">
+                                                                      <input type="button" id="skillDelete" name="skillDelete" class="buttons skillDelete" value="Delete">
+                                                                   </td>
+                                                             </tr> 
+                                                             </c:forEach>
                                                              </tbody>
                                                           </table>
-                                                    </c:forEach>
                                                  </c:when>
-                                                    <c:otherwise>
+                                                  <c:otherwise>
                                                        <tr><td colspan="99">등록된 스킬이 없습니다.</td></tr>
                                                     </c:otherwise>
                                               </c:choose>
@@ -226,8 +217,6 @@
                                                                 </tr>
                                                              </tbody>
                                                           </table>
-                                                          </td>
-                                                       </tr>
                                                     </c:forEach>
                                                  </c:when>
                                                  <c:otherwise>
@@ -445,8 +434,8 @@
              var tr = skillUpdate.parent().parent().parent().eq(i);
                var td = tr.children().children();
                var memberId = td.eq(0).text();
-               var sName = td.eq(2).text();
-              var sMarstery = td.eq(4).text();
+               var sName = td.eq(4).text();
+              var sMarstery = td.eq(5).text();
               var sContent = td.eq(6).text();
    
               tdArr.push(memberId);
@@ -488,6 +477,11 @@
                html+='      <td><input type="hidden" id="memberIdU" name="memberIdU" size="10"  maxlength="10" readonly="readonly" value="';
                html+=       memberId.trim();
                html+='     "/>                                                                                                              ';
+               html+='   </tr>                                                                                                              ';
+               html+='   <tr>                                                                                                               ';
+               html+='      <td><p class="mb-4"><b>Skill Name</b></p></td>                                                              ';
+               html+='      <td><p class="mb-4"><b>Marstery</b></p></td>                                                              ';
+               html+='      <td><p class="mb-4"><b>Activity History</b></p></td>                                                          ';
                html+='      </td>                                                                                                          ';
                html+='       <tr>                                                                                                           ';
               html+='             <td>                                                                                                       ';
@@ -610,7 +604,7 @@
           var td = tr.children().children();
 
         var memberId = td.eq(0).text();
-         var sName = td.eq(2).text();
+         var sName = td.eq(4).text();
          console.log("sName="+sName);
 
         //confirm
