@@ -92,7 +92,7 @@ public class PortController {
 		model.addAttribute("list1", skillList);
 		model.addAttribute("list2", licenseList);
 		model.addAttribute("list3", projectList);
-		
+		model.addAttribute("sessionVO", sessionVO);
 		
 		
 		return "portfolio/member/member_mypage_check";

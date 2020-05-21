@@ -73,6 +73,9 @@ public class MemberController {
 	
 	@RequestMapping(value = "/portfolio/do_retrieve.spring", method = RequestMethod.GET)
 	public String doRetrieve(HttpServletRequest req, SearchVO search, Model model){
+		HttpSession session= req.getSession();
+		MemberVO sessionVO=(MemberVO)session.getAttribute("member");
+		
 		LOG.debug("1===================");
 		LOG.debug("1=search="+search);
 		LOG.debug("1===================");
@@ -114,7 +117,7 @@ public class MemberController {
 		
 		model.addAttribute("list", list);
 		model.addAttribute("fileList", fileList);
-		
+        
 		//총글수
 		int totalCnt = 0;
 		if(null != list && list.size() >0) {
@@ -123,6 +126,9 @@ public class MemberController {
 		model.addAttribute("totalCnt", totalCnt);
 		int maxPageNo = ((totalCnt - 1) / 10) + 1;
 		model.addAttribute("maxPageNo",maxPageNo);
+		model.addAttribute("sessionVO",sessionVO);
+		session.setAttribute("member", sessionVO);
+
 		
 		
 //		member/member_mng -> /+member/member_mng+.jsp
@@ -600,8 +606,7 @@ public class MemberController {
         model.addAttribute("pjtFileList", pjtFileList);
         model.addAttribute("sessionVO",outVO);
 	       
-        session.setAttribute("member", outVO);
-		
+       
 		//----------------------------------------------------------------------------댓글기능 시작
 		
 		
@@ -632,7 +637,8 @@ public class MemberController {
 		int maxPageNo = ((totalCnt - 1) / 10) + 1;
 		model.addAttribute("maxPageNo",maxPageNo);
 		model.addAttribute("sessionVO",sessionVO);
-		
+		 session.setAttribute("member", sessionVO);
+			
 		return "portfolio/index";
 		//return "portfolio/index";
 	}
