@@ -234,13 +234,12 @@ em.error {
 		                        </tr>
 		                        <tr>
 	                        		<td>
-		                            <button onClick="javascript:test();" class="form-control btn btn-danger btn-sm" id="doInsertBtn">Sign Up</button>
+		                            <button onClick="javascript:bindEventHandler();" class="form-control btn btn-danger btn-sm" id="doInsertBtn">Sign Up</button>
 		                        </td>
 		                        </tr>
 		                        </tbody>
 	                     		</table>
                     		</form>
-                    		      <button onClick="javascript:test();" class="form-control btn btn-danger btn-sm" id="doInsertBtn">Sign Up</button>
 		                    
 						</div>
 					</div>
@@ -486,39 +485,7 @@ em.error {
 	                },
 					//서밋 헨들러
 	                submitHandler:function(form){
-	                	 var form = $('#signUp_form')[0];
-
-	             	    // Create an FormData object 
-	                     var data = new FormData(form);
-	                	//ajax
-	                    $.ajax({
-	                        type : "POST",
-	                        url : "${hContext}/portfolio/SignUp/doInsertMember.spring",
-	                        enctype: 'multipart/form-data',
-	                        dataType : "html",
-	                        data :data, 
-		                       
-	                        success : function(data) { //성공
-	                        	goLoginPage();
-	                            console.log("data:" + data);
-	                            var parseData = $.parseJSON(data);
-	                            if (parseData.msgId == "1") {
-	                                alert(parseData.msgMsg);
-	                            } else {
-	                                alert(parseData.msgMsg);
-	                            }
-	                            
-
-	                        },
-	                        error : function(xhr, status, error) {
-	                            alert("error:" + error);
-	                        },
-	                        complete : function(data) {
-
-	                        }
-
-	                    });//--ajax 
-						
+						test();
 			        }
 	         });
 
