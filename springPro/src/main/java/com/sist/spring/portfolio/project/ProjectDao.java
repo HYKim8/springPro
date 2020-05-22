@@ -59,23 +59,21 @@ public class ProjectDao implements Dao {
 		int flag=0;
 		ProjectVO inVO=(ProjectVO)dto;
 		StringBuilder sb=new StringBuilder();
-		sb.append("INSERT INTO projects (    ");
-		sb.append("    pjt_name,            ");
-		sb.append("    member_id,           ");
-		sb.append("    pjt_info,            ");
-		sb.append("    pjt_start,           ");
-		sb.append("    pjt_end,             ");
-		sb.append("    git_address          ");
-		sb.append(") VALUES (               ");
-		sb.append("    ?,                   ");
-		sb.append("    ?,                   ");
-		sb.append("    ?,                   ");
-		sb.append("    ?,                   ");
-		sb.append("    ?,                   ");
-		sb.append("    ?,                   ");
-		sb.append("    ?,                   ");
-		sb.append("    ?                    ");
-		sb.append(")						");
+		sb.append("INSERT INTO projects (   	\n");
+		sb.append("    pjt_name,                \n");
+		sb.append("    member_id,               \n");
+		sb.append("    pjt_info,                \n");
+		sb.append("    pjt_start,               \n");
+		sb.append("    pjt_end,                 \n");
+		sb.append("    git_address              \n");
+		sb.append(") VALUES (                   \n");
+		sb.append("    ?,                       \n");
+		sb.append("    ?,                       \n");
+		sb.append("    ?,                       \n");
+		sb.append("    TO_DATE(?,'YYYY-MM-DD'), \n");       
+		sb.append("    TO_DATE(?,'YYYY-MM-DD'), \n");         
+		sb.append("    ?                        \n");
+		sb.append(")						    \n");
 
 		LOG.debug("==============================");
 		LOG.debug("=Query=\n"+sb.toString());
@@ -253,22 +251,24 @@ public class ProjectDao implements Dao {
 		LOG.debug("================================");
 		
 		StringBuilder sb=new StringBuilder();
-		sb.append("INSERT INTO projects (    ");
-		sb.append("    pjt_name,             ");
-		sb.append("    member_id,            ");
-		sb.append("    pjt_info,             ");
-		sb.append("    pjt_start,            ");
-		sb.append("    pjt_end,        		");
-		sb.append("    git_address           ");
-		sb.append(") VALUES (               ");
-		sb.append("    ?,                   ");
-		sb.append("    ?,                   ");
-		sb.append("    ?,                   ");
-		sb.append("    ?,                   ");
-		sb.append("    ?,                   ");
-		sb.append("    ?                    ");  
-		sb.append(")						");
 
+		sb.append("INSERT INTO projects (   	\n");
+		sb.append("    pjt_name,                \n");
+		sb.append("    member_id,               \n");
+		sb.append("    pjt_info,                \n");
+		sb.append("    pjt_start,               \n");
+		sb.append("    pjt_end,                 \n");
+		sb.append("    git_address              \n");
+		sb.append(") VALUES (                   \n");
+		sb.append("    ?,                       \n");
+		sb.append("    ?,                       \n");
+		sb.append("    ?,                       \n");
+		sb.append("    TO_DATE(?,'YYYY-MM-DD'), \n");       
+		sb.append("    TO_DATE(?,'YYYY-MM-DD'), \n");         
+		sb.append("    ?                        \n");
+		sb.append(")						    \n");
+		
+		
 		LOG.debug("==============================");
 		LOG.debug("=Query=\n"+sb.toString());
 		LOG.debug("=Param=\n"+inVO.toString());

@@ -47,8 +47,15 @@ import com.sist.spring.portfolio.skill.SkillVO;
 @Controller
 public class MemberController {
 	private final Logger LOG = LoggerFactory.getLogger(MemberController.class);
-	private final String UPLOAD_FILE="C:\\Users\\sist\\git\\springPro\\springPro\\src\\main\\webapp\\resources\\images";   
-	   
+	//Window 경로
+	//private final String UPLOAD_FILE="C:\\Users\\sist\\git\\springPro\\springPro\\src\\main\\webapp\\resources\\images";  
+	
+	//노트북
+	//private final String UPLOAD_FILE="C:\\Users\\82104\\git\\springPro\\springPro\\src\\main\\webapp\\resources\\images";
+	
+	//Linux 경로
+	private final String UPLOAD_FILE= "/var/lib/tomcat9/webapps/springPro/resources/images";
+	
 	//@Qualifier("dummyMailSender") : root-context.xml bean id
 	@Autowired
 	MemberService memberService;

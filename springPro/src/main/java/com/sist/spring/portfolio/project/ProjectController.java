@@ -49,9 +49,15 @@ import com.sist.spring.portfolio.skill.SkillVO;
 public class ProjectController {    
    
    private final Logger LOG = LoggerFactory.getLogger(this.getClass());
-   private final String UPLOAD_FILE="C:\\Users\\sist\\git\\springPro\\springPro\\src\\main\\webapp\\resources\\video";   
+   //Window 경로
+   //private final String UPLOAD_FILE="C:\\Users\\sist\\git\\springPro\\springPro\\src\\main\\webapp\\resources\\video";   
    
+   //노트북
+   //private final String UPLOAD_FILE="C:\\Users\\82104\\git\\springPro\\springPro\\src\\main\\webapp\\resources\\video";
    
+   //Linux 경로
+   private final String UPLOAD_FILE="/var/lib/tomcat9/webapps/springPro/resources/video";
+ 
    
    public ProjectController() {   
    }
