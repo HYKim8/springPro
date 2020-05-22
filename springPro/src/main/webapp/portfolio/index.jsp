@@ -425,13 +425,15 @@
 									 							<td><b>발행기관:</b> </td>
 									 							<td id="lOrgan" name="lOrgan"><c:out value="${vo.lOrgan }" /></td>
 									 						</tr>
-									 						<tr>
-									 							<td colspan="2" align="center">
-									 								<br/>
-  			 						 								<button type="button"  class="licDelBtn btn btn-primary" id="licDel" name="licDel" >삭제</button>
-									 							    <button type="button" class="licUpdate btn btn-primary" id="licUpdate" name="licUpdate" >수정</button> 
-									 							</td>
-									 						</tr>
+									 						<c:if test="${vo.memberId == sessionVO.memberId}">
+										 						<tr>
+										 							<td colspan="2" align="center">
+										 								<br/>
+	  			 						 								<button type="button"  class="licDelBtn btn btn-primary" id="licDel" name="licDel" >삭제</button>
+										 							    <button type="button" class="licUpdate btn btn-primary" id="licUpdate" name="licUpdate" >수정</button> 
+										 							</td>
+										 						</tr>
+									 						</c:if>
 									 					</tbody>
 									 				</table>
 									 			</div>
@@ -439,6 +441,11 @@
 									 	</div>
 									 </c:forEach>
 							 	</c:when>
+							 	<c:otherwise>
+		                			<tr>
+		                				<td colspan="99">등록된 자격증이 없습니다</td>
+		                			</tr>
+	                			</c:otherwise>
 						 	</c:choose>	
 						 </div>
 	           	    </div>
