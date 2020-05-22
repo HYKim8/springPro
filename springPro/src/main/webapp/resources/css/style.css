@@ -9076,11 +9076,21 @@ textarea.form-control {
 .ftco-bg-dark {
   background: #3c312e; }
 
+.ftco-footer-fixed{
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  right:0px;
+  clear: both;
+ 
+}
 .ftco-footer {
   font-size: 16px;
-  background: #4375DB;
-  padding: 7em 0;
-  z-index: 0; }
+  background: #2E64FE;
+  padding: 10px;
+  height:200px;
+  clear: both;
+  }
   .ftco-footer .ftco-footer-logo {
     text-transform: uppercase;
     letter-spacing: .1em; }
