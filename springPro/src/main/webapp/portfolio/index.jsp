@@ -23,7 +23,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="hContext" value="${pageContext.request.contextPath }"></c:set>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="height: 100%">
   <head>
     <title>Bombom</title>
     <meta charset="utf-8">
@@ -46,14 +46,14 @@
     <link rel="stylesheet" href="${hContext}/resources/css/icomoon.css">
     <link rel="stylesheet" href="${hContext}/resources/css/style.css">
   </head>
-  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300" style="height: 100%">
 	  
 	  
-    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target" id="ftco-navbar">
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target" id="ftco-navbar" style="height:10%">
 	    <div class="container">
 	      <div>
 	     	 <a class="navbar-brand" href="${hContext}/portfolio/toHome.spring"><span>B</span>ombom</a>
-	     	  <div align="left"> 
+	     	 <%--  <div align="left"> 
 		      	<table> 
 		        	<tbody>
 		        		<tr>
@@ -64,7 +64,7 @@
 		        		</tr>
 		        	</tbody>
 		        </table>
-	    	  </div> 
+	    	  </div>  --%>
 	      </div>
 	      <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="oi oi-menu"></span> Menu
@@ -83,8 +83,8 @@
 	      </div>
 	    </div>    
 	  </nav>
-	  <section class="hero-wrap js-fullheight">
-      <div class="overlay"></div>
+	  <section class="hero-wrap " >
+      <div class="overlay" ></div>
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight justify-content-center align-items-center">
           <div class="col-lg-8 col-md-6 ftco-animate d-flex align-items-center">
@@ -103,7 +103,7 @@
           </div>
         </div>
       </div>
-      <div class="mouse">
+      <div class="mouse" style="height: 20%;">
 				<a href="#about-section" class="mouse-icon">
 					<div class="mouse-wheel"><span class="ion-ios-arrow-round-down"></span></div>
 				</a>
@@ -595,6 +595,7 @@
     </section>
     
      <!-- Comment -->
+     <section class="ftco-about img ftco-section" >
     <!-- commentfrm -->
     <div class="container">
    	<form id="commentfrm" name="commentfrm" >
@@ -658,45 +659,34 @@
     	</form>
     	</div>
     	<!-- comment frm -->
+    </section>
 	<!-- Comment -->
     
 		
 
-    <footer class="ftco-footer ftco-footer-fixed" >
+    <footer class="ftco-footer ftco-footer-fixed" style="height: 18%;" >
       <div class="container">
         <div class="row mb-5">
           <div class="col-md-8">
-            <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">About</h2>
-              <p>Our project started on March 24th.Our project name is BomBom means spring and Spring Framework.Our goal is to build and operate a personal portfolio site.</p>
+            <div class="ftco-footer-widget mb-4" >
+              <h3 style="color: white;">About</h3>
+              <p>Our project name is BomBom means spring and Spring Framework.<br/>Our goal is to build and operate a personal portfolio site.
+            	<br/> <br/>Copyright &copy;<script>2020</script> 
+	           All rights reserved | This project is made with 
+	           <i class="icon-heart color-danger" aria-hidden="true"></i> 
+	           by <a href="index.jsp" target="_blank">Bombom</a></p>
             </div>
           </div>
-<!--           <div class="col-md-3">
-            <div class="ftco-footer-widget mb-4 ml-md-4">
-              <h2 class="ftco-heading-2">Links</h2>
-              <ul class="list-unstyled">
-                <li><a href="#about-section"><span class="icon-long-arrow-right mr-2"></span>About</a></li>
-                <li><a href="#Projects-section"><span class="icon-long-arrow-right mr-2"></span>Projects</a></li>
-                <li><a href="#Skills-section"><span class="icon-long-arrow-right mr-2"></span>Skills</a></li>
-                <li><a href="#License-section"><span class="icon-long-arrow-right mr-2"></span>License</a></li>
-              </ul>
-            </div>
-          </div> -->
           <div class="col-md-4">
             <div class="ftco-footer-widget mb-4">
-            	<h2 class="ftco-heading-2">Contact me<br/></h2>
-              	<ul class="list-unstyled">
+            	<h3 style="color: white;">Contact me</h3>
+                <ul class="list-unstyled">
 	                <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>phone: &nbsp; ${memberVO.phone}</a></li>
 	                <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>mail: &nbsp;${memberVO.email}</a></li>
+	               
                 </ul>
             </div>
           </div>
-           <p>&nbsp;&nbsp;&nbsp;
-	           Copyright &copy;<script>2020</script> 
-	           All rights reserved | This template is made with 
-	           <i class="icon-heart color-danger" aria-hidden="true"></i> 
-	           by <a href="index.jsp" target="_blank">Bombom</a>
-           </p>
           </div>
         </div>
     </footer>
