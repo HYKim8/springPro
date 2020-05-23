@@ -42,7 +42,8 @@
     <link rel="stylesheet" href="${hContext}/resources/css/icomoon.css">
     <link rel="stylesheet" href="${hContext}/resources/css/style.css">
     
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="${hContext}/resources/css/bootstrap/bootstrap-grid.css">
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/latest/js/bootstrap.min.js"></script>
  
@@ -154,12 +155,10 @@
                                   </div>
                                   <!--// Grid영역 -->    
                                  </form>   
-                                          <input type="button"  id="skillAdd" name="skillAdd" class="buttons" value="Add">
+                                 <input type="button"  id="skillAdd" name="skillAdd" class="buttons" value="Add">
                                 </div>
                               </div>
                             </div>
-                        <!-- <input type="button"  name="skillAdd" class="buttons" value="Add" onclick="javascript:skillAdd();"> -->
-                                  
               <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate" id="skilAddlDiv">
             </div> 
             </div>  
@@ -188,7 +187,6 @@
                                              <!-- Data있는 경우 -->
                                               <c:choose>
                                                  <c:when test="${list2.size()>0 }">
-                                                    <c:forEach var="i" begin="0" end="${list2.size()-1}">
                                                           <table class="col-lg-12 table table-hover">
                                                              <tbody>
                                                              <tr>
@@ -203,6 +201,7 @@
                                                                    <td><p class="mb-4 col-lg-2"><b>Issuing Agency</b></p></td>
                                                                    <td><p class="mb-4 col-lg-2"></p></td>
                                                                 </tr>
+                                                                 <c:forEach var="i" begin="0" end="${list2.size()-1}">
                                                                 <tr>
                                                                    <td>${list2.get(i).lName }</td>
                                                                    <td>${list2.get(i).lGroup }</td>
@@ -210,14 +209,14 @@
                                                                    <td>${list2.get(i).lNum }</td>
                                                                    <td>${list2.get(i).lDate }</td>
                                                                    <td>${list2.get(i).lOrgan }</td>
-                                                                   <td rowspan="2">
+                                                                   <td >
                                                                       <input type="button" id="licUpdate" name="licUpdate" class="buttons licUpdate" value="Modify">
                                                                       <input type="button" id="licDelete" name="licDelete" class="buttons licDelete" value="Delete">
                                                                    </td>
                                                                 </tr>
+                                                                </c:forEach>
                                                              </tbody>
                                                           </table>
-                                                    </c:forEach>
                                                  </c:when>
                                                  <c:otherwise>
                                                     <tr><td colspan="99">등록된 자격증이 없습니다.</td></tr>
@@ -259,7 +258,6 @@
                                           <!-- Data있는 경우 -->
                                         <c:choose>
                                            <c:when test="${list3.size()>0 }">
-                                              <c:forEach var="i" begin="0" end="${list3.size()-1}">
                                                  <table class="col-lg-12 table table-hover">
                                                    <tbody>
                                                       <tr>
@@ -267,25 +265,26 @@
                                                         </tr>
                                                       <tr>
                                                          <td><p class="mb-4 col-lg-3"><b>Project Name</b></p></td>
-                                                         <td><p class="mb-4 col-lg-3"><b>Project Description</b></p></td>
-                                                         <td><p class="mb-4 col-lg-4"><b>Project startDate</b></p></td>
-                                                         <td><p class="mb-4 col-lg-4"><b>Project endDate</b></p></td>
+                                                         <td><p class="mb-4 col-lg-5"><b>Project Description</b></p></td>
+                                                         <td><p class="mb-4 col-lg-1"><b>Project startDate</b></p></td>
+                                                         <td><p class="mb-4 col-lg-1"><b>Project endDate</b></p></td>
                                                          <td><p class="mb-4 col-lg-2"><b>Github Address</b></p></td>
                                                       </tr>
+                                                      <c:forEach var="i" begin="0" end="${list3.size()-1}">
                                                       <tr>
                                                          <td>${list3.get(i).pjtName }</td>
                                                          <td>${list3.get(i).pjtInfo }</td>
                                                          <td>${list3.get(i).pjtStart }</td>
                                                          <td>${list3.get(i).pjtEnd }</td>
                                                          <td>${list3.get(i).gitAddress }</td>
-                                                         <td rowspan="2">
+                                                         <td >
                                                          <input type="button" id="projectUpdate" name="projectUpdate" class="buttons projectUpdate" value="Modify">
                                                          <input type="button" id="projectDelete" name="projectDelete" class="buttons projectDelete" value="Delete">
                                                          </td>
-                                                      </tr>         
+                                                      </tr> 
+                                                     </c:forEach>        
                                                    </tbody>
                                                 </table>
-                                              </c:forEach>
                                            </c:when>
                                            <c:otherwise>
                                               <tr><td colspan="99">등록된 프로젝트가 없습니다.</td></tr>
@@ -477,41 +476,27 @@
                html+='      <td><input type="hidden" id="memberIdU" name="memberIdU" size="10"  maxlength="10" readonly="readonly" value="';
                html+=       memberId.trim();
                html+='     "/>                                                                                                              ';
-               html+='   </tr>                                                                                                              ';
+               html+='   </td>                                      ';
+                html+='   </tr>                                                                                                              ';
                html+='   <tr>                                                                                                               ';
                html+='      <td><p class="mb-4"><b>Skill Name</b></p></td>                                                              ';
                html+='      <td><p class="mb-4"><b>Marstery</b></p></td>                                                              ';
                html+='      <td><p class="mb-4"><b>Activity History</b></p></td>                                                          ';
                html+='      </td>                                                                                                          ';
                html+='       <tr>                                                                                                           ';
-              html+='             <td>                                                                                                       ';
-              html+='            <h7 class="mb-4"><b>Skill Name</b></h7>                                                                    ';
-              html+='             </td>                                                                                                      ';
-              html+='          <td><input type="text" id="sNameU" name="sNameU" size="4"  maxlength="10" readonly="readonly" value="';
-              html+=            sName.trim();
-              html+='           "/>                                                                                                        ';
-              html+='          </td>                                                                                                      ';
-               html+='       </tr>                                                                                                          '; 
-               html+='       <tr>                                                                                                           ';
-               html+='             <td>                                                                                                       ';
-               html+='            <h7><b>Marstery</b></h7>                                                                                   ';
-               html+='             </td>                                                                                                      ';
+               html+='         <td><input type="text" id="sNameU" name="sNameU" size="4"  maxlength="10" readonly="readonly" value="';
+               html+=            sName.trim();
+               html+='           "/>                                                                                                        ';
+               html+='          </td>                                                                                                      ';
                html+='          <td><input type="text" id="sMarsteryU" name="sMarsteryU" size="4"   value="';
                html+=            sMarstery.trim();
                html+='            "/>                                                                                                       ';
                html+='          </td>                                                                                                      ';
-               html+='       </tr>                                                                                                          '; 
-               html+='       <tr>                                                                                                           ';
-               html+='              <td>                                                                                                      ';
-               html+='             <h7><b>Activity History</b></h7>                                                                          ';
-               html+='              </td>                                                                                                     ';
                html+='           <td><input type="text" id="sContentU" name="sContentU" size="30"   value="';
                html+=             sContent.trim();
                html+='            "/>                                                                                                       ';
                html+='           </td>                                                                                                     ';
-               html+='       </tr>                                                                                                          ';
-               html+='    <tr>                                                                                                              ';
-               html+='      <td colspan="2">                                                                                               ';
+               html+='      <td>                                                                                               ';
                html+='         <button type="buttons"  class=" skillCan buttons" id="skillCan" name="skillCan" >Cancellation</button>           ';
                html+='         <button type="buttons" class="doUpdate buttons" id="doUpdate" name="doUpdate" >Completed</button>             ';
                html+='      </td>                                                                                                          ';
@@ -650,10 +635,9 @@
 
      //스킬 추가 버튼 클릭 시
      $("#skillAdd").on("click",function(){
-       
-            console.log("skillAdd");
-           html="";
-            html+='   <div class="block-18 shadow">                                                                                                                                                                                               ';
+            html="";
+            html+='   <div class="block-18 shadow" id="divSkill">  																						                                                                       ';
+            html+='     <input type="button" class="buttons" value="delete" style="float:right;" onclick="skillbtnMinus2()"                                                                                                                                     ';                                                                                                                                                                                         
             html+='       <h2 class="mb-4">Add Skills</h2>                                                                                                                                                                                       ';
             html+='       <div align="center">                                                                                                                                                                                                   ';
             html+='         <form action="${hContext}/skill/do_insert.spring" name="skillInsertForm" id="skillInsertForm" method="post">                                                                                                        ';
@@ -709,28 +693,20 @@
             html+='                          <p>Activity content</p>                                                                                                                                                                       ';
             html+='                        </td>                                                                                                                                                                                            ';
             html+='                        <td>                                                                                                                                                                                             ';
-            html+='                          <p><textarea rows="10" cols="40" name="skillList[0].sContent" id="sContent"></textarea></p>                                                                                                   ';
+            html+='                          <p><textarea rows="10" cols="40" name="skillList[0].sContent" id="sContent" style="width:100%"></textarea></p>                                                                                                   ';
             html+='                        </td>                                                                                                                                                                                            ';
             html+='                     </tr>                                                                                                                                                                                               ';
-            html+='                     <tr>                                                                                                                                                                                                ';
-            html+='                        <td>                                                                                                                                                                                             ';
-            html+='                           <img alt="삭제입력폼" align="left" width="20" height="20" src="${hContext}/resources/images/minus.png" onClick="skillbtnMinus(\"'+'+"tr_1"+'+skillCnt+'+"\");">                           ';
-            html+='                        </td>                                                                                                                                                                                            ';
-            html+='                     </tr>                                                                                                                                                                                               ';
-            html+='                                                                                                                                                                                                                          ';
-            html+='                                                                                                                                                                                                                          ';
             html+='                                                                                                                                                                                                                          ';
             html+='                  </table>                                                                                                                                                                                                ';
             html+='               </td>                                                                                                                                                                                                       ';
             html+='            </tr>                                                                                                                                                                                                           ';
-            html+='                                                                                                                                                                                                                             ';
             html+='                                                                                                                                                                                                                             ';
             html+='            <tbody id="skillbody">                                                                                                                                                                                          ';
             html+='            </tbody>                                                                                                                                                                                                        ';
             html+='            </table>                                                                                                                                                                                                        ';
             html+='         <table>                                                                                                                                                                                                             ';
             html+='            <tr>                                                                                                                                                                                                            ';
-            html+='               <td colspan=2>                                                                                                                                                                                              ';
+            html+='               <td >                                                                                                                                                                                              ';
             html+='                  <button type="button" onclick="javascript:skillInsert();" class="btn btn-primary btn-sm">Submit</button>                                                                                                ';
             html+='               </td>                                                                                                                                                                                                       ';
             html+='            </tr>                                                                                                                                                                                                           ';
@@ -761,6 +737,11 @@
    
            
            html+='<tr ><td colspan="2"><hr/><br/></td></tr>                                                                                             ';
+           html+='                     <tr>                                                                                                                                                                                                ';
+           html+='                       <td>                                                                                                                                                                                              ';
+           html+='                         <img alt="추가입력폼" width="20" height="20" src="${hContext}/resources/images/plus.png" id="skillPlusInsert">                                                                                    ';
+           html+='                       </td>                                                                                                                                                                                             ';
+           html+='                     </tr>                                                                                                                                                                                               ';
            html+='          <tr>                                                                                                         ';
            html+='       <td>                                                                                                                          ';
            html+='          <p>Programming Language</p>                                                                                                ';
@@ -804,7 +785,7 @@
            html+='          <p>Activity content</p>                                                                                                    ';
            html+='       </td>                                                                                                                         ';
            html+='       <td>                                                                                                                          ';
-           html+='          <p><textarea rows="10" cols="40" name="skillList['+skillCnt+'].sContent" id="sContent'+skillCnt+'"></textarea></p>         ';
+           html+='          <p><textarea rows="10" cols="40" name="skillList['+skillCnt+'].sContent" id="sContent'+skillCnt+'" style="width:100%"></textarea></p>         ';
            html+='       </td>                                                                                                                         ';
            html+='    </tr>                                                                                                                            ';
            html+='      <tr >                                                                                                             ';
@@ -826,8 +807,15 @@
     // 스킬 (-) 버튼 클릭 이벤트
     function skillbtnMinus(btnId){
        console.log('this is minus button');
+
         $("#"+btnId).empty();
     }
+
+    function skillbtnMinus2(){
+        console.log('this is minus button');
+
+         $("#divSkill").remove();
+     }
       
 //--skill----------------------------
 
@@ -922,7 +910,7 @@
                html+=lOrgan.trim();
                html+='" />                                                                                         ';
                html+='      </td>                                                                                                          ';
-               html+='      <td rowspan="2">                                                                                               ';
+               html+='      <td >                                                                                               ';
                html+='         <button type="buttons"  class="licCan buttons" id="licCan" name="licCan" >Cancellation</button>                                                     ';
                html+='         <button type="buttons" class="dolicUpdate buttons" id="dolicUpdate" name="dolicUpdate" >Completed</button>                                                     ';
                html+='      </td>                                                                                                          ';
@@ -995,10 +983,10 @@
             url:"${hContext}/portfolio/do_update.spring",
             dataType:"html", 
             data:{ //"memberId":"sohyun1234"
-                   "memberId":memberId.trim(),
+                   "memberId" : memberId.trim(),
                    "lName" : lName.trim(),
-                   "lGroup": lGroup.trim(),
-                   "lGrade": lGrade.trim(),
+                   "lGroup" : lGroup.trim(),
+                   "lGrade" : lGrade.trim(),
                    "lNum": lNum.trim(),
                    "lDate": lDate.trim(),
                    "lOrgan": lOrgan.trim() 
@@ -1078,7 +1066,8 @@
      //자격증 추가 버튼 클릭 시 div 추가
      $("#licAdd").on("click",function(){
          html="";
-         html+='<div class="block-18 shadow">                                                                                                                                                                           ';
+         html+='<div class="block-18 shadow" id="divLicense">                                                                                                                                                                           ';
+         html+='     <input type="button" class="buttons" value="delete" style="float:right;" onclick="licensebtnMinus2()"                                                                                                                                     ';
          html+='   <h2 class="mb-4">Add License</h2>                                                                                                                                                                      ';
          html+='   <div align="center">                                                                                                                                                                                   ';
          html+=' <form action="${hContext}/portfolio/do_insert_license.spring" name="licenseInsertForm" id="licenseInsertForm" method="post">                                                                           ';
@@ -1134,12 +1123,6 @@
          html+='                        <input type="text" class="form-control lOrgan" name="licenseList[0].lOrgan" id="lOrgan" placeholder="Issuing Agency"  >                                                    ';
          html+='                      </td>                                                                                                                                                                         ';
          html+='                    </tr>                                                                                                                                                                            ';
-         html+='                    <tr>                                                                                                                                                                             ';
-         html+='                      <td>                                                                                                                                                                          ';
-         html+='                           <img alt="삭제입력폼" align="left" width="20" height="20" src="${hContext}/resources/images/minus.png" onClick="skillbtnMinus(\'tr_1'+skillCnt+'\');">                    ';
-         html+='                      </td>                                                                                                                                                                         ';
-         html+='                    </tr>                                                                                                                                                                            ';
-         html+='                                                                                                                                                                                                     ';
          html+='                                                                                                                                                                                                     ';
          html+='                        </table>                                                                                                                                                                   ';
          html+='                     </td>                                                                                                                                                                          ';
@@ -1151,7 +1134,7 @@
          html+='                  </table>                                                                                                                                                                            ';
          html+='                <table>                                                                                                                                                                               ';
          html+='                  <tr>                                                                                                                                                                               ';
-         html+='                     <td colspan=2>                                                                                                                                                                 ';
+         html+='                     <td >                                                                                                                                                                 ';
          html+='                        <button type="button" onclick="javascript:licenseInsert();" class="btn btn-primary btn-sm">Submit</button>                                                                 ';
          html+='                     </td>                                                                                                                                                                          ';
          html+='                  </tr>                                                                                                                                                                              ';
@@ -1180,6 +1163,11 @@
          html+='<table>';
                                                                                                                                                                                                                           
          html+='  <tr><td colspan="2"><hr/><br/></td></tr>                                                                                                                                                              ';
+         html+='             <tr>                                                                                                                                                                                      ';
+         html+='               <td>                                                                                                                                                                                   ';
+         html+='               <img alt="추가입력폼" width="20" height="20" src="${hContext}/resources/images/plus.png" id="licensePlusInsert">                                                                           ';
+         html+='               </td>                                                                                                                                                                                  ';
+         html+='             </tr>                                                                                                                                                                                     ';
          html+='  <tr>                                                                                                                                                                                                  ';
          html+='      <td>                                                                                                                                                                                              ';
          html+='       <input  type="text" class="form-control lName" name="licenseList['+licenseCnt+'].lName" id="lName'+licenseCnt+'" placeholder="Qualification Name"   autofocus>                                   ';
@@ -1238,11 +1226,17 @@
          $("#licensebody").append(html);
 
        });
-
+       
+       // 자격증 (-) 버튼 클릭 이벤트
        function licensebtnMinus(btnId){
           console.log('this is minus button');
            $("#"+btnId).empty();
        }
+       function licensebtnMinus2(){
+           console.log('this is minus button');
+
+            $("#divLicense").remove();
+        }
 
 //--licesnse------------------------------
 
@@ -1250,7 +1244,7 @@
 //project------------------------------
 
        //수정
-        $(".projectUpdate").on("click",function(event){
+        $(".projectUpdate").on("click",function(){
         
           var projectUpdate = $(this);
           var tr = projectUpdate.parent().parent().parent();
@@ -1329,7 +1323,7 @@
                html+=gitAddress.trim();
                html+='" />                                                                                         ';
                html+='      </td>                                                                                                          ';
-               html+='      <td rowspan="2">                                                                                               ';
+               html+='      <td >                                                                                               ';
                html+='         <button type="buttons"  class="pjtCan buttons" id="pjtCan" name="pjtCan" >Cancellation</button>                                                     ';
                html+='         <button type="buttons" class="pjtUpdate buttons" id="pjtUpdate" name="pjtUpdate" >Completed</button>                                                     ';
                html+='      </td>                                                                                                          ';
@@ -1394,7 +1388,7 @@
                   url:"${hContext}/project/do_update.spring",
                   dataType:"html", 
                   data:{ //"memberId":"sohyun1234"
-                     "memberId":memberId.trim(),
+                     "memberId" : memberId.trim(),
                      "pjtName" : pjtName.trim(),
                      "pjtInfo": pjtInfo.trim(),
                      "pjtStart": pjtStart.trim(),
@@ -1473,14 +1467,11 @@
 
 
          //프로젝트 추가 버튼 클릭 시
-         /* function projectAdd(){
-            console.log("projectAdd");
-            } */
-
          $("#projectAdd").on("click", function(){
-               //console.log("projectAdd");
+             
                html="";
-               html+='<div class="block-18 shadow">                                                                                                                                                                 ';
+               html+='<div class="block-18 shadow" id="divProject">                                                                                                                                                                 ';
+               html+='     <input type="button" class="buttons" value="delete" style="float:right;" onclick="projectbtnMinus2()"                                                                                                                                     ';
                html+='   <h2 class="mb-4">Add Project</h2>                                                                                                                                                            ';
                html+='   <div align="center">                                                                                                                                                                         ';
                html+='      <form action="${hContext}/portfoilo/upload.spring" method="post" enctype="multipart/form-data" name="projectInsetForm" id="projectInsetForm">                                            ';
@@ -1533,12 +1524,6 @@
                html+='                       <input type="file" id="videoFile" name="videoFile">                                                                                                                                 ';
                html+='                     </td>                                                                                                                                                                 ';
                html+='                  </tr>                                                                                                                                                                    ';
-               html+='                  <tr>                                                                                                                                                                     ';
-               html+='                     <td>                                                                                                                                                                  ';
-               html+='                        <img alt="삭제입력폼" align="left" width="20" height="20" src="${hContext}/resources/images/minus.png" onClick="skillbtnMinus(\'tr_1'+skillCnt+'\');">              ';
-               html+='                     </td>                                                                                                                                                                 ';
-               html+='                  </tr>                                                                                                                                                                    ';
-               html+='                                                                                                                                                                                             ';
                html+='                                                                                                                                                                                             ';
                html+='           </table>                                                                                                                                                                           ';
                html+='          </td>                                                                                                                                                                               ';
@@ -1549,7 +1534,7 @@
                html+='          </table>                                                                                                                                                                            ';
                html+='       <table>                                                                                                                                                                                 ';
                html+='       <tr>                                                                                                                                                                                    ';
-               html+='         <td colspan=2>                                                                                                                                                                       ';
+               html+='         <td >                                                                                                                                                                       ';
                html+='            <button type="button" onclick="javascript:pjtInsert();" class="btn btn-primary btn-sm">Submit</button>                                                                            ';
                html+='         </td>                                                                                                                                                                                ';
                html+='       </tr>                                                                                                                                                                                   ';
@@ -1565,19 +1550,24 @@
 
 
             var projectCnt = 0;
-            
-            $("#pjtPlusInsert").on("click", function(){
+            //프로젝트 (+)버튼
+            $(document).on("click","#pjtPlusInsert", function(){
                console.log('This is plus button');
                var frm=document.uploadFrm;
                var html = '';
                projectCnt+=1;
                console.log(projectCnt);
   
-               html+='<tr id="tr_3'+projectCnt+'">';
-               html+='<td>';
-               html+='<table>';
+                html+='<tr id="tr_3'+projectCnt+'">';
+                html+='<td>';
+                html+='<table>';
   
                 html+='<tr><td colspan="2"><hr/><br/></td></tr>                                                                                                                                                                  ';
+                html+='                  <tr>                                                                                                                                                                     ';
+                html+='                     <td>                                                                                                                                                                  ';
+                html+='                       <img alt="추가입력폼" width="20" height="20" src="${hContext}/resources/images/plus.png" id="pjtPlusInsert">                                                           ';
+                html+='                     </td>                                                                                                                                                                 ';
+                html+='                  </tr>                                                                                                                                                                    ';
                 html+='<tr>                                                                                                                                                                                                      ';
                 html+='   <td>                                                                                                                                                                                                   ';
                 html+='      Project Name                                                                                                                                                                                        ';
@@ -1639,6 +1629,11 @@
                console.log('this is minus button');
                 $("#"+btnId).empty();
             }
+            function projectbtnMinus2(){
+                console.log('this is minus button');
+
+                 $("#divProject").remove();
+             }
 //--project----------------------------  
 
      
