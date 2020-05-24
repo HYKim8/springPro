@@ -159,7 +159,7 @@
                                 </div>
                               </div>
                             </div>
-              <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate" id="skilAddlDiv">
+              <div class="col-md-4 d-flex justify-content-center counter-wrap ftco-animate" id="skilAddlDiv">
             </div> 
             </div>  
         </div>
@@ -231,7 +231,7 @@
                                     </div>
                                   </div>
              
-               <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate" id="licAddlDiv">
+               <div class="col-md-4 d-flex justify-content-center counter-wrap ftco-animate" id="licAddlDiv">
                </div>
             </div>
          </div>
@@ -300,7 +300,7 @@
                                     </div>
                                   </div>
           
-                <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate" id="projectAddlDiv">
+                <div class="col-md-4 d-flex justify-content-center counter-wrap ftco-animate" id="projectAddlDiv">
               </div>
             </div>
         </div>
