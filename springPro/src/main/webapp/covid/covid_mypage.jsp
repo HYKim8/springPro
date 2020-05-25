@@ -270,7 +270,7 @@
 			//console.log(data.substring(0,index+1));
 			document.getElementById("parmName").value = data.substring(0,index+1);
 			document.getElementById("parmCode").value = data.substring(codeIndex+1,codeIndex+9);
-			if(confirm(data.substring(0,index+1) + "에 메일을 보내시겠습니까?")==false) return;
+			if(confirm(data.substring(0,index+1) + "의 재고 현황을 메일로 보내시겠습니까?")==false) return;
 
 
 			//ajax

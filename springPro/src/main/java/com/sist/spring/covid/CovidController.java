@@ -103,6 +103,14 @@ public class CovidController {
 		return json;
 	}
 	
+	@RequestMapping(value = "covid/logout.spring",method = RequestMethod.GET)
+	public String doLogout(HttpSession session) {
+		session.removeAttribute("user");
+
+        return "covid/covid_login";
+	}
+	
+	
 	@RequestMapping(value = "covid/do_sign_up.spring", method = RequestMethod.POST,produces = "application/json; charset=UTF-8")
 	@ResponseBody
 	public String doSignUp(HttpServletRequest req, CovidUserVO vo, Model model) {

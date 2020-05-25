@@ -53,7 +53,7 @@
 	          <li class="nav-item"><a href="#about-section" class="nav-link"><span>About</span></a></li>
 	          <li class="nav-item"><a href="#License-section" class="nav-link"><span>License</span></a></li>
 	          <li class="nav-item"><a href="#Skills-section" class="nav-link"><span>Skills</span></a></li>
-	          <li class="nav-item"><a href="#Projects-section" class="nav-link"><span>Projects</span></a></li>
+	          <li class="nav-item"><a href="javascript:logout();" class="nav-link"><span>logout</span></a></li>
 	        </ul>
 	      </div>
 	    </div>
@@ -64,8 +64,10 @@
 		<br/>
 		<br/>
 	</div>  
-	  
-	<form action="${hContext}/covid/go_mypage.spring" name="mypage_frm" method="post">
+	
+	
+	
+	<form action="${hContext}/covid/go_mypage.spring" name="mypage_frm" method="post" >
 		<div class="container">
   			<div class="row">
 				<div class="col-12" align="right">
@@ -74,6 +76,16 @@
 			</div>
 		</div>
 	</form>
+	
+	<%-- <form action="${hContext}/covid/logout.spring" name="logout_frm" method="get"  >
+		<div class="container">
+  			<div class="row">
+				<div class="col-12" align="right">
+					<input type="button" onclick="javascript:logout();" class="btn btn-primary btn-lg" value="로그아웃"  >
+				</div>
+			</div>
+		</div>
+	</form> --%>
 	
   	<div class="container">
   		<div class="row">
@@ -345,6 +357,13 @@
 		frm.action = "${hContext}/covid/go_mypage.spring";
 		frm.submit();
 	}
+
+	function logout(){
+		//console.log("goMypage");
+		location.href="${hContext}/covid/logout.spring";
+		
+	}
+	
 
 	
 </script>	
