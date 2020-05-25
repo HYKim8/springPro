@@ -42,6 +42,11 @@
 		AND p_code = #{pCode}                      
     </delete>
     
+    <delete id="doDeleteUser" parameterType="CovidUserVO">
+	    DELETE FROM COVID_USER					
+		WHERE member_id = #{memberId}                 
+    </delete>
+    
     <select id="doSelectOne" parameterType="RxJoinVO" resultType="RxJoinVO">
 		SELECT A.*
 		FROM(

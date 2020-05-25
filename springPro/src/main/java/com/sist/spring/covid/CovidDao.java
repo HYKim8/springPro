@@ -209,5 +209,25 @@ public class CovidDao implements Dao {
 		
 		return flag;
 	}
+	
+	public int doDeleteUser(DTO dto) {
+		CovidUserVO inVO = (CovidUserVO) dto;
+		LOG.debug("1======================");
+		LOG.debug("1=inVO=" + inVO);
+		LOG.debug("1======================");
+		
+		
+		String statement = NAMESPACE + ".doDeleteUser";
+		LOG.debug("2======================");
+		LOG.debug("2=statement=" + statement);
+		LOG.debug("2======================");
+				
+		int flag = this.sqlSessionTemplate.delete(statement,inVO);
+		LOG.debug("3======================");
+		LOG.debug("3=flag=" + flag);
+		LOG.debug("3======================");
+		
+		return flag;
+	}
 
 }

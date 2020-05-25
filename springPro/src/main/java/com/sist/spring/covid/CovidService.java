@@ -59,6 +59,7 @@ public class CovidService implements Service {
 	private MailSender mailSender;
 	
 	
+	
 	public DTO doSelectOneUser(DTO dto) {
 		return covidDao.doSelectOneUser(dto);
 	}
@@ -87,6 +88,10 @@ public class CovidService implements Service {
 		return covidDao.doDelete(dto);
 	}
 
+	public int doDeleteUser(DTO dto) {
+		return covidDao.doDeleteUser(dto);
+	}
+	
 	@Override
 	public List<?> doRetrieve(DTO dto) {
 		return covidDao.doRetrieve(dto);
