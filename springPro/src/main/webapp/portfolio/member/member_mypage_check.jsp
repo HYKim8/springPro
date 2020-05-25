@@ -29,7 +29,6 @@
   <title>Bombom</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
     <link rel="stylesheet" href="${hContext}/resources/css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="${hContext}/resources/css/animate.css">
@@ -98,51 +97,56 @@
       <br/>
       <br/>
       <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
    </div>  
 
    <!-- Skills -->
     <section class="ftco-section ftco-no-pt ftco-no-pb ftco-counter img" id="skills-section">
-       <div class="container-fluid px-md-5" id="skillDiv">
+       <div class="container-fluid px-md-5">
           <div class="row d-md-flex align-items-center">
-                                   
               <div class="col-md-8 d-flex justify-content-center counter-wrap ftco-animate">
              <div class="block-18 shadow">
                 <div class="page-header">
                      <h2>Skill List</h2>
-                     
-                        <form action="${hContext}/portfolio/" id="skillUp_frm" name="skillUp_frm" method="POST">
+                        <form action="${hContext}/portfolio" id="skillUp_frm" name="skillUp_frm" method="POST">
                          <input type="hidden" name="hiddenId" id="hiddenId">
-                      
                          <!-- Grid영역 -->
                             <div class="table-responsive">
                                <table class="table table-hover" id="skillTable">
                                    <!-- hidden-sm hidden-xs 숨기기 -->
                                   <thead class="bg-primary">
                                   </thead>
+                                   <tbody >
                                              <!-- Data있는 경우 -->
                                               <c:choose>
                                                  <c:when test="${list1.size()>0 }">
                                                           <table class="col-lg-12 table table-hover">
-                                                          <tbody>
+                                                          <tbody >
                                                              <tr>
                                                                 <td style="display:none;">${list1.get(i).memberId}</td>
                                                              </tr>
                                                              <tr>
-                                                             	   <td><p class="mb-4 col-lg-3"><b>Skill Name</b></p></td>
-                                                                   <td><p class="mb-4 col-lg-3"><b>Marstery</b></p></td>
-                                                                   <td><p class="mb-4 col-lg-6"><b>Activity History</b></p></td>
+                                                                   <td><p class="mb-4 col-md-3"><b>Skill Name</b></p></td>
+                                                                   <td><p class="mb-4 col-md-3"><b>Marstery</b></p></td>
+                                                                   <td><p class="mb-4 col-md-6"><b>Activity History</b></p></td>
                                                              </tr>
+                                                             <tbody id="Test">
                                                              <c:forEach var="i" begin="0" end="${list1.size()-1}">
-                                                             <tr>
+                                                             <tr id="skilModifylDiv">
                                                                    <td>${list1.get(i).sName }</td>
                                                                    <td>${list1.get(i).sMarstery }</td>
                                                                    <td>${list1.get(i).sContent }</td>
                                                                    <td >
-                                                                      <input type="button" id="skillUpdate" name="skillUpdate" class="buttons skillUpdate" value="Modify">
-                                                                      <input type="button" id="skillDelete" name="skillDelete" class="buttons skillDelete" value="Delete">
+                                                                     <!--  <input type="button" class="buttons skillUpdate" value="Modify"> -->
+                                                                      <input type="button" class="buttons" value="Update" onclick="skillUpdate('${list1.get(i).sName }','${list1.get(i).memberId}','${list1.get(i).sMarstery }','${list1.get(i).sContent }','${i}')">
+                                                                      <input type="button" class="buttons" value="Delete" onclick="skillDelete('${list1.get(i).sName }','${list1.get(i).memberId}')">
                                                                    </td>
                                                              </tr> 
                                                              </c:forEach>
+                                                             </tbody>
                                                              </tbody>
                                                           </table>
                                                  </c:when>
@@ -150,12 +154,12 @@
                                                        <tr><td colspan="99">등록된 스킬이 없습니다.</td></tr>
                                                     </c:otherwise>
                                               </c:choose>
-                                          
+                                            </tbody>
                                      </table>
+                                  <input type="button"  id="skillAdd" name="skillAdd" class="buttons" value="Add">
                                   </div>
                                   <!--// Grid영역 -->    
                                  </form>   
-                                 <input type="button"  id="skillAdd" name="skillAdd" class="buttons" value="Add">
                                 </div>
                               </div>
                             </div>
@@ -166,6 +170,7 @@
     </section>
    <!--// Skills -->
    
+   
 <!-- license -->
       <section class="ftco-section ftco-no-pt ftco-no-pb ftco-counter img" id="license-section">
          <div class="container-fluid px-md-5">
@@ -174,9 +179,8 @@
              <div class="block-18 shadow">
                 <div class="page-header">
                       <h2>License List</h2>
-                         <form action="${hContext}/portfolio/mypage_retrieve.spring" id="licenseRetrieve_frm" name="licenseRetrieve_frm" method="get">
+                         <form action="${hContext}/portfolio" id="licenseRetrieve_frm" name="licenseRetrieve_frm" method="get">
                             <input type="hidden" name="hiddenId" id="hiddenId">
-                         </form>
                             <!-- Grid영역 -->
                                <div class="table-responsive">
                                   <table class="table table-hover" id="licenseTable">
@@ -210,8 +214,8 @@
                                                                    <td>${list2.get(i).lDate }</td>
                                                                    <td>${list2.get(i).lOrgan }</td>
                                                                    <td >
-                                                                      <input type="button" id="licUpdate" name="licUpdate" class="buttons licUpdate" value="Modify">
-                                                                      <input type="button" id="licDelete" name="licDelete" class="buttons licDelete" value="Delete">
+                                                                      <input type="button" class="buttons licUpdate" value="Modify">
+                                                                      <input type="button" class="buttons" value="Delete" onclick="licDelete('${list2.get(i).lName }','${list2.get(i).memberId}')">
                                                                    </td>
                                                                 </tr>
                                                                 </c:forEach>
@@ -226,11 +230,11 @@
                                      </table>
                                      <input type="button"  id="licAdd" name="licAdd" class="buttons" value="Add" />
                                   </div>
-                                  <!--// Grid영역 -->    
+                                  <!--// Grid영역 -->   
+                                  </form> 
                                       </div>
                                     </div>
                                   </div>
-             
                <div class="col-md-4 d-flex justify-content-center counter-wrap ftco-animate" id="licAddlDiv">
                </div>
             </div>
@@ -271,15 +275,15 @@
                                                          <td><p class="mb-4 col-lg-2"><b>Github Address</b></p></td>
                                                       </tr>
                                                       <c:forEach var="i" begin="0" end="${list3.size()-1}">
-                                                      <tr>
+                                                      <tr >
                                                          <td>${list3.get(i).pjtName }</td>
                                                          <td>${list3.get(i).pjtInfo }</td>
                                                          <td>${list3.get(i).pjtStart }</td>
                                                          <td>${list3.get(i).pjtEnd }</td>
                                                          <td>${list3.get(i).gitAddress }</td>
                                                          <td >
-                                                         <input type="button" id="projectUpdate" name="projectUpdate" class="buttons projectUpdate" value="Modify">
-                                                         <input type="button" id="projectDelete" name="projectDelete" class="buttons projectDelete" value="Delete">
+                                                         <input type="button" class="buttons projectUpdate" value="Modify">
+                                                         <input type="button" class="buttons" value="Delete" onclick="projectDelete('${list3.get(i).gitAddress }','${list3.get(i).memberId}')">
                                                          </td>
                                                       </tr> 
                                                      </c:forEach>        
@@ -306,7 +310,6 @@
         </div>
     </section>
    <!--// Project -->
-
 
     <footer class="ftco-footer ftco-section">
       <div class="container">
@@ -378,7 +381,6 @@
 
 
 
-
 <script src="<c:url value="/resources/js/jquery.min.js" />"></script>
 <script src="<c:url value="/resources/js/jquery-migrate-3.0.1.min.js"/>"></script>
 <script src="<c:url value="/resources/js/popper.min.js"/>"></script>
@@ -404,196 +406,144 @@
          var memberId = tds.eq(1).text();
          console.log("memberId:"+ memberId);
    
-         var frm = document.skillRetrieve_frm;
-         frm.hiddenId.value = memberId;
-         frm.pageNum.value = 1;
-         frm.searchWord.value= memberId;
-         frm.submit();
-         
-   
       });
 
 
+    //skill------------------------------
+      //조회버튼 클릭 시
+        function skillRetrieve() {
+            var frm = document.skillUp_frm;
+            frm.action="${hContext}/portfolio/mypage_retrieve.spring";
+            frm.submit();
+         }
 
-//skill------------------------------
-    //조회버튼 클릭 시
-      function skillRetrieve() {
-          var frm = document.skillUp_frm;
-          frm.action="${hContext}//portfolio/mypage_retrieve.spring";
-          frm.submit();
-       }
+         //수정
+          function skillUpdate(sName, memberId,sMarstery,sContent,cnt){
+         //confirm
+         // if(confirm(sName+"를 수정 하시겠습니까?")==false) return;
+     
+             
+             
+             var html = '';
+             
+             //ajax
+             $.ajax({
+              type:"GET",
+              url:"${hContext}/skill/do_select_one.spring",
+              dataType:"html", 
+              data:{ 
+                     "memberId": memberId.trim(),
+                     "sName" : sName.trim(),
+                     "sMarstery": sMarstery.trim(),
+                     "sContent": sContent.trim()
+              },
+              success:function(data){ //성공
+                  console.log("data:"+data);  
+                  var html = '';
+                 // var tbody = $(skilModifylDiv);
+                 var tr = $(this).parent().parent();
+                 var removeTr = tr.eq(2);
+                 //tr.remove();
+                 // var removeTbody = tbody.eq(0);
+              //    tbody.empty();
+              	document.getElementById("Test").deleteRow(cnt);
+     
+                 html+='       <tr>                                                                                                           ';
+                 html+='         <td ><input type="text" id="sNameU" name="sNameU"  maxlength="10" readonly="readonly" value="';
+                 html+=            sName.trim();
+                 html+='           "/>                                                                                                        ';
+                 html+='          </td>                                                                                                      ';
+                 html+='          <td ><input type="text" id="sMarsteryU" name="sMarsteryU" value="';
+                 html+=            sMarstery.trim();
+                 html+='            "/>                                                                                                       ';
+                 html+='          </td>                                                                                                      ';
+                 html+='           <td ><input type="text" id="sContentU" name="sContentU"  value="';
+                 html+=             sContent.trim();
+                 html+='            "/>                                                                                                       ';
+                 html+='           </td>                                                                                                     ';
+                 html+='         <td>                                                                                               ';
+                 html+='         <button type="buttons"  class=" skillCan buttons" id="skillCan" name="skillCan" >Cancellation</button>           ';
+                 html+='         <button type="buttons" class="doUpdate buttons" id="doUpdate" name="doUpdate" >Completed</button>             ';
+                 html+='         </td>                                                                                                          ';
+                 html+='    </tr>                                                                                                             ';              
 
-       //수정
-        $(".skillUpdate").on("click",function(event){
-          console.log("Modify");
-          var skillUpdate = $(this);
-           var tdArr = new Array();
-   
-           skillUpdate.each(function(i){
-             var tr = skillUpdate.parent().parent().parent().eq(i);
-               var td = tr.children().children();
-               var memberId = td.eq(0).text();
-               var sName = td.eq(4).text();
-              var sMarstery = td.eq(5).text();
-              var sContent = td.eq(6).text();
-   
-              tdArr.push(memberId);
-              tdArr.push(sName);
-              tdArr.push(sMarstery);
-              tdArr.push(sContent);
-         }); //--raio.each
-   
-             var memberId = tdArr[0];
-            var sName = tdArr[1];
-           var sMarstery = tdArr[2];
-           var sContent = tdArr[3];
-   
-           console.log("memberId = "+memberId.trim());
-           console.log("sName = "+sName.trim());
-           console.log("sMarstery = "+sMarstery.trim());
-           console.log("sContent = "+sContent.trim());
-           
-           //ajax
-           $.ajax({
-            type:"GET",
-            url:"${hContext}/skill/do_select_one.spring",
-            dataType:"html", 
-            data:{ //"memberId":"sohyun1234"
-                   "memberId": memberId.trim(),
-                   "sName" : sName.trim(),
-                   "sMarstery": sMarstery.trim(),
-                   "sContent": sContent.trim()
-            },
-            success:function(data){ //성공
-                console.log("data:"+data);  
-                var html = '';
-                var tbody = skillUpdate.parent().parent().parent();
-                var removeTbody = tbody.eq(0);
-               removeTbody.empty();
-   
-               html+='  <tbody>                                                                                                             ';
-               html+='  <tr>                                                                                                                ';
-               html+='      <td><input type="hidden" id="memberIdU" name="memberIdU" size="10"  maxlength="10" readonly="readonly" value="';
-               html+=       memberId.trim();
-               html+='     "/>                                                                                                              ';
-               html+='   </td>                                      ';
-                html+='   </tr>                                                                                                              ';
-               html+='   <tr>                                                                                                               ';
-               html+='      <td><p class="mb-4"><b>Skill Name</b></p></td>                                                              ';
-               html+='      <td><p class="mb-4"><b>Marstery</b></p></td>                                                              ';
-               html+='      <td><p class="mb-4"><b>Activity History</b></p></td>                                                          ';
-               html+='      </td>                                                                                                          ';
-               html+='       <tr>                                                                                                           ';
-               html+='         <td><input type="text" id="sNameU" name="sNameU" size="4"  maxlength="10" readonly="readonly" value="';
-               html+=            sName.trim();
-               html+='           "/>                                                                                                        ';
-               html+='          </td>                                                                                                      ';
-               html+='          <td><input type="text" id="sMarsteryU" name="sMarsteryU" size="4"   value="';
-               html+=            sMarstery.trim();
-               html+='            "/>                                                                                                       ';
-               html+='          </td>                                                                                                      ';
-               html+='           <td><input type="text" id="sContentU" name="sContentU" size="30"   value="';
-               html+=             sContent.trim();
-               html+='            "/>                                                                                                       ';
-               html+='           </td>                                                                                                     ';
-               html+='      <td>                                                                                               ';
-               html+='         <button type="buttons"  class=" skillCan buttons" id="skillCan" name="skillCan" >Cancellation</button>           ';
-               html+='         <button type="buttons" class="doUpdate buttons" id="doUpdate" name="doUpdate" >Completed</button>             ';
-               html+='      </td>                                                                                                          ';
-               html+='    </tr>                                                                                                             ';              
-               html+='  </tbody>                                                                                                            ';
-              tbody.append(html);
-            },
-            error:function(xhr,status,error){
-              alert("error:"+error);
-            },
-            complete:function(data){
-            
-            }   
-            
-           });//--ajax 
-               
-            });//--수정  
-
-           //수정취소버튼
-           $(document).on("click",".skillCan",function(){
-                history.go(0);
-             });
-      
-           //수정완료버튼
-           $(document).on("click",".doUpdate",function(){//댓글수정완료버튼
-              console.log("doUpdate");
-                  var memberId = $("#memberIdU").val();
-                 var sName = $("#sNameU").val();
-                 var sMarstery = $("#sMarsteryU").val();
-                 var sContent = $("#sContentU").val(); 
-      
-                console.log("수정전------------------")
-                console.log("memberId: "+memberId);
-                 console.log("sName: "+sName);
-                 console.log("sMarstery: "+sMarstery);
-                 console.log("sContent: "+sContent);
-                 console.log("//수정전------------------")
+                 $("#Test").append(html);
+                 //$("#skilModifylDiv").html(html);
+                 //$("#skilModifylDiv").show();
+              },
+              error:function(xhr,status,error){
+                alert("error:"+error);
+              },
+              complete:function(data){
+              
+              }   
+              
+             });//--ajax
                  
-           if($("#sMarsteryU").val()==null || $("#sMarsteryU").val().length<=0 ||$("#sMarsteryU").val()=='undefined'){
-               $("#sMarsteryU").focus();
-               alert("스킬등급를 입력하세요.");
-               return;
-            }
+              }//--수정  
+
+             //수정취소버튼
+             $(document).on("click",".skillCan",function(){
+            	 location.href="${hContext}/portfolio/mypage_retrieve.spring";
+               });
+        
+             //수정완료버튼
+             $(document).on("click",".doUpdate",function(){//댓글수정완료버튼
+                console.log("doUpdate");
+                   var memberId = $("#memberIdU").val();
+                   var sName = $("#sNameU").val();
+                   var sMarstery = $("#sMarsteryU").val();
+                   var sContent = $("#sContentU").val(); 
+                   
+             if($("#sMarsteryU").val()==null || $("#sMarsteryU").val().length<=0 ||$("#sMarsteryU").val()=='undefined'){
+                 $("#sMarsteryU").focus();
+                 alert("스킬등급를 입력하세요.");
+                 return;
+              }
+        
+             if($("#sContentU").val()==null || $("#sContentU").val().length<=0 || $("#sContentU").val()=='undefined'){
+                 $("#sContentU").focus();
+                 alert("커멘츄을 입력하세요.");
+                 return;
+              }
+        
+             if(confirm("수정 하시겠습니까?")==false) return;
+              
+           //ajax
+             $.ajax({
+              type:"POST",
+              url:"${hContext}/skill/do_update.spring",
+              dataType:"html", 
+              data:{ 
+                     "memberId": memberId.trim(),
+                     "sName" : sName.trim(),
+                     "sMarstery": sMarstery.trim(),
+                     "sContent": sContent.trim()
+              },
+              success:function(data){ //성공
+                     console.log("수정성공후우우우우");
+                      console.log("sName: "+sName);
+                     console.log("sMarstery: "+sMarstery);
+                   console.log("sContent: "+sContent);
+                 alert("수정되었습니다.");
+                 location.href="${hContext}/portfolio/mypage_retrieve.spring";
+              },
+              error:function(xhr,status,error){
+                alert("error:"+error);
+              },
+              complete:function(data){
+              
+              }   
+              
+             });//--ajax 
+             
+          });
+        //--수정완료버튼
       
-           if($("#sContentU").val()==null || $("#sContentU").val().length<=0 || $("#sContentU").val()=='undefined'){
-               $("#sContentU").focus();
-               alert("커멘츄을 입력하세요.");
-               return;
-            }
-      
-           if(confirm("수정 하시겠습니까?")==false) return;
-            
-         //ajax
-           $.ajax({
-            type:"POST",
-            url:"${hContext}/skill/do_update.spring",
-            dataType:"html", 
-            data:{ //"memberId":"sohyun1234"
-                   "memberId": memberId.trim(),
-                   "sName" : sName.trim(),
-                   "sMarstery": sMarstery.trim(),
-                   "sContent": sContent.trim()
-            },
-            success:function(data){ //성공
-                   console.log("수정성공후우우우우");
-                    console.log("sName: "+sName.trim());
-                   console.log("sMarstery: "+sMarstery.trim());
-                 console.log("sContent: "+sContent.trim());
-               alert("수정되었습니다.");
-              skillRetrieve();
-            },
-            error:function(xhr,status,error){
-              alert("error:"+error);
-            },
-            complete:function(data){
-            
-            }   
-            
-           });//--ajax 
-           
-        });
-      //--수정완료버튼
-    
-    //삭제
-    $(".skillDelete").on("click",function(){
-       console.log("삭제");
-       var skillDelete = $(this);
-
-       var tr = skillDelete.parent().parent().parent();
-          var td = tr.children().children();
-
-        var memberId = td.eq(0).text();
-         var sName = td.eq(4).text();
-         console.log("sName="+sName);
-
-        //confirm
-          if(confirm(sName.trim()+"의 SkillList 를 삭제 하시겠습니까?")==false) return;
+      //삭제
+     function skillDelete(sName, memberId){
+         //confirm
+          if(confirm(sName+"을(를) 삭제 하시겠습니까?")==false) return;
           
          //ajax
          $.ajax({
@@ -601,16 +551,15 @@
           url:"${hContext}/skill/do_delete.spring",
           dataType:"html", 
           data:{ //"memberId":"sohyun1234"
-                 "memberId":memberId.trim(),
-                 "sName" : sName.trim()
+                 "memberId":memberId,
+                 "sName" : sName
           },
           success:function(data){ //성공
            //console.log("data:"+data);  
            var parseData = $.parseJSON(data);
                 if(parseData.msgId=="1"){
                      alert(parseData.msgMsg);
-                     //licRetrieve();
-                     history.go(0);
+                     location.href="${hContext}/portfolio/mypage_retrieve.spring";
                    }else{
                      alert(parseData.msgMsg);
                       }
@@ -624,200 +573,199 @@
           }   
           
          });//--ajax 
-          
 
-       });   
-
-
-     //스킬 전역변수
-     var skillCnt = 0;
-     var html='';
-
-     //스킬 추가 버튼 클릭 시
-     $("#skillAdd").on("click",function(){
-            html="";
-            html+='   <div class="block-18 shadow" id="divSkill">  																						                                                                       ';
-            html+='     <input type="button" class="buttons" value="delete" style="float:right;" onclick="skillbtnMinus2()"                                                                                                                                     ';                                                                                                                                                                                         
-            html+='       <h2 class="mb-4">Add Skills</h2>                                                                                                                                                                                       ';
-            html+='       <div align="center">                                                                                                                                                                                                   ';
-            html+='         <form action="${hContext}/skill/do_insert.spring" name="skillInsertForm" id="skillInsertForm" method="post">                                                                                                        ';
-            html+='         <table id="skillForm" >                                                                                                                                                                                             ';
-            html+='            <tr>                                                                                                                                                                                                            ';
-            html+='               <td>                                                                                                                                                                                                        ';
-            html+='                  <table>                                                                                                                                                                                                 ';
-            html+='                     <tr>                                                                                                                                                                                                ';
-            html+='                       <td>                                                                                                                                                                                              ';
-            html+='                         <img alt="추가입력폼" width="20" height="20" src="${hContext}/resources/images/plus.png" id="skillPlusInsert">                                                                                    ';
-            html+='                       </td>                                                                                                                                                                                             ';
-            html+='                     </tr>                                                                                                                                                                                               ';
-            html+='                          <tr>                                                                                                                                                                                          ';
-            html+='                        <td>                                                                                                                                                                                             ';
-            html+='                          <p>Programming Language</p>                                                                                                                                                                   ';
-            html+='                        </td>                                                                                                                                                                                            ';
-            html+='                        <td>                                                                                                                                                                                             ';
-            html+='                          <select id="sName" name="skillList[0].sName">                                                                                                                                                 ';
-            html+='                            <option value="Java">Java</option>                                                                                                                                                         ';
-            html+='                            <option value="C">C</option>                                                                                                                                                               ';
-            html+='                            <option value="Python">Python</option>                                                                                                                                                     ';
-            html+='                            <option value="C++">C++</option>                                                                                                                                                           ';
-            html+='                            <option value="C#">C#</option>                                                                                                                                                             ';
-            html+='                            <option value="Visual Basic.NET">Visual Basic.NET</option>                                                                                                                                 ';
-            html+='                            <option value="JavaScript">JavaScript</option>                                                                                                                                             ';
-            html+='                            <option value="PHP">PHP</option>                                                                                                                                                           ';
-            html+='                            <option value="SQL">SQL</option>                                                                                                                                                           ';
-            html+='                            <option value="R">R</option>                                                                                                                                                               ';
-            html+='                            <option value="Swift">Swift</option>                                                                                                                                                       ';
-            html+='                            <option value="Go">Go</option>                                                                                                                                                             ';
-            html+='                            <option value="Ruby">Ruby</option>                                                                                                                                                         ';
-            html+='                            <option value="Assmbler">Assmbler</option>                                                                                                                                                 ';
-            html+='                            <option value="PL/SQL">PL/SQL</option>                                                                                                                                                     ';
-            html+='                            <option value="Perl">Perl</option>                                                                                                                                                         ';
-            html+='                            <option value="Objective-C">Objective-C</option>                                                                                                                                           ';
-            html+='                            <option value="MATLAB">MATLAB</option>                                                                                                                                                     ';
-            html+='                            <option value="Visual Basic">Visual Basic</option>                                                                                                                                         ';
-            html+='                            <option value="Scratch">Scratch</option>                                                                                                                                                   ';
-            html+='                          </select>                                                                                                                                                                                     ';
-            html+='                        </td>                                                                                                                                                                                            ';
-            html+='                     </tr>                                                                                                                                                                                               ';
-            html+='                     <tr>                                                                                                                                                                                                ';
-            html+='                        <td>                                                                                                                                                                                             ';
-            html+='                          <p>Mastership Level</p>                                                                                                                                                                       ';
-            html+='                        </td>                                                                                                                                                                                            ';
-            html+='                        <td>                                                                                                                                                                                             ';
-            html+='                         <input type="range" id="sMarstery" name="skillList[0].sMarstery" name="points" step="1" value="0" oninput="document.getElementById(\'checkMastery0\').innerHTML=this.value;">                    ';
-            html+='                         &nbsp&nbsp<b><span id="checkMastery0"></span>%</b>                                                                                                                                             ';
-            html+='                        </td>                                                                                                                                                                                            ';
-            html+='                     </tr>                                                                                                                                                                                               ';
-            html+='                     <tr>                                                                                                                                                                                                ';
-            html+='                        <td>                                                                                                                                                                                             ';
-            html+='                          <p>Activity content</p>                                                                                                                                                                       ';
-            html+='                        </td>                                                                                                                                                                                            ';
-            html+='                        <td>                                                                                                                                                                                             ';
-            html+='                          <p><textarea rows="10" cols="40" name="skillList[0].sContent" id="sContent" style="width:100%"></textarea></p>                                                                                                   ';
-            html+='                        </td>                                                                                                                                                                                            ';
-            html+='                     </tr>                                                                                                                                                                                               ';
-            html+='                                                                                                                                                                                                                          ';
-            html+='                  </table>                                                                                                                                                                                                ';
-            html+='               </td>                                                                                                                                                                                                       ';
-            html+='            </tr>                                                                                                                                                                                                           ';
-            html+='                                                                                                                                                                                                                             ';
-            html+='            <tbody id="skillbody">                                                                                                                                                                                          ';
-            html+='            </tbody>                                                                                                                                                                                                        ';
-            html+='            </table>                                                                                                                                                                                                        ';
-            html+='         <table>                                                                                                                                                                                                             ';
-            html+='            <tr>                                                                                                                                                                                                            ';
-            html+='               <td >                                                                                                                                                                                              ';
-            html+='                  <button type="button" onclick="javascript:skillInsert();" class="btn btn-primary btn-sm">Submit</button>                                                                                                ';
-            html+='               </td>                                                                                                                                                                                                       ';
-            html+='            </tr>                                                                                                                                                                                                           ';
-            html+='         </table>                                                                                                                                                                                                            ';
-            html+='         </form>                                                                                                                                                                                                             ';
-            html+='      </div>                                                                                                                                                                                                                  ';
-            html+='   </div>                                                                                                                                                                                                                      ';
-   
-   
-   
-            $("#skilAddlDiv").append(html);
-
-     });
-
-
-
-     //스킬 (+) 클릭 이벤트
-     $(document).on("click","#skillPlusInsert",function(){
-           console.log('this is plus button');
-           var frm = document.uploadFrm;
-           html = '';
-           skillCnt+=1;
-           console.log(skillCnt);
-   
-           html+='<tr id="tr_1'+skillCnt+'">';
-           html+='<td>';
-           html+='<table>';
-   
-           
-           html+='<tr ><td colspan="2"><hr/><br/></td></tr>                                                                                             ';
-           html+='                     <tr>                                                                                                                                                                                                ';
-           html+='                       <td>                                                                                                                                                                                              ';
-           html+='                         <img alt="추가입력폼" width="20" height="20" src="${hContext}/resources/images/plus.png" id="skillPlusInsert">                                                                                    ';
-           html+='                       </td>                                                                                                                                                                                             ';
-           html+='                     </tr>                                                                                                                                                                                               ';
-           html+='          <tr>                                                                                                         ';
-           html+='       <td>                                                                                                                          ';
-           html+='          <p>Programming Language</p>                                                                                                ';
-           html+='       </td>                                                                                                                         ';
-           html+='       <td>                                                                                                                          ';
-           html+='          <select id="sName'+skillCnt+'" name="skillList['+skillCnt+'].sName">                                                       ';
-           html+='             <option value="Java">Java</option>                                                                                      ';
-           html+='             <option value="C">C</option>                                                                                            ';
-           html+='             <option value="Python">Python</option>                                                                                  ';
-           html+='             <option value="C++">C++</option>                                                                                        ';
-           html+='             <option value="C#">C#</option>                                                                                          ';
-           html+='             <option value="Visual Basic.NET">Visual Basic.NET</option>                                                              ';
-           html+='             <option value="JavaScript">JavaScript</option>                                                                          ';
-           html+='             <option value="PHP">PHP</option>                                                                                        ';
-           html+='             <option value="SQL">SQL</option>                                                                                        ';
-           html+='             <option value="R">R</option>                                                                                            ';
-           html+='             <option value="Swift">Swift</option>                                                                                    ';
-           html+='             <option value="Go">Go</option>                                                                                          ';
-           html+='             <option value="Ruby">Ruby</option>                                                                                      ';
-           html+='             <option value="Assmbler">Assmbler</option>                                                                              ';
-           html+='             <option value="PL/SQL">PL/SQL</option>                                                                                  ';
-           html+='             <option value="Perl">Perl</option>                                                                                      ';
-           html+='             <option value="Objective-C">Objective-C</option>                                                                        ';
-           html+='             <option value="MATLAB">MATLAB</option>                                                                                  ';
-           html+='             <option value="Visual Basic">Visual Basic</option>                                                                      ';
-           html+='             <option value="Scratch">Scratch</option>                                                                                ';
-           html+='          </select>                                                                                                                  ';
-           html+='       </td>                                                                                                                         ';
-           html+='    </tr>                                                                                                                            ';
-           html+='    <tr>                                                                                                               ';
-           html+='       <td>                                                                                                                          ';
-           html+='          <p>Mastership Level</p>                                                                                                    ';
-           html+='       </td>                                                                                                                         ';
-           html+='       <td>                                                                                                                          ';
-           html+='				<input type="range" id="sMarstery'+skillCnt+'" name="skillList['+skillCnt+'].sMarstery" name="points" step="1" value="0" oninput="document.getElementById(\'checkMastery'+skillCnt+'\').innerHTML=this.value;">                    ';
-	       html+='				&nbsp&nbsp<b><span id="checkMastery'+skillCnt+'"></span>%</b>                                                                                                                                             ';
-	       html+='       </td>                                                                                                                         ';
-           html+='    </tr>                                                                                                                            ';
-           html+='    <tr>                                                                                                               ';
-           html+='       <td>                                                                                                                          ';
-           html+='          <p>Activity content</p>                                                                                                    ';
-           html+='       </td>                                                                                                                         ';
-           html+='       <td>                                                                                                                          ';
-           html+='          <p><textarea rows="10" cols="40" name="skillList['+skillCnt+'].sContent" id="sContent'+skillCnt+'" style="width:100%"></textarea></p>         ';
-           html+='       </td>                                                                                                                         ';
-           html+='    </tr>                                                                                                                            ';
-           html+='      <tr >                                                                                                             ';
-           html+='         <td>                                                                                                                        ';
-           html+='            <img alt="삭제입력폼" align="left" width="20" height="20" src="${hContext}/resources/images/minus.png" onClick="skillbtnMinus(\'tr_1'+skillCnt+'\');">      ';      
-           html+='         </td>                                                                                                                       ';
-           html+='      </tr>                                                                                                                          ';
-   
-           html+='</tr>';
-           html+='</td>';
-           html+='</table>';
-           
-           $("#skillbody").append(html);
-
-            });//--skillPlusBtn
-
-
-
-    // 스킬 (-) 버튼 클릭 이벤트
-    function skillbtnMinus(btnId){
-       console.log('this is minus button');
-
-        $("#"+btnId).empty();
-    }
-
-    function skillbtnMinus2(){
-        console.log('this is minus button');
-
-         $("#divSkill").remove();
      }
-      
-//--skill----------------------------
+
+
+       //스킬 전역변수
+       var skillCnt = 0;
+       var html='';
+
+       //스킬 추가 버튼 클릭 시
+       $("#skillAdd").on("click",function(){
+              html="";
+              html+='   <div class="block-18 shadow" id="divSkill">                                                                                                                                           ';
+              html+='     <input type="button" class="buttons" value="delete" style="float:right;" onclick="skillbtnMinus2()"                                                                                                                                     ';                                                                                                                                                                                         
+              html+='       <h2 class="mb-4">Add Skills</h2>                                                                                                                                                                                       ';
+              html+='       <div align="center">                                                                                                                                                                                                   ';
+              html+='         <form action="${hContext}/skill/do_insert.spring" name="skillInsertForm" id="skillInsertForm" method="post">                                                                                                        ';
+              html+='         <table id="skillForm" >                                                                                                                                                                                             ';
+              html+='            <tr>                                                                                                                                                                                                            ';
+              html+='               <td>                                                                                                                                                                                                        ';
+              html+='                  <table>                                                                                                                                                                                                 ';
+              html+='                     <tr>                                                                                                                                                                                                ';
+              html+='                       <td>                                                                                                                                                                                              ';
+              html+='                         <img alt="추가입력폼" width="20" height="20" src="${hContext}/resources/images/plus.png" id="skillPlusInsert">                                                                                    ';
+              html+='                       </td>                                                                                                                                                                                             ';
+              html+='                     </tr>                                                                                                                                                                                               ';
+              html+='                          <tr>                                                                                                                                                                                          ';
+              html+='                        <td>                                                                                                                                                                                             ';
+              html+='                          <p>Programming Language</p>                                                                                                                                                                   ';
+              html+='                        </td>                                                                                                                                                                                            ';
+              html+='                        <td>                                                                                                                                                                                             ';
+              html+='                          <select id="sName" name="skillList[0].sName">                                                                                                                                                 ';
+              html+='                            <option value="Java">Java</option>                                                                                                                                                         ';
+              html+='                            <option value="C">C</option>                                                                                                                                                               ';
+              html+='                            <option value="Python">Python</option>                                                                                                                                                     ';
+              html+='                            <option value="C++">C++</option>                                                                                                                                                           ';
+              html+='                            <option value="C#">C#</option>                                                                                                                                                             ';
+              html+='                            <option value="Visual Basic.NET">Visual Basic.NET</option>                                                                                                                                 ';
+              html+='                            <option value="JavaScript">JavaScript</option>                                                                                                                                             ';
+              html+='                            <option value="PHP">PHP</option>                                                                                                                                                           ';
+              html+='                            <option value="SQL">SQL</option>                                                                                                                                                           ';
+              html+='                            <option value="R">R</option>                                                                                                                                                               ';
+              html+='                            <option value="Swift">Swift</option>                                                                                                                                                       ';
+              html+='                            <option value="Go">Go</option>                                                                                                                                                             ';
+              html+='                            <option value="Ruby">Ruby</option>                                                                                                                                                         ';
+              html+='                            <option value="Assmbler">Assmbler</option>                                                                                                                                                 ';
+              html+='                            <option value="PL/SQL">PL/SQL</option>                                                                                                                                                     ';
+              html+='                            <option value="Perl">Perl</option>                                                                                                                                                         ';
+              html+='                            <option value="Objective-C">Objective-C</option>                                                                                                                                           ';
+              html+='                            <option value="MATLAB">MATLAB</option>                                                                                                                                                     ';
+              html+='                            <option value="Visual Basic">Visual Basic</option>                                                                                                                                         ';
+              html+='                            <option value="Scratch">Scratch</option>                                                                                                                                                   ';
+              html+='                          </select>                                                                                                                                                                                     ';
+              html+='                        </td>                                                                                                                                                                                            ';
+              html+='                     </tr>                                                                                                                                                                                               ';
+              html+='                     <tr>                                                                                                                                                                                                ';
+              html+='                        <td>                                                                                                                                                                                             ';
+              html+='                          <p>Mastership Level</p>                                                                                                                                                                       ';
+              html+='                        </td>                                                                                                                                                                                            ';
+              html+='                        <td>                                                                                                                                                                                             ';
+              html+='                         <input type="range" id="sMarstery" name="skillList[0].sMarstery" name="points" step="1" value="0" oninput="document.getElementById(\'checkMastery0\').innerHTML=this.value;">                    ';
+              html+='                         &nbsp&nbsp<b><span id="checkMastery0"></span>%</b>                                                                                                                                             ';
+              html+='                        </td>                                                                                                                                                                                            ';
+              html+='                     </tr>                                                                                                                                                                                               ';
+              html+='                     <tr>                                                                                                                                                                                                ';
+              html+='                        <td>                                                                                                                                                                                             ';
+              html+='                          <p>Activity content</p>                                                                                                                                                                       ';
+              html+='                        </td>                                                                                                                                                                                            ';
+              html+='                        <td>                                                                                                                                                                                             ';
+              html+='                          <p><textarea rows="10" cols="40" name="skillList[0].sContent" id="sContent" style="width:100%"></textarea></p>                                                                                                   ';
+              html+='                        </td>                                                                                                                                                                                            ';
+              html+='                     </tr>                                                                                                                                                                                               ';
+              html+='                                                                                                                                                                                                                          ';
+              html+='                  </table>                                                                                                                                                                                                ';
+              html+='               </td>                                                                                                                                                                                                       ';
+              html+='            </tr>                                                                                                                                                                                                           ';
+              html+='                                                                                                                                                                                                                             ';
+              html+='            <tbody id="skillbody">                                                                                                                                                                                          ';
+              html+='            </tbody>                                                                                                                                                                                                        ';
+              html+='            </table>                                                                                                                                                                                                        ';
+              html+='         <table>                                                                                                                                                                                                             ';
+              html+='            <tr>                                                                                                                                                                                                            ';
+              html+='               <td >                                                                                                                                                                                              ';
+              html+='                  <button type="button" onclick="javascript:skillInsert();" class="btn btn-primary btn-sm">Submit</button>                                                                                                ';
+              html+='               </td>                                                                                                                                                                                                       ';
+              html+='            </tr>                                                                                                                                                                                                           ';
+              html+='         </table>                                                                                                                                                                                                            ';
+              html+='         </form>                                                                                                                                                                                                             ';
+              html+='      </div>                                                                                                                                                                                                                  ';
+              html+='   </div>                                                                                                                                                                                                                      ';
+     
+     
+     
+              $("#skilAddlDiv").append(html);
+
+       });
+
+
+
+       //스킬 (+) 클릭 이벤트
+       $(document).on("click","#skillPlusInsert",function(){
+             console.log('this is plus button');
+             var frm = document.uploadFrm;
+             html = '';
+             skillCnt+=1;
+             console.log(skillCnt);
+     
+             html+='<tr id="tr_1'+skillCnt+'">';
+             html+='<td>';
+             html+='<table>';
+     
+             
+             html+='<tr ><td colspan="2"><hr/><br/></td></tr>                                                                                             ';
+             html+='                     <tr>                                                                                                                                                                                                ';
+             html+='                       <td>                                                                                                                                                                                              ';
+             html+='                         <img alt="추가입력폼" width="20" height="20" src="${hContext}/resources/images/plus.png" id="skillPlusInsert">                                                                                    ';
+             html+='                       </td>                                                                                                                                                                                             ';
+             html+='                     </tr>                                                                                                                                                                                               ';
+             html+='          <tr>                                                                                                         ';
+             html+='       <td>                                                                                                                          ';
+             html+='          <p>Programming Language</p>                                                                                                ';
+             html+='       </td>                                                                                                                         ';
+             html+='       <td>                                                                                                                          ';
+             html+='          <select id="sName'+skillCnt+'" name="skillList['+skillCnt+'].sName">                                                       ';
+             html+='             <option value="Java">Java</option>                                                                                      ';
+             html+='             <option value="C">C</option>                                                                                            ';
+             html+='             <option value="Python">Python</option>                                                                                  ';
+             html+='             <option value="C++">C++</option>                                                                                        ';
+             html+='             <option value="C#">C#</option>                                                                                          ';
+             html+='             <option value="Visual Basic.NET">Visual Basic.NET</option>                                                              ';
+             html+='             <option value="JavaScript">JavaScript</option>                                                                          ';
+             html+='             <option value="PHP">PHP</option>                                                                                        ';
+             html+='             <option value="SQL">SQL</option>                                                                                        ';
+             html+='             <option value="R">R</option>                                                                                            ';
+             html+='             <option value="Swift">Swift</option>                                                                                    ';
+             html+='             <option value="Go">Go</option>                                                                                          ';
+             html+='             <option value="Ruby">Ruby</option>                                                                                      ';
+             html+='             <option value="Assmbler">Assmbler</option>                                                                              ';
+             html+='             <option value="PL/SQL">PL/SQL</option>                                                                                  ';
+             html+='             <option value="Perl">Perl</option>                                                                                      ';
+             html+='             <option value="Objective-C">Objective-C</option>                                                                        ';
+             html+='             <option value="MATLAB">MATLAB</option>                                                                                  ';
+             html+='             <option value="Visual Basic">Visual Basic</option>                                                                      ';
+             html+='             <option value="Scratch">Scratch</option>                                                                                ';
+             html+='          </select>                                                                                                                  ';
+             html+='       </td>                                                                                                                         ';
+             html+='    </tr>                                                                                                                            ';
+             html+='    <tr>                                                                                                               ';
+             html+='       <td>                                                                                                                          ';
+             html+='          <p>Mastership Level</p>                                                                                                    ';
+             html+='       </td>                                                                                                                         ';
+             html+='       <td>                                                                                                                          ';
+             html+='            <input type="range" id="sMarstery'+skillCnt+'" name="skillList['+skillCnt+'].sMarstery" name="points" step="1" value="0" oninput="document.getElementById(\'checkMastery'+skillCnt+'\').innerHTML=this.value;">                    ';
+            html+='            &nbsp&nbsp<b><span id="checkMastery'+skillCnt+'"></span>%</b>                                                                                                                                             ';
+            html+='       </td>                                                                                                                         ';
+             html+='    </tr>                                                                                                                            ';
+             html+='    <tr>                                                                                                               ';
+             html+='       <td>                                                                                                                          ';
+             html+='          <p>Activity content</p>                                                                                                    ';
+             html+='       </td>                                                                                                                         ';
+             html+='       <td>                                                                                                                          ';
+             html+='          <p><textarea rows="10" cols="40" name="skillList['+skillCnt+'].sContent" id="sContent'+skillCnt+'" style="width:100%"></textarea></p>         ';
+             html+='       </td>                                                                                                                         ';
+             html+='    </tr>                                                                                                                            ';
+             html+='      <tr >                                                                                                             ';
+             html+='         <td>                                                                                                                        ';
+             html+='            <img alt="삭제입력폼" align="left" width="20" height="20" src="${hContext}/resources/images/minus.png" onClick="skillbtnMinus(\'tr_1'+skillCnt+'\');">      ';      
+             html+='         </td>                                                                                                                       ';
+             html+='      </tr>                                                                                                                          ';
+     
+             html+='</tr>';
+             html+='</td>';
+             html+='</table>';
+             
+             $("#skillbody").append(html);
+
+              });//--skillPlusBtn
+
+
+
+      // 스킬 (-) 버튼 클릭 이벤트
+      function skillbtnMinus(btnId){
+         console.log('this is minus button');
+
+          $("#"+btnId).empty();
+      }
+
+      function skillbtnMinus2(){
+          console.log('this is minus button');
+
+           $("#divSkill").remove();
+       }
+        
+  //--skill----------------------------
 
 //license----------------------------
 
@@ -1016,18 +964,7 @@
 
       
       //삭제
-      $(".licDelete").on("click",function(){
-
-         //console.log("licUpdate click");
-         var licUpdate = $(this);
-         var tr = licUpdate.parent().parent().parent();
-         var td = tr.children().children();
-         
-         var memberId = td.eq(0).text();
-         var lName= td.eq(8).text();
-
-         console.log("memberId= "+memberId);
-         console.log("lName= "+lName);
+      function licDelete(lName, memberId){
 
          //confirm
             if(confirm(lName+"을(를) 삭제 하시겠습니까?")==false) return;
@@ -1038,8 +975,8 @@
               url:"${hContext}/portfolio/do_delete_license.spring",
               dataType:"html", 
               data:{ //"memberId":"sohyun1234"
-                     "memberId":memberId.trim(),
-                     "lName" : lName.trim()
+                     "memberId":memberId,
+                     "lName" : lName
               },
               success:function(data){ //성공
                      //console.log("data:"+data);  
@@ -1060,7 +997,7 @@
               
              });//--ajax
 
-         });
+         }
 
          
      //자격증 추가 버튼 클릭 시 div 추가
@@ -1419,19 +1356,7 @@
             });//--수정완료버튼
             
             //삭제
-            $(".projectDelete").on("click",function(){
-            
-               //console.log("projectDelete click");
-               var projectDelete = $(this);
-               var tr = projectDelete.parent().parent().parent();
-               var td = tr.children().children();
-               
-               var memberId = td.eq(0).text();
-               var gitAddress= td.eq(10).text();
-            
-               console.log("memberId= "+memberId);
-               console.log("gitAddress= "+gitAddress);
-            
+            function projectDelete(gitAddress, memberId){
                //confirm
                   if(confirm(gitAddress+"Project를 삭제 하시겠습니까?")==false) return;
                   
@@ -1441,8 +1366,8 @@
                   url:"${hContext}/project/do_delete.spring",
                   dataType:"html", 
                   data:{ //"memberId":"sohyun1234"
-                        "memberId" : memberId.trim(),
-                        "gitAddress" : gitAddress.trim()
+                        "memberId" : memberId,
+                        "gitAddress" : gitAddress
                   },
                   success:function(data){ //성공
                         //console.log("data:"+data);  
@@ -1463,7 +1388,7 @@
                   
                   });//--ajax
             
-               });
+               }
 
 
          //프로젝트 추가 버튼 클릭 시
@@ -1663,7 +1588,7 @@
         console.log("skillInsert");
           var frm = document.skillInsertForm;
           frm.action = "${hContext}/skill/do_insert.spring";
-          frm.method="POST";
+          frm.method="GET";
           frm.submit(); 
           
      }

@@ -256,13 +256,6 @@ MessageVO message=new MessageVO();
 			message.setMsgMsg(licenseVO.getlName()+"님 등록 실패.");			
 		}
 		
-		//JSON
-//		Gson gson = new Gson();
-//		String json = gson.toJson(message);
-//		LOG.debug("1.3===================");
-//		LOG.debug("1.3=json="+json); 
-//		LOG.debug("1.3===================");
-//			
 			
 			return "/portfolio/index" ;
 	}	
