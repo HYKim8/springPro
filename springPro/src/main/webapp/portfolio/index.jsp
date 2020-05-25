@@ -107,9 +107,9 @@
 	      </div>
 	    </div>    
 	  </nav>
-	  <section class="hero-wrap " >
-      <div class="overlay" ></div>
-      <div class="container">
+	  <section class="hero-wrap "  style="height: 82%;">
+      <div class="overlay" style="height: 82%;"></div>
+      <div class="container" style="height: 82%;">
         <div class="row no-gutters slider-text js-fullheight justify-content-center align-items-center">
           <div class="col-lg-8 col-md-6 ftco-animate d-flex align-items-center">
           	<div class="text text-center">
@@ -164,30 +164,27 @@
 	        </div>
         </div>
     	</div>
+<%--     	<div class="container">
+			<div class="row">
+				<div class="col-sm ftco-animate">
+					<a href="#" class="partner"><img src="${hContext}/resources/images/partner-1.png" class="img-fluid" alt="Colorlib Template"></a>
+				</div>
+				<div class="col-sm ftco-animate">
+					<a href="#" class="partner"><img src="${hContext}/resources/images/partner-2.png" class="img-fluid" alt="Colorlib Template"></a>
+				</div>
+				<div class="col-sm ftco-animate">
+					<a href="#" class="partner"><img src="${hContext}/resources/images/partner-3.png" class="img-fluid" alt="Colorlib Template"></a>
+				</div>
+				<div class="col-sm ftco-animate">
+					<a href="#" class="partner"><img src="${hContext}/resources/images/partner-4.png" class="img-fluid" alt="Colorlib Template"></a>
+				</div>
+				<div class="col-sm ftco-animate">
+					<a href="#" class="partner"><img src="${hContext}/resources/images/partner-5.png" class="img-fluid" alt="Colorlib Template"></a>
+				</div>
+			</div>
+ 	   </div>  --%>
     </section>
 	<!--// About -->
-	
-    <section class="ftco-section ftco-partner">
-    	<div class="container">
-    		<div class="row">
-    			<div class="col-sm ftco-animate">
-    				<a href="#" class="partner"><img src="${hContext}/resources/images/partner-1.png" class="img-fluid" alt="Colorlib Template"></a>
-    			</div>
-    			<div class="col-sm ftco-animate">
-    				<a href="#" class="partner"><img src="${hContext}/resources/images/partner-2.png" class="img-fluid" alt="Colorlib Template"></a>
-    			</div>
-    			<div class="col-sm ftco-animate">
-    				<a href="#" class="partner"><img src="${hContext}/resources/images/partner-3.png" class="img-fluid" alt="Colorlib Template"></a>
-    			</div>
-    			<div class="col-sm ftco-animate">
-    				<a href="#" class="partner"><img src="${hContext}/resources/images/partner-4.png" class="img-fluid" alt="Colorlib Template"></a>
-    			</div>
-    			<div class="col-sm ftco-animate">
-    				<a href="#" class="partner"><img src="${hContext}/resources/images/partner-5.png" class="img-fluid" alt="Colorlib Template"></a>
-    			</div>
-    		</div>
-    	</div>
-    </section>
 	
 	<!-- Projects -->
     <section class="ftco-about img ftco-section ftco-no-pt ftco-no-pb" id="Projects-section">
