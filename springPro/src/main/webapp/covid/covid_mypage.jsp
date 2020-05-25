@@ -46,18 +46,18 @@
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target" id="ftco-navbar">
 	    <div class="container">
-	      <a class="navbar-brand" href="index.jsp"><span>B</span>ombom</a>
+	      <a class="navbar-brand" href="${hContext}/covid/covid_index.jsp"><span>B</span>ombom</a>
 	      <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="oi oi-menu"></span> Menu
 	      </button>
 
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav nav ml-auto">
-	          <li class="nav-item"><a href="#home-section" class="nav-link"><span>Home</span></a></li>
-	          <li class="nav-item"><a href="#about-section" class="nav-link"><span>About</span></a></li>
-	          <li class="nav-item"><a href="#License-section" class="nav-link"><span>License</span></a></li>
-	          <li class="nav-item"><a href="#Skills-section" class="nav-link"><span>Skills</span></a></li>
-	          <li class="nav-item"><a href="#Projects-section" class="nav-link"><span>Projects</span></a></li>
+	          <li class="nav-item"><a href="${hContext}/covid/covid_index.jsp" class="nav-link"><span>Home</span></a></li>
+	          <li class="nav-item"><a href="#" class="nav-link"><span>About</span></a></li>
+	          <li class="nav-item"><a href="#" class="nav-link"><span>License</span></a></li>
+	          <li class="nav-item"><a href="#" class="nav-link"><span>Skills</span></a></li>
+	          <li class="nav-item"><a href="#" class="nav-link"><span>Projects</span></a></li>
 	        </ul>
 	      </div>
 	    </div>
@@ -96,18 +96,21 @@
 		        							</tr>
 		        						</table>
 		        					</div>
+		        					
 			        				<span class="icon">
 										<i class="flaticon-flasks"></i>
 									</span>
+									<div align="center">
 	        						<table id="listTable">
 	        							<tr>
-	        								<td><h2>${vo.pName}</h2>
-	        									<p>일렬번호:${vo.pCode}</p>
-												<p>${vo.pAddr}</p>
+	        								<td><div align="center"><h2>${vo.pName}</h2></div>
+	        									<div align="center"><p>일렬번호:${vo.pCode}</p></div>
+												<div align="right"><p>${vo.pAddr}</p></div>
 												<p>${vo.pRemainStat}</p>
 											</td>
 										</tr>
 									</table>
+									</div>
 								</a>
 							</div>	
 						</c:forEach>
