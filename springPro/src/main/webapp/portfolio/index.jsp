@@ -45,6 +45,30 @@
     <link rel="stylesheet" href="${hContext}/resources/css/flaticon.css">
     <link rel="stylesheet" href="${hContext}/resources/css/icomoon.css">
     <link rel="stylesheet" href="${hContext}/resources/css/style.css">
+    
+    <style type="text/css">
+	.commentTable tbody{border-color: blue;}
+	
+	.commentTable {
+  	width: 100%;
+  	margin-bottom: 1rem;
+  	color: #212529; }
+  
+ 	.commentTable th{
+    padding: 2px;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+    padding-top: 5px;
+     }
+  
+ 	.commentTable tr{
+    padding-bottom: 15px;
+     }
+  
+  
+	</style>
+    
+    
   </head>
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300" style="height: 100%">
 	  
