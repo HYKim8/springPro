@@ -28,7 +28,7 @@
          SET l_group = #{lGroup},      
              l_grade = #{lGrade},      
              l_num = #{lNum},        
-             l_date = #{lDate},       
+             l_date = TO_DATE(#{lDate},'YYYY/MM/DD'),       
              l_organ = #{lOrgan}      
          WHERE  member_id = #{memberId} 
          AND l_name=#{lName}       

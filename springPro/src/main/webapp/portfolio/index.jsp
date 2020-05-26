@@ -413,7 +413,7 @@
 									 				<i class="flaticon-analysis"></i>
 									 			</span>
 									 			<div class="desc px-md-3 " >
-									 				<input type="hidden" name="memberId" id="memberId" value="${vo.memberId}" />
+									 				<!--  <input type="hidden" name="memberId" id="memberId" value="${vo.memberId}" />-->
 									 				<table id="licFrm">
 									 					<tbody>
 															<tr>
@@ -1011,7 +1011,9 @@
 	             "lOrgan": lOrgan.trim() 
 	      },
 	      success:function(data){ //성공
-		          console.log("data:"+data);  
+		          console.log("data:"+data); 
+		          console.log("memberId= "+$("#memberId").val());
+		          console.log("lName= "+lName.trim()); 
 		          var html = "";
 		          var tbody = licUpdate.parent().parent().parent();
 		          var removeTbody = tbody.eq(0);
@@ -1020,20 +1022,20 @@
 			      html+='<tbody>                                                                                                                    ';
 			      html+='	<tr>                                                                                                                      ';
 			      html+='		<td rowspan="2">                                                                                                      ';
-			      html+='			<input type="hidden" name="memberId" id="memberId" value="${vo.memberId}"/>                                       ';
+			      html+='			<input type="hidden" name="memberIdU" id="memberIdU" value="${vo.memberId}"/>                                       ';
 			      html+='		</td>                                                                                                                 ';
 			      html+='	</tr>                                                                                                                     ';
 			      html+='	<tr>';  
-			      html+='		<td><input type="text" id="lNameU" name="lName" size="15"  maxlength="10" readonly="readonly" value="';
+			      html+='		<td><input type="text" id="lNameU" name="lNameU" size="15"  maxlength="10" readonly="readonly" value="';
 				  html+= lName.trim();
 				  html+='"/>';
 			      html+='<hr/>                                                                                                 ';
 			      html+='		</td>                                                                                                                 ';
 			      html+='	</tr>                                                                                                                     ';
 			      html+='	<tr>                                                                                                                      ';
-			      html+='		<td id="lGroup" value="${vo.lGroup}" >자격분류: </td>                                                                    ';
+			      html+='		<td>자격분류: </td>                                                                    ';
 			      html+='		<td>                                                                                                                  ';
-				  html+='			<input type="text" id="lGroupU" name="lGroup" size="15"  maxlength="10" value="';
+				  html+='			<input type="text" id="lGroupU" name="lGroupU" size="15"  maxlength="10" value="';
 				  html+=lGroup.trim();
 				  html+='"/>	';
 			      html+='		</td>                                                                                                                 ';
@@ -1041,7 +1043,7 @@
 			      html+='	<tr>                                                                                                                      ';
 			      html+='		<td>자격등급: </td>                                                                                                      ';
 			      html+='		<td>                                                                                                                  ';
-			      html+='			<input type="text" id="lGradeU" name="lGrade" size="15"  maxlength="10" value="';
+			      html+='			<input type="text" id="lGradeU" name="lGradeU" size="15"  maxlength="10" value="';
 				  html+=lGrade.trim();
 				  html+='"/>	';
 			      html+='		</td>                                                                                                                 ';
@@ -1049,7 +1051,7 @@
 			      html+='	<tr>                                                                                                                      ';
 			      html+='		<td>자격번호: </td>                                                                                                      ';
 			      html+='		<td>                                                                                                                  ';
-			      html+='			<input type="text" id="lNumU" name="lNum" size="15"  maxlength="10" value="';
+			      html+='			<input type="text" id="lNumU" name="lNumU" size="15"  maxlength="10" value="';
 				  html+=lNum.trim();
 				  html+='"/>	';
 			      html+='		</td>                                                                                                                 ';
@@ -1057,7 +1059,7 @@
 			      html+='	<tr>                                                                                                                      ';
 			      html+='		<td>취득일자: </td>                                                                                                      ';
 			      html+='		<td>                                                                                                                  ';
-			      html+='			<input type="text" id="lDateU" name="lDate" size="15"  maxlength="10" value="';
+			      html+='			<input type="text" id="lDateU" name="lDateU" size="15"  maxlength="10" value="';
 				  html+=lDate.trim();
 				  html+='"/>	';
 				  html+='		</td>                                                                                                                 ';
@@ -1065,7 +1067,7 @@
 			      html+='	<tr>                                                                                                                      ';
 			      html+='		<td>발행기관: </td>                                                                                                      ';
 			      html+='		<td>                                                                                                                  ';
-			      html+='			<input type="text" id="lOrganU" name="lOrgan" size="15"  maxlength="10" value="';
+			      html+='			<input type="text" id="lOrganU" name="lOrganU" size="15"  maxlength="10" value="';
 				  html+=lOrgan.trim();
 				  html+='"/>	';
 			      html+='		</td>                                                                                                                 ';
@@ -1073,7 +1075,7 @@
 			      html+='	<tr>                                                                                                                      ';
 			      html+='		<td colspan="2">                                                                                                      ';
 			      html+='			<button type="button"  class="licCan btn btn-primary" id="licCan" name="licCan" >수정취소</button>                   ';
-			      html+='			<button type="button" class="doUpdate btn btn-primary" id="licUpdate" name="doUpdate" >수정완료</button>              ';
+			      html+='			<button type="button" class="licUpdateEnd btn btn-primary" id="licUpdateEnd" name="doUpdate" >수정완료</button>              ';
 			      html+='		</td>                                                                                                                 ';
 			      html+='	</tr>                                                                                                                     ';
 			      html+='</tbody>                                                                                                                   ';                                                                                                                                                            
@@ -1093,12 +1095,12 @@
 
 	  //수정취소버튼
 	  $(document).on("click",".licCan",function(){
-	    	history.go(0);
+		  licRetrieve();
 	    });
 
 	  //수정완료버튼
-	  $(document).on("click",".licUpdate",function(){//댓글수정완료버튼
-		     var lName = $("#lNameU").val();
+	  $(document).on("click",".licUpdateEnd",function(){//댓글수정완료버튼
+	  		 var lName = $("#lNameU").val();
 		     var lGroup = $("#lGroupU").val();
 		     var lGrade = $("#lGradeU").val(); 
 		     var lNum = $("#lNumU").val();
@@ -1225,8 +1227,7 @@
 		     var parseData = $.parseJSON(data);
 					 if(parseData.msgId=="1"){
 							alert(parseData.msgMsg);
-							//licRetrieve();
-							history.go(0);
+							licRetrieve();
 						 }else{
 							alert(parseData.msgMsg);
 							 }
