@@ -50,7 +50,7 @@ em.error {
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target" id="ftco-navbar">
         <div class="container">
-          <a class="navbar-brand" href="index.jsp"><span>B</span>ombom</a>
+          <a class="navbar-brand" href="${hContext}/covid/covid_login.jsp"><span>B</span>ombom</a>
           <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="oi oi-menu"></span> Menu
           </button>
@@ -61,7 +61,7 @@ em.error {
               <li class="nav-item"><a href="#about-section" class="nav-link"><span>About</span></a></li>
               <li class="nav-item"><a href="#License-section" class="nav-link"><span>License</span></a></li>
               <li class="nav-item"><a href="#Skills-section" class="nav-link"><span>Skills</span></a></li>
-              <li class="nav-item"><a href="#Projects-section" class="nav-link"><span>Projects</span></a></li>
+              <li class="nav-item"><a href="javascript:logout();" class="nav-link"><span>logout</span></a></li>
             </ul>
           </div>
         </div>
@@ -78,7 +78,7 @@ em.error {
             <div class="container-fluid px-md-5">
                 <div class="row justify-content-center py-5 mt-5">
                     <div class="col-md-12 heading-section text-center ftco-animate">
-                         <h2 class="mb-4">COVID-19: User Sign Up</h2>
+                         <h2 class="mb-4">Sign Up</h2>
                          <div align="center">
                             <form action="${hContext}/covid/do_sign_up.spring" id="registerForm" name="registerForm" method="POST">
 	                           	<table>
@@ -134,66 +134,31 @@ em.error {
         </section> <!--// 파란배경 -->
 
 
-    <footer class="ftco-footer ftco-section">
+  <footer class="ftco-footer ftco-footer-fixed" style="height: 18%;" >
       <div class="container">
         <div class="row mb-5">
-          <div class="col-md">
+          <div class="col-md-8">
+            <div class="ftco-footer-widget mb-4" >
+              <h3 style="color: white;">About</h3>
+              <p>Our project name is BomBom means spring and Spring Framework.<br/>Our goal is to build and operate a personal portfolio site.
+            	<br/>Copyright &copy;<script>2020</script> 
+	           All rights reserved | This project is made with 
+	           <i class="icon-heart color-danger" aria-hidden="true"></i> 
+	           by <a href="index.jsp" target="_blank">Bombom</a></p>
+            </div>
+          </div>
+          <div class="col-md-4">
             <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">About</h2>
-              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
-                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-              </ul>
+            	<h3 style="color: white;">Contact me</h3>
+                <ul class="list-unstyled">
+	                <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>phone: &nbsp; ${memberVO.phone}</a></li>
+	                <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>mail: &nbsp;${memberVO.email}</a></li>
+	               
+                </ul>
             </div>
           </div>
-          <div class="col-md">
-            <div class="ftco-footer-widget mb-4 ml-md-4">
-              <h2 class="ftco-heading-2">Links</h2>
-              <ul class="list-unstyled">
-                <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Home</a></li>
-                <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>About</a></li>
-                <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Services</a></li>
-                <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Projects</a></li>
-                <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Contact</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-md">
-             <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">Services</h2>
-              <ul class="list-unstyled">
-                <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Web Design</a></li>
-                <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Web Development</a></li>
-                <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Business Strategy</a></li>
-                <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Data Analysis</a></li>
-                <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Graphic Design</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-md">
-            <div class="ftco-footer-widget mb-4">
-                <h2 class="ftco-heading-2">Have a Questions?</h2>
-                <div class="block-23 mb-3">
-                  <ul>
-                    <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
-                    <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
-                    <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
-                  </ul>
-                </div>
-            </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-12 text-center">
-
-            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-          </div>
-        </div>
-      </div>
     </footer>
     
   
@@ -240,12 +205,12 @@ em.error {
                          //필수값
                          required: true,
                          //범위
-                         rangelength: [5,12]
+                         rangelength: [4,12]
                      },passwordConfirm:{
                          //필수값
                          required: true,
                          //범위
-                         rangelength: [5,12],
+                         rangelength: [4,12],
 
                          equalTo:"#password"
                      },email:{
@@ -374,8 +339,14 @@ em.error {
 			//console.log('확인');
 			alert('로그인 페이지로 이동합니다.');
 			location.href="${hContext}/covid/covid_login.jsp";
-		 };
-        
+		 }
+
+		 
+		function logout(){
+	    		//console.log("goMypage");
+	    		location.href="${hContext}/covid/logout.spring";
+	    		
+	    }
     </script>
   </body>
 </html>

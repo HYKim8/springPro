@@ -86,6 +86,8 @@ public class CovidController {
 		//성공
 		if(flag ==1) {
 			message.setMsgMsg("로그인에 성공하였습니다.");
+			LOG.debug(vo+"ssss");
+			model.addAttribute("vo", vo);
 		//실패
 		} else {
 			message.setMsgMsg("로그인에 실패하였습니다.");
@@ -101,6 +103,23 @@ public class CovidController {
 		LOG.debug("1.3===============");
 		
 		return json;
+	}
+	
+	@RequestMapping(value = "covid/go_login.spring", method = RequestMethod.GET)
+	public String doLoginPage(HttpServletRequest req, CovidUserVO vo, Model model) {
+		HttpSession session=req.getSession();
+		String id = (String) session.getAttribute("login");
+		
+		String url = "covid/covid_index";
+		
+		//session아이디 값 wogns 가정
+		vo = new CovidUserVO();
+		vo.setMemberId(id);
+		CovidUserVO memberVO = (CovidUserVO) covidService.doSelectOneUser(vo);
+		
+		model.addAttribute("memberVO", memberVO);
+		
+		return url;
 	}
 	
 	@RequestMapping(value = "covid/logout.spring",method = RequestMethod.GET)
@@ -286,6 +305,11 @@ public class CovidController {
 		vo.setMemberId(id);
 		List<RxJoinVO> pList = (List<RxJoinVO>) covidService.doRetrieve(vo);
 		
+		CovidUserVO memberVO = new CovidUserVO();
+		memberVO.setMemberId(id);
+		memberVO = (CovidUserVO) covidService.doSelectOneUser(memberVO);
+		
+		model.addAttribute("memberVO", memberVO);
 		model.addAttribute("pList", pList);
 		
 		return url;
