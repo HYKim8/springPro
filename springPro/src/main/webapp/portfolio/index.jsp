@@ -1073,7 +1073,7 @@
 			      html+='	<tr>                                                                                                                      ';
 			      html+='		<td colspan="2">                                                                                                      ';
 			      html+='			<button type="button"  class="licCan btn btn-primary" id="licCan" name="licCan" >수정취소</button>                   ';
-			      html+='			<button type="button" class="doUpdate btn btn-primary" id="doUpdate" name="doUpdate" >수정완료</button>              ';
+			      html+='			<button type="button" class="doUpdate btn btn-primary" id="licUpdate" name="doUpdate" >수정완료</button>              ';
 			      html+='		</td>                                                                                                                 ';
 			      html+='	</tr>                                                                                                                     ';
 			      html+='</tbody>                                                                                                                   ';                                                                                                                                                            
@@ -1097,7 +1097,7 @@
 	    });
 
 	  //수정완료버튼
-	  $(document).on("click",".doUpdate",function(){//댓글수정완료버튼
+	  $(document).on("click",".licUpdate",function(){//댓글수정완료버튼
 		     var lName = $("#lNameU").val();
 		     var lGroup = $("#lGroupU").val();
 		     var lGrade = $("#lGradeU").val(); 
