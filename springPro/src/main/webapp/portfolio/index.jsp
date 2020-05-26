@@ -615,7 +615,7 @@
     </section>
     
      <!-- Comment -->
-     <section class="ftco-about img ftco-section" >
+     <section class="ftco-about img ftco-section" style="min-height: 100%;" >
     <!-- commentfrm -->
     <div class="container">
    	<form id="commentfrm" name="commentfrm" >
@@ -740,7 +740,7 @@
   //조회버튼 클릭 시
   function licRetrieve() {
       var frm = document.license_frm;
-      frm.action="${hContext}/portfolio/total_retrieve.spring";
+      frm.action="${hContext}/portfolio/toHome.spring";
       frm.submit();
    }
 
