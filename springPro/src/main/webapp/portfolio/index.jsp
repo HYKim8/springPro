@@ -841,12 +841,12 @@
 
   	    html += '<tbody>																												';
   		html += '	<tr style="border-top: 5px; margin-top: 5px;">                                                                      ';
-  		html += '		<td>';
+  		html += '		<th>';
   		html +=regId;
-  		html += '</td><td></td>																								';
+  		html += '</th><td></td>																								';
   		html += '	</tr>                                                                                                               ';
   		html += '	<tr><td colspan="2" align="right">                                                                                                                 ';
-  		html += '		<textarea style="width: 1000px" rows="2" cols="30" name="message" id="message" placeholder="'+cContent+'" value=\"${vo.cContent}\"  ></textarea>      ';
+  		html += '		<textarea style="width: 1100px" rows="2" cols="30" name="message" id="message" placeholder="'+cContent+'" value=\"${vo.cContent}\"  ></textarea>      ';
   		html += '	</td></tr>                                                                                                               ';
   		html += '	<tr style="border-bottom: 1px; margin-bottom: 5px;">                                                                ';
   		html += '		<td colspan="2" align="right">                                                                                  ';
