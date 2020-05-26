@@ -1692,7 +1692,7 @@
                alert(parseData.msgMsg);
            }
            mypage();
-				
+				  
        },
        error : function(xhr, status, error) {
            alert("error:" + error);

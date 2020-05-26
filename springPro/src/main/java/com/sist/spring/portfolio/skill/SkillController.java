@@ -196,7 +196,7 @@ public class SkillController {
 
 		message.setMsgId(flag+"");
 		//성공
-		if(flag ==1) {
+		if(flag ==1) {  
 			message.setMsgMsg(sessionVO.getMemberId()+"님의 스킬이 등록 되었습니다.");
 		//실패	
 		}else {

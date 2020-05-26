@@ -386,7 +386,7 @@ public class ProjectController {
 	   HttpSession session= req.getSession();
 	   MemberVO sessionVO=(MemberVO)session.getAttribute("member");
 	   List<ProjectVO> list = projectVO.getProjectList();
-	     
+	       
 	   String datePath = this.UPLOAD_FILE;
        PjtFileVO dbInVO=new PjtFileVO();
        LOG.debug("정진우"+String.valueOf(mReg.getFileNames()));

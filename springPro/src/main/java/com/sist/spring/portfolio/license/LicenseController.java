@@ -246,7 +246,7 @@ public class LicenseController {
 			LOG.debug("1.2===================");
 	    }
 	
-		//메시지 처리
+		//메시지 처리  
 		MessageVO message=new MessageVO();
 	
 		message.setMsgId(flag+"");
