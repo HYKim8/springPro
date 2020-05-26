@@ -428,17 +428,17 @@
                html+=sName.trim();
                html+='           "/>                                                                                                        ';
                html+='          </td>                                                                                                       ';
-               html+='          <td ><input type="text" id="sMarsteryU" name="sMarsteryU" value="';
+               html+='          <td ><input type="text" id="sMarsteryU" maxlength="3" name="sMarsteryU" value="';
                html+=sMarstery.trim();
-               html+='            "/>                                                                                                       ';
+               html+='"/>                                                                                                       ';
                html+='          </td>                                                                                                      ';
                html+='           <td ><input type="text" id="sContentU" name="sContentU"  value="';
                html+=sContent.trim();
                html+='            "/>                                                                                                       ';
                html+='           </td>                                                                                                     ';
                html+='         <td>                                                                                                         ';
-               html+='         <button type="buttons"  class=" skillCan buttons" id="skillCan" name="skillCan" >Cancellation</button>       ';
-               html+='         <button type="buttons" class="doskillUpdate buttons" id="doskillUpdate" name="doskillUpdate" >Completed</button>            ';
+               html+='         <button type="button"  class=" skillCan buttons" id="skillCan" name="skillCan" >Cancellation</button>       ';
+               html+='         <button type="button" class="doskillUpdate buttons" id="doskillUpdate" name="doskillUpdate">Completed</button>            ';
                html+='         </td>                                                                                                        ';
                html+='    </tr>                                                                                                             ';              
 
@@ -462,56 +462,58 @@
               });
        
             //수정완료버튼
-            $(document).on("click",".doskillUpdate",function(){//댓글수정완료버튼
-                  var memberId = $("#memberIdU").val();
-                  var sName = $("#sNameU").val();
-                  var sMarstery = $("#sMarsteryU").val();
-                  var sContent = $("#sContentU").val(); 
-                  
-            if($("#sMarsteryU").val()==null || $("#sMarsteryU").val().length<=0 ||$("#sMarsteryU").val()=='undefined'){
-                $("#sMarsteryU").focus();
-                alert("스킬등급를 입력하세요.");
-                return;
-             }
-       
-            if($("#sContentU").val()==null || $("#sContentU").val().length<=0 || $("#sContentU").val()=='undefined'){
-                $("#sContentU").focus();
-                alert("커멘츄을 입력하세요.");
-                return;
-             }
-       
-            if(confirm("수정 하시겠습니까?")==false) return;
+      	$(document).on("click",".doskillUpdate",function(){
 
-          //ajax
-            $.ajax({
-             type:"POST",
-             url:"${hContext}/skill/do_update.spring",
-             dataType:"html",
-             data:{
-            	 "memberId" : memberId.trim(),
-                 "sName" : sName.trim(),
-                 "sMarstery" : sMarstery.trim(),
-                 "sContent" : sContent.trim()
-                 },
-             success:function(data){ //성공
-                console.log("수정성공후우우우우");
-                console.log("sName: "+sName.trim());
-                console.log("sMarstery: "+sMarstery.trim());
-                console.log("sContent: "+sContent.trim());
-                alert("수정되었습니다.");
-                location.href="${hContext}/portfolio/mypage_retrieve.spring";
-             },
-             error:function(xhr,status,error){
-               alert("error:"+error);
-             },
-             complete:function(data){
-             
-             }   
-             
-            });//--ajax 
-            
-         });
-       //--수정완료버튼
+    	  var memberId = $("#memberIdU").val();
+          var sName = $("#sNameU").val();
+          var sMarstery = $("#sMarsteryU").val();
+          var sContent = $("#sContentU").val(); 
+          
+	    if($("#sMarsteryU").val()==null || $("#sMarsteryU").val().length<=0 ||$("#sMarsteryU").val()=='undefined'){
+	        $("#sMarsteryU").focus();
+	        alert("스킬등급를 입력하세요.");
+	        return;
+	     }
+	
+	    if($("#sContentU").val()==null || $("#sContentU").val().length<=0 || $("#sContentU").val()=='undefined'){
+	        $("#sContentU").focus();
+	        alert("커멘츄을 입력하세요.");
+	        return;
+	     }
+	
+	    if(confirm("수정 하시겠습니까?")==false) return;
+	
+	    
+	  //ajax
+	    $.ajax({
+	     type:"POST",
+	     url:"${hContext}/skill/do_update.spring",
+	     dataType:"html",
+	     data:{
+	    	 "memberId" : memberId.trim(),
+	         "sName" : sName.trim(),
+	         "sMarstery" : sMarstery.trim(),
+	         "sContent" : sContent.trim()
+	         },
+	     success:function(data){ //성공
+	        console.log("수정성공후우우우우");
+	        console.log("sName: "+sName.trim());
+	        console.log("sMarstery: "+sMarstery.trim());
+	        console.log("sContent: "+sContent.trim());
+	        alert("수정되었습니다.");
+	        location.href="${hContext}/portfolio/mypage_retrieve.spring";
+	     },
+	     error:function(xhr,status,error){
+	       alert("error:"+error);
+	       //alert("code:"+xhr.status+"\n"+"message:"+xhr.responseText+"\n"+"error:"+error);
+	     },
+	     complete:function(data){
+	            
+         }   
+	     
+	    });//--ajax 
+          
+          });//--수정완료버튼
       
       //삭제
      function skillDelete(sName, memberId){
@@ -804,8 +806,8 @@
                html+='" />                                                                                         ';
                html+='      </td>                                                                                                          ';
                html+='      <td >                                                                                               ';
-               html+='         <button type="buttons"  class="licCan buttons" id="licCan" name="licCan" >Cancellation</button>                                                     ';
-               html+='         <button type="buttons" class="dolicUpdate buttons" id="dolicUpdate" name="dolicUpdate" >Completed</button>                                                     ';
+               html+='         <button type="button"  class="licCan buttons" id="licCan" name="licCan" >Cancellation</button>                                                     ';
+               html+='         <button type="button" class="dolicUpdate buttons" id="dolicUpdate" name="dolicUpdate" >Completed</button>                                                     ';
                html+='      </td>                                                                                                          ';
                html+='   </tr>                                                                                                              ';
 
@@ -1167,12 +1169,12 @@
                html+='" />                                                                                         ';
                html+='      </td>                                                                                                          ';
                html+='      <td>                                                                                                           ';
-               html+='         <input type="text" id="pjtStartU" name="pjtStartU" size="10" maxlength="10" value="';
+               html+='         <input type="text" id="pjtStartU" name="pjtStartU" size="10" value="';
                html+=pjtStart.trim();
                html+='" />                                                                                       ';
                html+='      </td>                                                                                                          ';
                html+='      <td>                                                                                                           ';
-               html+='         <input type="text" id="pjtEndU" name="pjtEndU" size="10" maxlength="10" value="';
+               html+='         <input type="text" id="pjtEndU" name="pjtEndU" size="10" value="';
                html+=pjtEnd.trim();
                html+='" /> ';
                html+='      </td>                                                                                                          ';
@@ -1182,8 +1184,8 @@
                html+='" />                                                                                         ';
                html+='      </td>                                                                                                          ';
                html+='      <td >                                                                                               ';
-               html+='         <button type="buttons"  class="pjtCan buttons" id="pjtCan" name="pjtCan" >Cancellation</button>                                                     ';
-               html+='         <button type="buttons" class="pjtUpdate buttons" id="pjtUpdate" name="pjtUpdate" >Completed</button>                                                     ';
+               html+='         <button type="button"  class="pjtCan buttons" id="pjtCan" name="pjtCan" >Cancellation</button>                                                     ';
+               html+='         <button type="button" class="pjtUpdate buttons" id="pjtUpdate" name="pjtUpdate" >Completed</button>                                                     ';
                html+='      </td>                                                                                                          ';
                html+='   </tr>                                                                                                              ';
 

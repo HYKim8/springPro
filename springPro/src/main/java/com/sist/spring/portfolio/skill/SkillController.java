@@ -92,6 +92,11 @@ public class SkillController {
 		Gson gson=new Gson();
 		String json = gson.toJson(message);
 
+		
+		System.out.println("1231232");
+		System.out.println("1231232");
+		System.out.println("1231232");
+		
 		LOG.debug("1.3===================");
 		LOG.debug("1.3=json="+json); 
 		LOG.debug("1.3===================");		
