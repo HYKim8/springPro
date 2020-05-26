@@ -163,7 +163,9 @@ public class SkillController {
 		
 	}
 	
-	@RequestMapping(value = "skill/do_insert.spring",method = RequestMethod.GET)
+	@RequestMapping(value = "skill/do_insert.spring",method = RequestMethod.POST
+			,produces = "application/json; charset=UTF-8")
+	@ResponseBody
 	public String doInsert(SkillVO skillVO, HttpServletRequest req, Model model) {
 		HttpSession session= req.getSession();
 		MemberVO sessionVO=(MemberVO)session.getAttribute("member");
@@ -195,14 +197,19 @@ public class SkillController {
 		message.setMsgId(flag+"");
 		//성공
 		if(flag ==1) {
-			message.setMsgMsg(skillVO.getsName()+"님이 등록 되었습니다.");
+			message.setMsgMsg(sessionVO.getMemberId()+"님의 스킬이 등록 되었습니다.");
 		//실패	
 		}else {
-			message.setMsgMsg(skillVO.getsName()+"님 등록 실패.");			
+			message.setMsgMsg(sessionVO.getMemberId()+"님 등록 실패.");			
 		}
 		
+		Gson gson = new Gson();
+		String json = gson.toJson(message);
+		LOG.debug("1.3===================");
+		LOG.debug("1.3=json="+json); 
+		LOG.debug("1.3===================");
 		
-		return "/portfolio/index" ;
+		return json;
 	}
 	
 	

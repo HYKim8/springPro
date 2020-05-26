@@ -655,7 +655,7 @@
               html+='         <table>                                                                                                                                                                                                             ';
               html+='            <tr>                                                                                                                                                                                                            ';
               html+='               <td >                                                                                                                                                                                              ';
-              html+='                  <button type="button" onclick="javascript:skillInsert();" class="btn btn-primary btn-sm">Submit</button>                                                                                                ';
+              html+='                  <button type="button" onclick="javascript:skillInsert('+skillCnt+');" class="btn btn-primary btn-sm">Submit</button>                                                                                                ';
               html+='               </td>                                                                                                                                                                                                       ';
               html+='            </tr>                                                                                                                                                                                                           ';
               html+='         </table>                                                                                                                                                                                                            ';
@@ -1072,7 +1072,7 @@
          html+='                <table>                                                                                                                                                                               ';
          html+='                  <tr>                                                                                                                                                                               ';
          html+='                     <td >                                                                                                                                                                 ';
-         html+='                        <button type="button" onclick="javascript:licenseInsert();" class="btn btn-primary btn-sm">Submit</button>                                                                 ';
+         html+='                        <button type="button" onclick="javascript:licenseInsert('+licenseCnt+');" class="btn btn-primary btn-sm">Submit</button>                                                                 ';
          html+='                     </td>                                                                                                                                                                          ';
          html+='                  </tr>                                                                                                                                                                              ';
          html+='                </table>                                                                                                                                                                              ';
@@ -1460,7 +1460,7 @@
                html+='       <table>                                                                                                                                                                                 ';
                html+='       <tr>                                                                                                                                                                                    ';
                html+='         <td >                                                                                                                                                                       ';
-               html+='            <button type="button" onclick="javascript:pjtInsert();" class="btn btn-primary btn-sm">Submit</button>                                                                            ';
+               html+='            <button type="button" onclick="javascript:pjtInsert('+projectCnt+');" class="btn btn-primary btn-sm">Submit</button>                                                                            ';
                html+='         </td>                                                                                                                                                                                ';
                html+='       </tr>                                                                                                                                                                                   ';
                html+='     </table>                                                                                                                                                                                   ';
@@ -1584,36 +1584,126 @@
         });
 
      
-     function skillInsert() {
-        console.log("skillInsert");
-          var frm = document.skillInsertForm;
-          frm.action = "${hContext}/skill/do_insert.spring";
-          frm.method="GET";
-          frm.submit(); 
-          
+ 	function mypage() {
+
+        location.href="${hContext}/portfolio/mypage_retrieve.spring";
+        
      }
+     function skillInsert(cnt){
+		 var form = $('#skillInsertForm')[cnt];
+
+  	    // Create an FormData object 
+          var data = new FormData(form);
+     	//ajax
+         $.ajax({
+             type : "POST",
+             url : "${hContext}/skill/do_insert.spring",
+             dataType : "html",
+             data : data,
+             contentType: false,
+             processData: false,
+             success : function(data) { //성공
+             	 console.log("data:" + data);
+                 var parseData = $.parseJSON(data);
+                 if (parseData.msgId == "1") {
+                     alert(parseData.msgMsg);
+                 } else {
+                     alert(parseData.msgMsg);
+                 }
+                 mypage();
+				
+             },
+             error : function(xhr, status, error) {
+                 alert("error:" + error);
+             },
+             complete : function(data) {
+
+             }
+
+         });//--ajax 
+
+		}
 
 
 
+     function licenseInsert(cnt) {
+ 
+   	 var form = $('#licenseInsertForm')[cnt];
 
-     function licenseInsert() {
-        console.log("licenseInsert");
-        var frm = document.licenseInsertForm;
-        frm.action = "${hContext}/portfolio/license_insert.spring";
-        frm.method="POST";
-        frm.submit(); 
+	    // Create an FormData object 
+       var data = new FormData(form);
+  	//ajax
+      $.ajax({
+          type : "POST",
+          url : "${hContext}/portfolio/license_insert.spring",
+          dataType : "html",
+          data : data,
+          contentType: false,
+          processData: false,
+          success : function(data) { //성공
+          	 console.log("data:" + data);
+              var parseData = $.parseJSON(data);
+              if (parseData.msgId == "1") {
+                  alert(parseData.msgMsg);
+              } else {
+                  alert(parseData.msgMsg);
+              }
+              mypage();
+				
+          },
+          error : function(xhr, status, error) {
+              alert("error:" + error);
+          },
+          complete : function(data) {
+
+          }
+
+      });//--ajax 
+     
         
     }
 
 
     
       
-     function pjtInsert() {
+     function pjtInsert(cnt) {
         console.log("pjtInsert");
-        var pjtFrm = document.projectInsetForm;
-        pjtFrm.action = "${hContext}/portfolio/do_insert.spring";
-        pjtFrm.method="POST";
-        pjtFrm.submit(); 
+     
+
+   	 var form = $('#projectInsetForm')[cnt];
+
+	    // Create an FormData object 
+    var data = new FormData(form);
+	//ajax
+   $.ajax({
+       type : "POST",
+       url : "${hContext}/portfolio/do_insert.spring",
+       dataType : "html",
+       data : data,
+       enctype: 'multipart/form-data',
+       contentType: false,
+       processData: false,
+       success : function(data) { //성공
+       	 console.log("data:" + data);
+           var parseData = $.parseJSON(data);
+           if (parseData.msgId == "1") {
+               alert(parseData.msgMsg);
+           } else {
+               alert(parseData.msgMsg);
+           }
+           mypage();
+				
+       },
+       error : function(xhr, status, error) {
+           alert("error:" + error);
+       },
+       complete : function(data) {
+
+       }
+
+   });//--ajax 
+  
+     
         
      }
           

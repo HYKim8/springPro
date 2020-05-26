@@ -198,7 +198,7 @@ public class LicenseController {
 	
 		int flag = this.licenseService.doInsert(lic);
 		
-MessageVO message=new MessageVO();
+		MessageVO message=new MessageVO();
 		
 		if(flag>0) {
 			message.setMsgId(String.valueOf(flag));
@@ -216,7 +216,9 @@ MessageVO message=new MessageVO();
 		return jsonStr;
 	}	
 	//등록
-	@RequestMapping(value = "portfolio/license_insert.spring",method=RequestMethod.POST)
+	@RequestMapping(value = "portfolio/license_insert.spring",method=RequestMethod.POST
+			,produces = "application/json; charset=UTF-8")
+	@ResponseBody
 	public String doInsert(LicenseVO licenseVO, HttpServletRequest req, Model model) {
 		HttpSession session=req.getSession();
 		MemberVO sessionVO=(MemberVO)session.getAttribute("member");
@@ -250,14 +252,19 @@ MessageVO message=new MessageVO();
 		message.setMsgId(flag+"");
 		//성공
 		if(flag ==1) {
-			message.setMsgMsg(licenseVO.getlName()+"님이 등록 되었습니다.");
+			message.setMsgMsg(sessionVO.getMemberId()+"님의 자격증이 등록 되었습니다.");
 		//실패	
 		}else {
-			message.setMsgMsg(licenseVO.getlName()+"님 등록 실패.");			
+			message.setMsgMsg(sessionVO.getMemberId()+"님 등록 실패.");			
 		}
 		
-			
-			return "/portfolio/index" ;
-	}	
+		Gson gson = new Gson();
+		String json = gson.toJson(message);
+		LOG.debug("1.3===================");
+		LOG.debug("1.3=json="+json); 
+		LOG.debug("1.3===================");
+		
+		return json;
+	}
 	
 }
