@@ -1209,7 +1209,7 @@
 	      tdArr.push(lName);
 
 		  //confirm
-     	  if(confirm(lName+"을(를) 삭제 하시겠습니까?")==false) return;
+     	  if(confirm(lName.trim()+"을(를) 삭제 하시겠습니까?")==false) return;
 	       
 		   //ajax
 		   $.ajax({
