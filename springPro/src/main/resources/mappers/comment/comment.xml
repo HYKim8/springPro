@@ -35,8 +35,8 @@
        )VALUES(            
                   COMMENTS_SEQ.nextval,         
                   #{cContent,jdbcType=VARCHAR},        
-                  TO_CHAR(SYSDATE, 'YYYY-MM-DD'),        
-                  TO_CHAR(SYSDATE, 'YYYY-MM-DD'),        
+                  TO_DATE(SYSDATE, 'YYYY-MM-DD'),        
+                  TO_DATE(SYSDATE, 'YYYY-MM-DD'),        
                   #{regId,jdbcType=VARCHAR},        
                   #{portfolioId,jdbcType=VARCHAR}   
       )

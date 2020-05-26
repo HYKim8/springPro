@@ -81,7 +81,7 @@ private final Logger LOG = LoggerFactory.getLogger(this.getClass());
 		
 		sb.append("UPDATE COMMENTS       ");
 		sb.append("SET                  ");
-		sb.append("    reg_dt =  TO_CHAR(SYSDATE, 'YYYY/MM/DD')    ");
+		sb.append("    reg_dt =  TO_DATE(SYSDATE, 'YYYY/MM/DD')    ");
 		sb.append("    ,c_cont = ?   ");
 		
 		sb.append("WHERE                ");
