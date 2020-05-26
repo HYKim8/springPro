@@ -428,7 +428,13 @@ public class CovidController {
         	
         }
         
-        System.out.println(list);
+        CovidUserVO memberVO = new CovidUserVO();
+		memberVO.setMemberId(id);
+		memberVO = (CovidUserVO) covidService.doSelectOneUser(memberVO);
+		
+		model.addAttribute("memberVO", memberVO);
+        
+        //System.out.println(list);
         model.addAttribute("currentLng", currentLng);
         model.addAttribute("currentLat", currentLat);
         model.addAttribute("list",list);

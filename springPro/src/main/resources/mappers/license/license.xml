@@ -78,8 +78,8 @@
                   #{lGroup},        
                   #{lGrade},        
                   #{lNum},        
-                  #{lOrgan},        
-                  #{lDate},           
+                  #{lOrgan},     
+                  TO_DATE(#{lDate},'YYYY-MM-DD'),      
                   #{memberId}         
       )
    
