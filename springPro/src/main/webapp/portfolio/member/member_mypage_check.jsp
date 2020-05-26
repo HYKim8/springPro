@@ -134,7 +134,7 @@
                                                              </tr>
                                                              <tbody id="Test">
                                                              <c:forEach var="i" begin="0" end="${list1.size()-1}">
-                                                             <tr id="skilModifylDiv">
+                                                             <tr >
                                                                    <td>${list1.get(i).sName }</td>
                                                                    <td>${list1.get(i).sMarstery }</td>
                                                                    <td>${list1.get(i).sContent }</td>
@@ -199,7 +199,6 @@
                                                                    <td><p class="mb-4 col-lg-1"><b>License Number</b></p></td>
                                                                    <td><p class="mb-4 col-lg-2"><b>Date of Acquisition</b></p></td>
                                                                    <td><p class="mb-4 col-lg-2"><b>Issuing Agency</b></p></td>
-                                                                   <td><p class="mb-4 col-lg-2"></p></td>
                                                                 </tr>
                                                                 <tbody id="Test2">
                                                                  <c:forEach var="i" begin="0" end="${list2.size()-1}">
@@ -417,7 +416,7 @@
                var tr = $(this).parent().parent();
                var removeTr = tr.eq(2);
                document.getElementById("Test").deleteRow(cnt);
-               html+='<form id="skillModify">                                                                          ';
+
                html+='<tr>                                                                          ';
                html+='   <td><input type="hidden" id="memberIdU" name="memberIdU"  value="';
                html+=memberId;
@@ -442,7 +441,6 @@
                html+='         <button type="buttons" class="doskillUpdate buttons" id="doskillUpdate" name="doskillUpdate" >Completed</button>            ';
                html+='         </td>                                                                                                        ';
                html+='    </tr>                                                                                                             ';              
-               html+='    </form>                                                                                                             ';              
 
                $("#Test").append(html);
                //$("#skilModifylDiv").show();
@@ -483,18 +481,18 @@
              }
        
             if(confirm("수정 하시겠습니까?")==false) return;
-            var form = $('#skillModify')[0];
 
-    	    // Create an FormData object 
-       	 var data = new FormData(form);
           //ajax
             $.ajax({
              type:"POST",
              url:"${hContext}/skill/do_update.spring",
              dataType:"html",
-             contentType: false,
-             processData: false,
-             data:data,
+             data:{
+            	 "memberId" : memberId.trim(),
+                 "sName" : sName.trim(),
+                 "sMarstery" : sMarstery.trim(),
+                 "sContent" : sContent.trim()
+                 },
              success:function(data){ //성공
                 console.log("수정성공후우우우우");
                 console.log("sName: "+sName.trim());
@@ -745,7 +743,7 @@
 //license----------------------------
 
     //수정버튼
-      function licUpdate(lName, memberId,lGroup,lGrade,lNum,lDate,lOrgan,cnt){
+      function licUpdate(lName,memberId,lGroup,lGrade,lNum,lDate,lOrgan,cnt){
     	  var html = '';
       //ajax
         $.ajax({
@@ -769,7 +767,7 @@
                 document.getElementById("Test2").deleteRow(cnt);
                
                html+='   <tr>                                                                                                               ';
-               html+='      <td><input type="hidden" id="memberIdU" name="memberIdU" size="15"   value="';
+               html+='      <td><input type="hidden" id="memberIdU" name="memberIdU" value="';
                html+=memberId.trim();
                html+='" /> ';
                html+='</td>                                      ';
@@ -810,6 +808,7 @@
                html+='         <button type="buttons" class="dolicUpdate buttons" id="dolicUpdate" name="dolicUpdate" >Completed</button>                                                     ';
                html+='      </td>                                                                                                          ';
                html+='   </tr>                                                                                                              ';
+
                $("#Test2").append(html);                                                                      
          },
          error:function(xhr,status,error){
@@ -826,13 +825,13 @@
 
       //수정취소버튼
       $(document).on("click",".licCan",function(){
-          history.go(0);
+    	  location.href="${hContext}/portfolio/mypage_retrieve.spring";
        });
 
       //수정완료버튼
       $(document).on("click",".dolicUpdate",function(){
-          var memberId=$("#memberIdU").val();
-          var lName = $("#lNameU").val();
+           var memberId=$("#memberIdU").val();
+           var lName = $("#lNameU").val();
            var lGroup = $("#lGroupU").val();
            var lGrade = $("#lGradeU").val(); 
            var lNum = $("#lNumU").val();
@@ -1240,8 +1239,6 @@
                   type:"POST",
                   url:"${hContext}/project/do_update.spring",
                   dataType:"html",
-                  contentType: false,
-                  processData: false,
                   data:{ 
                      "memberId" : memberId.trim(),
                      "pjtName" : pjtName.trim(),

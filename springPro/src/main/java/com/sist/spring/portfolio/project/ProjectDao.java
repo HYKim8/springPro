@@ -106,9 +106,8 @@ public class ProjectDao implements Dao {
       sb.append("UPDATE projects       ");
       sb.append("SET                  ");
       sb.append("    pjt_info = ?     ");
-      /*
-       * sb.append("    ,pjt_start = ?   "); sb.append("    ,pjt_end = ?     ");
-       */
+      sb.append("    ,pjt_start = TO_DATE(?,'YYYY/MM/DD')   "); 
+      sb.append("    ,pjt_end = TO_DATE(?,'YYYY/MM/DD')     ");
       sb.append("    ,git_address = ? ");
       sb.append("WHERE                ");
       sb.append("    pjt_name = ?     ");
@@ -122,9 +121,8 @@ public class ProjectDao implements Dao {
       
       
       Object[] args= {inVO.getPjtInfo()
-            /*
-             * ,inVO.getPjtStart() ,inVO.getPjtEnd()
-             */
+				 ,inVO.getPjtStart() 
+				 ,inVO.getPjtEnd()
                   ,inVO.getGitAddress()
                   ,inVO.getPjtName()
                   ,inVO.getMemberId()
