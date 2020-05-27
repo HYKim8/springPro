@@ -216,8 +216,8 @@ public class ProjectDao implements Dao {
       sb.append("    pjt_name,        ");
       sb.append("    member_id,       ");
       sb.append("    pjt_info,        ");
-      sb.append("    pjt_start,       ");
-      sb.append("    pjt_end,         ");
+      sb.append("    TO_CHAR(pjt_start,'YYYY-MM-DD') as pjt_start,       ");
+      sb.append("    TO_CHAR(pjt_end,'YYYY-MM-DD') as pjt_end,       ");
       sb.append("    git_address      ");
       sb.append("FROM                 ");
       sb.append("    projects          ");
