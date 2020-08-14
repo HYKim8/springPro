@@ -72,7 +72,7 @@
 	<div class="container center">
 		<div class="row justify-content-center">
 		
-		<form class="form-horizontal" action="${hContext}/portfolio/doLogin.spring" method="post">
+		<form class="form-horizontal" action="${hContext}/portfolio/doLogin.spring" method="GET">
 		
 		  <div align="center"><h2>LOGIN</h2><br/></div>
 		  <div class="form-group">

@@ -272,7 +272,7 @@ public class MemberController {
 	
 	
 	
-	@RequestMapping(value="portfolio/doLogin.spring",method = RequestMethod.POST)
+	@RequestMapping(value="portfolio/doLogin.spring",method = RequestMethod.GET)
 	public String doLogin(HttpServletRequest req, Model model) {
 		LOG.debug("=======================================");
 		LOG.debug("=doLogin/param");
@@ -374,7 +374,7 @@ public class MemberController {
 	        model.addAttribute("list", commentList);
 	        model.addAttribute("sessionVO",outVO);
 	        
-	        session.setAttribute("member", outVO);
+	        session.setAttribute("memberList", outVO);
 	        
 	        //----댓글-----------------------------------------------
 	        
@@ -472,13 +472,10 @@ public class MemberController {
 	@RequestMapping(value = "/portfolio/do_mem_Comment.spring",method = RequestMethod.GET)
 	public String doMemComment(HttpServletRequest req ,MemberVO user,CommentVO cmt, Model model) {
 		HttpSession session =req.getSession();
-		MemberVO sessionVO=(MemberVO) session.getAttribute("member");
 		user.setMemberId(req.getParameter("portfolioId"));
-		cmt.setRegId(sessionVO.getMemberId());
 		
 		LOG.debug("1===================");
 		LOG.debug("1=user="+user);
-		LOG.debug("2=sssesion="+sessionVO.getMemberId());
 		LOG.debug("1===================");
 		
 		MemberVO outVO = (MemberVO) memberService.doSelectOne(user); //selectOne해서 한줄 뽑아옴
@@ -515,7 +512,6 @@ public class MemberController {
 		model.addAttribute("totalCnt", totalCnt);
 		int maxPageNo = ((totalCnt - 1) / 10) + 1;
 		model.addAttribute("maxPageNo",maxPageNo);
-		model.addAttribute("sessionVO",sessionVO);
 		
 		return "portfolio/index";
 	}
@@ -528,7 +524,6 @@ public class MemberController {
 		
 		LOG.debug("1===================");
 		LOG.debug("1=user="+user);
-		LOG.debug("2=sssesion="+sessionVO.getMemberId());
 		LOG.debug("1===================");
 		
 		MemberVO outVO = (MemberVO) memberService.doSelectOne(user); //selectOne해서 한줄 뽑아옴

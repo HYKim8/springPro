@@ -71,7 +71,7 @@
     
   </head>
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300" style="height: 100%">
-	  
+	  <input type="hidden" name="hiddenId" id="hiddenId" value="${memberVO.memberId}"/>
 	  
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target" id="ftco-navbar" style="height:10%">
 	    <div class="container">
@@ -445,15 +445,6 @@
 									 							<td><b>발행기관:</b> </td>
 									 							<td id="lOrgan" name="lOrgan"><c:out value="${vo.lOrgan }" /></td>
 									 						</tr>
-									 						<c:if test="${vo.memberId == sessionVO.memberId}">
-										 						<tr>
-										 							<td colspan="2" align="center">
-										 								<br/>
-	  			 						 								<button type="button"  class="licDelBtn btn btn-primary" id="licDel" name="licDel" >삭제</button>
-										 							    <button type="button" class="licUpdate btn btn-primary" id="licUpdate" name="licUpdate" >수정</button> 
-										 							</td>
-										 						</tr>
-									 						</c:if>
 									 					</tbody>
 									 				</table>
 									 			</div>
@@ -628,7 +619,7 @@
                         <td>
                             <textarea style="width: 1100px" rows="2" cols="30" id="cContent" name="cContent" placeholder="댓글을 입력하세요"></textarea>
                             <input type="hidden" id="portfolioId" name="portfolioId" placeholder="아이디" value="${memberVO.memberId}" />
-                            <input type="hidden" id="regId" name="regId" placeholder="아이디" value="${sessionVO.memberId}" />
+                            <input type="hidden" id="regId" name="regId" placeholder="아이디" value="iod1124" />
                             <input type="hidden" name="pageNum" id="pageNum" value="${vo.pageNum }">
                             <input type="hidden" id="searchWord" name="searchWord" value="${memberVO.memberId}">
 						
@@ -645,7 +636,7 @@
         </div>
         
     	<table class="commentTable" style="width: 1100px; " >
-    		<input type="hidden" id="sessionID" value="${sessionVO.memberId}" />
+    		<input type="hidden" id="sessionID" value="iod1124" />
  				<!-- Data있는 경우 -->
  				<c:choose>
  					<c:when test="${list.size()>0 }">
@@ -661,13 +652,7 @@
 							
 							</tr>
 							<tr >
-							<c:if test="${vo.regId == sessionVO.memberId}">
-							   	<td colspan="3" align="right" style="padding-bottom: 15px" >
-		                           	<button type="button" class="btn pull-right btn-primary doUpdate" id="doUpdate" >수정</button>
-		                           	<button type="button" class="btn pull-right btn-primary doDelete" id="doDelete" >삭제</button>
-	                           	</td>
-	                       	</c:if>
-	                       	</tr>
+					       	</tr>
 			 			</tbody>
 					</c:forEach>
  					</c:when>
@@ -1190,7 +1175,7 @@
 		//do_retieve 
 		function mypage() {
 
-         location.href="${hContext}/portfolio/mypage_retrieve.spring";
+         location.href="${hContext}/portfolio/mypage_retrieve.spring?hiddenId="+$("#hiddenId").val();
          
       }
 	      

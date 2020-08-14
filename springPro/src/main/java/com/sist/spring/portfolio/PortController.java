@@ -63,11 +63,15 @@ public class PortController {
 	public String mypageRetrieve(HttpServletRequest req,SkillVO skill,LicenseVO license,ProjectVO project, Model model) {
 		
 		HttpSession session=req.getSession();
-		MemberVO sessionVO=(MemberVO) session.getAttribute("member");
+		String memID=req.getParameter("hiddenId");
+		MemberVO inVO=new MemberVO();
+		inVO.setMemberId(memID);
+		MemberVO userVO=(MemberVO)memService.doSelectOne(inVO);
+		MemberVO sessionVO=(MemberVO)memService.doSelectOne(inVO);
 		
-		skill.setMemberId(sessionVO.getMemberId());
-		license.setMemberId(sessionVO.getMemberId());
-		project.setMemberId(sessionVO.getMemberId());
+		skill.setMemberId(memID);
+		license.setMemberId(memID);
+		project.setMemberId(memID);
 		
 		model.addAttribute("param", skill);
 		model.addAttribute("param", license);

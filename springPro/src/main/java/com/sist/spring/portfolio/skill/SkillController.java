@@ -175,10 +175,10 @@ public class SkillController {
 		HttpSession session= req.getSession();
 		MemberVO sessionVO=(MemberVO)session.getAttribute("member");
 		List<SkillVO> list = skillVO.getSkillList();
-		
+		String sMemberId=req.getParameter("sMemberId");
 		for(int i=0;i<list.size(); i++) {
 			
-			list.get(i).setMemberId(sessionVO.getMemberId());
+			list.get(i).setMemberId(sMemberId);
 			
 			LOG.debug("1111 : " + list.get(i).getsName());
 			LOG.debug("2222 : " + list.get(i).getMemberId());
@@ -202,10 +202,10 @@ public class SkillController {
 		message.setMsgId(flag+"");
 		//성공
 		if(flag ==1) {  
-			message.setMsgMsg(sessionVO.getMemberId()+"님의 스킬이 등록 되었습니다.");
+			message.setMsgMsg(sMemberId+"님의 스킬이 등록 되었습니다.");
 		//실패	
 		}else {
-			message.setMsgMsg(sessionVO.getMemberId()+"님 등록 실패.");			
+			message.setMsgMsg(sMemberId+"님 등록 실패.");			
 		}
 		
 		Gson gson = new Gson();

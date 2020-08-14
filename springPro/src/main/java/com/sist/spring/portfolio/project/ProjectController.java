@@ -384,7 +384,10 @@ public class ProjectController {
    @ResponseBody
    public String do_insert(MultipartHttpServletRequest mReg,ProjectVO projectVO ,  HttpServletRequest req, Model model) {
 	   HttpSession session= req.getSession();
-	   MemberVO sessionVO=(MemberVO)session.getAttribute("member");
+	   String sMemberId=req.getParameter("sMemberId");
+	   MemberVO inVO=new MemberVO();
+	   inVO.setMemberId(sMemberId);
+	   MemberVO sessionVO=(MemberVO)memberService.doSelectOne(inVO);
 	   List<ProjectVO> list = projectVO.getProjectList();
 	       
 	   String datePath = this.UPLOAD_FILE;

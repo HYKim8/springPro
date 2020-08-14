@@ -74,7 +74,8 @@
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target" id="ftco-navbar">
        <div class="container">
-         <a class="navbar-brand" href="${hContext}/portfolio/toHome.spring"><span>B</span>ombom</a>
+         <a class="navbar-brand" href="${hContext}/portfolio/do_select_one.spring?hiddenId=${sessionVO.memberId}"><span>B</span>ombom</a>
+         <input type="hidden" id="cId" name="cId" value="${sessionVO.memberId}">
          <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
            <span class="oi oi-menu"></span> Menu
          </button>
@@ -392,7 +393,7 @@
       //조회버튼 클릭 시
         function skillRetrieve() {
             var frm = document.skillUp_frm;
-            frm.action="${hContext}/portfolio/mypage_retrieve.spring";
+            frm.action="${hContext}/portfolio/mypage_retrieve.spring?hiddenId="+$("#cId").val();
             frm.submit();
          }
 
@@ -458,7 +459,7 @@
 
           //수정취소버튼
             $(document).on("click",".skillCan",function(){
-           	 location.href="${hContext}/portfolio/mypage_retrieve.spring";
+           	 location.href="${hContext}/portfolio/mypage_retrieve.spring?hiddenId="+$("#cId").val();
               });
        
             //수정완료버튼
@@ -501,7 +502,7 @@
 	        console.log("sMarstery: "+sMarstery.trim());
 	        console.log("sContent: "+sContent.trim());
 	        alert("수정되었습니다.");
-	        location.href="${hContext}/portfolio/mypage_retrieve.spring";
+	        location.href="${hContext}/portfolio/mypage_retrieve.spring?hiddenId="+$("#cId").val();
 	     },
 	     error:function(xhr,status,error){
 	       alert("error:"+error);
@@ -534,7 +535,7 @@
            var parseData = $.parseJSON(data);
                 if(parseData.msgId=="1"){
                      alert(parseData.msgMsg);
-                     location.href="${hContext}/portfolio/mypage_retrieve.spring";
+                     location.href="${hContext}/portfolio/mypage_retrieve.spring?hiddenId="+$("#cId").val();
                    }else{
                      alert(parseData.msgMsg);
                       }
@@ -564,6 +565,7 @@
               html+='       <h2 class="mb-4">Add Skills</h2>                                                                                                                                                                                       ';
               html+='       <div align="center">                                                                                                                                                                                                   ';
               html+='         <form action="${hContext}/skill/do_insert.spring" name="skillInsertForm" id="skillInsertForm" method="post">                                                                                                        ';
+              html+='       	<input type="hidden" name="sMemberId" name="sMemberId" value="${sessionVO.memberId}">                                                                                                                                                                                                   ';
               html+='         <table id="skillForm" >                                                                                                                                                                                             ';
               html+='            <tr>                                                                                                                                                                                                            ';
               html+='               <td>                                                                                                                                                                                                        ';
@@ -827,7 +829,7 @@
 
       //수정취소버튼
       $(document).on("click",".licCan",function(){
-    	  location.href="${hContext}/portfolio/mypage_retrieve.spring";
+    	  location.href="${hContext}/portfolio/mypage_retrieve.spring?hiddenId="+$("#cId").val();
        });
 
       //수정완료버튼
@@ -895,7 +897,7 @@
                console.log("lDate: "+lDate.trim());
                console.log("lOrgan: "+lOrgan.trim());
                alert("수정되었습니다.");
-               location.href="${hContext}/portfolio/mypage_retrieve.spring";
+               location.href="${hContext}/portfolio/mypage_retrieve.spring?hiddenId="+$("#cId").val();
             },
             error:function(xhr,status,error){
               alert("error:"+error);
@@ -930,7 +932,7 @@
                         var parseData = $.parseJSON(data);
                    if(parseData.msgId=="1"){
                         alert(parseData.msgMsg);
-                        location.href="${hContext}/portfolio/mypage_retrieve.spring";
+                        location.href="${hContext}/portfolio/mypage_retrieve.spring?hiddenId="+$("#cId").val();
                       }else{
                         alert(parseData.msgMsg);
                       }
@@ -955,6 +957,7 @@
          html+='   <h2 class="mb-4">Add License</h2>                                                                                                                                                                      ';
          html+='   <div align="center">                                                                                                                                                                                   ';
          html+=' <form action="${hContext}/portfolio/do_insert_license.spring" name="licenseInsertForm" id="licenseInsertForm" method="post">                                                                           ';
+         html+='       	<input type="hidden" name="sMemberId" name="sMemberId" value="${sessionVO.memberId}">                                                                                                                                                                                                   ';
          html+=' <table id="licenseForm">                                                                                                                                                                               ';
          html+='   <tr>                                                                                                                                                                                                   ';
          html+='      <td>                                                                                                                                                                                               ';
@@ -1204,7 +1207,7 @@
          
          //수정취소버튼
             $(document).on("click",".pjtCan",function(){
-            	location.href="${hContext}/portfolio/mypage_retrieve.spring";
+            	location.href="${hContext}/portfolio/mypage_retrieve.spring?hiddenId="+$("#cId").val();
             });
             
          //수정완료버튼
@@ -1258,7 +1261,7 @@
                   	console.log("pjtEnd: "+pjtEnd.trim());
                   	console.log("gitAddress: "+gitAddress.trim());
                   	alert("수정되었습니다.");
-                  	location.href="${hContext}/portfolio/mypage_retrieve.spring";
+                  	location.href="${hContext}/portfolio/mypage_retrieve.spring?hiddenId="+$("#cId").val();
                   },
                   error:function(xhr,status,error){
                   alert("error:"+error);
@@ -1291,7 +1294,7 @@
                            var parseData = $.parseJSON(data);
                      if(parseData.msgId=="1"){
                            alert(parseData.msgMsg);
-                           location.href="${hContext}/portfolio/mypage_retrieve.spring";
+                           location.href="${hContext}/portfolio/mypage_retrieve.spring?hiddenId="+$("#cId").val();
                         }else{
                            alert(parseData.msgMsg);
                         }
@@ -1317,6 +1320,7 @@
                html+='   <h2 class="mb-4">Add Project</h2>                                                                                                                                                            ';
                html+='   <div align="center">                                                                                                                                                                         ';
                html+='      <form action="${hContext}/portfoilo/upload.spring" method="post" enctype="multipart/form-data" name="projectInsetForm" id="projectInsetForm">                                            ';
+               html+='       	<input type="hidden" name="sMemberId" name="sMemberId" value="${sessionVO.memberId}">                                                                                                                                                                                                   ';
                html+='      <table id="pjtForm">                                                                                                                                                                     ';
                html+='         <tr>                                                                                                                                                                                 ';
                html+='            <td>                                                                                                                                                                             ';
@@ -1494,7 +1498,7 @@
      
  	function mypage() {
 
-        location.href="${hContext}/portfolio/mypage_retrieve.spring";
+        location.href="${hContext}/portfolio/mypage_retrieve.spring?hiddenId="+$("#cId").val();
         
      }
      function skillInsert(cnt){

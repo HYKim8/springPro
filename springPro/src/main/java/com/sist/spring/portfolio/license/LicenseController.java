@@ -221,12 +221,13 @@ public class LicenseController {
 	@ResponseBody
 	public String doInsert(LicenseVO licenseVO, HttpServletRequest req, Model model) {
 		HttpSession session=req.getSession();
+		String sMemberId=req.getParameter("sMemberId");
 		MemberVO sessionVO=(MemberVO)session.getAttribute("member");
 		List<LicenseVO> list = licenseVO.getLicenseList();
 		
 		for(int i=0;i<list.size(); i++) {
 			
-			list.get(i).setMemberId(sessionVO.getMemberId());
+			list.get(i).setMemberId(sMemberId);
 			
 			LOG.debug("1111 : " + list.get(i).getlName());
 			LOG.debug("2222 : " + list.get(i).getlGroup());
@@ -252,10 +253,10 @@ public class LicenseController {
 		message.setMsgId(flag+"");
 		//성공
 		if(flag ==1) {
-			message.setMsgMsg(sessionVO.getMemberId()+"님의 자격증이 등록 되었습니다.");
+			message.setMsgMsg(sMemberId+"님의 자격증이 등록 되었습니다.");
 		//실패	
 		}else {
-			message.setMsgMsg(sessionVO.getMemberId()+"님 등록 실패.");			
+			message.setMsgMsg(sMemberId+"님 등록 실패.");			
 		}
 		
 		Gson gson = new Gson();
